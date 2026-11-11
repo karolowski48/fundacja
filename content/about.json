@@ -1,0 +1,69 @@
+{
+  "seo": {
+    "title": "O nas - historia Fundacji Empatia",
+    "description": "Poznaj historię Fundacji Empatia na rzecz Zwierząt: od jednej kociej mamy do fundacji, która leczy, sterylizuje i szuka domów dla bezdomnych kotów."
+  },
+  "hero": {
+    "eyebrow": "O nas",
+    "title": "Empatia na dłoni",
+    "lead": "Jesteśmy małą fundacją z wielkim uporem. Pomagamy bezdomnym kotom i innym zwierzętom, które nie mają nikogo - codziennie, konkretnie i przejrzyście.",
+    "image": "feeding-winter",
+    "imageAlt": "Sylwia kuca w śniegu przy budce i głaszcze czarne koty jedzące z misek",
+    "imageCredit": "Fot. Foto Gabka"
+  },
+  "story": {
+    "eyebrow": "Założycielka",
+    "title": "Sylwia i jej „nigdy się nie poddałam”",
+    "paragraphs": [
+      "Sylwia Łętocha od lat pomaga kotom, które wielu nazywa „dzikimi”. Ona nazywa je po prostu bezdomnymi - bez głosu, bez wyboru i bez szans, gdyby nie człowiek.",
+      "Jej codzienność zmieniła się na zawsze, gdy zaczęła przyjeżdżać do jednej kociej mamy z młodymi. Tak zaczęła się historia, która trwa do dziś: codzienna opieka, walka o zdrowie i nadzieja.",
+      "Bywało trudno. Wyłapywanie przestraszonych kotów zostawiało ślady na rękach, ale z każdą raną przychodziło doświadczenie. Dziś Sylwia wie, jak ratować kocie życie mądrze, skutecznie i z empatią.",
+      "Najpierw działała sama, potem z pomocą wolontariuszek i stowarzyszenia. Dziś - razem z ludźmi, którym los zwierząt leży na sercu - tworzy Fundację Empatia na rzecz Zwierząt."
+    ],
+    "quote": "Ręce poranione, ale serce silne. Bo każda rana to dowód, że warto.",
+    "quoteAuthor": "Sylwia Łętocha",
+    "image": "sylwia-dog",
+    "imageAlt": "Sylwia Łętocha w czapce z łapką przytula czarnego psa na łące"
+  },
+  "timeline": {
+    "eyebrow": "Nasza droga",
+    "title": "Od jednej kociej mamy do fundacji",
+    "steps": [
+      { "title": "Jedna kocia mama", "text": "Codzienne przyjazdy do kotki z młodymi: karma, woda, obserwacja i pierwsze leczenie." },
+      { "title": "Kolonia rośnie", "text": "W tym samym miejscu pojawiało się coraz więcej porzuconych, głodnych i chorych kotów. Każdy dostawał imię i swoje miejsce w zeszycie." },
+      { "title": "Sterylizacje i pierwsze adopcje", "text": "Dzięki programowi gminy udało się wysterylizować około 30 kotów. Wiele z nich znalazło domy, a pozostałe są bezpieczne na miejscu bytowania." },
+      { "title": "Wolontariusze", "text": "Przy większych akcjach wyłapywania pomagają znajomi wolontariusze. Dzięki nim udało się złapać wiele trudnych przypadków." },
+      { "title": "Fundacja i azyl", "text": "Dziś działamy jako Fundacja Empatia na rzecz Zwierząt i tworzymy azyl w osobnym budynku - przystanek do lepszego życia." }
+    ]
+  },
+  "values": {
+    "eyebrow": "W co wierzymy",
+    "title": "Nasze wartości",
+    "items": [
+      { "icon": "heart", "title": "Empatia", "text": "Każde zwierzę ma imię, historię i prawo do opieki - niezależnie od tego, czy da się je oswoić." },
+      { "icon": "receipt", "title": "Przejrzystość", "text": "Prowadzimy zapiski o każdym kocie i publikujemy faktury za leczenie. Wiesz, na co idą Twoje pieniądze." },
+      { "icon": "shield-check", "title": "Odpowiedzialność", "text": "Leczymy i sterylizujemy, zamiast pozwalać na bezmyślne rozmnażanie. Koty, których nie da się oswoić, nadal mają opiekę." },
+      { "icon": "paw-print", "title": "Wytrwałość", "text": "Codziennie, w śniegu i w deszczu. Nie poddajemy się, nawet gdy jest trudno." }
+    ]
+  },
+  "transparency": {
+    "eyebrow": "Przejrzystość",
+    "title": "Każda złotówka to konkretna pomoc",
+    "paragraphs": [
+      "Prowadzimy zapiski: kto został odrobaczony, kto wysterylizowany, kto poszedł do domu. Pierwsze notatki - odręczna tabela z imionami i rysunkami kotów - pokazują, że od początku każdy kot był dla nas kimś, a nie liczbą.",
+      "Faktury za leczenie i paragony za zakupy dla zwierząt regularnie publikujemy na naszej zbiórce w serwisie zrzutka.pl."
+    ],
+    "cta": "Zobacz faktury na zrzutce",
+    "image": "notes",
+    "imageAlt": "Odręczna tabela w zeszycie z imionami kotów, rysunkami i datami zabiegów"
+  },
+  "plans": {
+    "eyebrow": "Co dalej",
+    "title": "Nad czym teraz pracujemy",
+    "items": [
+      { "icon": "house", "title": "Azyl dla chorych kotów", "text": "Urządzamy osobny budynek, w którym chore koty wrócą do zdrowia, a kociaki oswoją się przed adopcją." },
+      { "icon": "shield-check", "title": "Bezpieczniejsza klatka-łapka", "text": "Tanie metalowe klatki z ostrymi kratami przerażają i ranią koty. Chcemy kupić lepszą, mniej stresującą." },
+      { "icon": "syringe", "title": "Kolejne sterylizacje", "text": "Każda sterylizacja to mniej bezdomnych kociąt za rok. Chcemy obejmować opieką kolejne koty wolno żyjące." }
+    ]
+  }
+}

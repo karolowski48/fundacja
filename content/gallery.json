@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Galeria - zwierzęta, którym pomagamy",
+    "description": "Zdjęcia kotów i innych zwierząt pod opieką Fundacji Empatia: kocięta w azylu, dokarmianie kolonii zimą, wyłapywanie do sterylizacji i historie „kiedyś i teraz”."
+  },
+  "hero": {
+    "eyebrow": "Galeria",
+    "title": "Zwierzaki, którym pomagamy",
+    "lead": "Codzienność fundacji w zdjęciach: koty z naszej kolonii, mieszkańcy azylu, akcje wyłapywania i zwierzęta, które znalazły dom."
+  },
+  "categories": [
+    { "id": "koty", "label": "Koty" },
+    { "id": "codziennosc", "label": "Codzienna pomoc" },
+    { "id": "kiedys-teraz", "label": "Kiedyś i teraz" },
+    { "id": "inne", "label": "Inne zwierzęta" }
+  ],
+  "items": [
+    { "image": "hero-kittens", "category": "koty", "featured": true, "caption": "Sześć burasków w azylu", "alt": "Sześć pręgowanych kociąt w kojcu na kolorowych kocykach patrzy w obiektyw" },
+    { "image": "feeding-winter", "category": "codziennosc", "featured": true, "caption": "Dokarmianie zimą (fot. Foto Gabka)", "alt": "Sylwia kuca w śniegu przy budce i głaszcze czarne koty jedzące z misek" },
+    { "image": "hero-adas", "category": "koty", "caption": "Adaś po operacji oczka", "alt": "Biało-czarny kociak z zabliźnionym oczkiem patrzy w górę" },
+    { "image": "help-treatment", "category": "koty", "caption": "Kociak w trakcie leczenia", "alt": "Pręgowany kociak z wielkimi oczami siedzi na kocyku w klatce" },
+    { "image": "help-trap", "category": "codziennosc", "caption": "Klatka-łapka czeka na kota", "alt": "Zielona klatka-łapka w zaśnieżonym ogrodzie, w tle biały kot" },
+    { "image": "gallery-trap-cat", "category": "codziennosc", "caption": "Ranny kot złapany do leczenia", "alt": "Biało-szary kot z ranką na nosie siedzi w klatce-łapce" },
+    { "image": "help-feeding", "category": "codziennosc", "caption": "Kolonia przy miskach", "alt": "Kilka kotów je z misek rozstawionych na jesiennych liściach" },
+    { "image": "gallery-kittens-grass", "category": "koty", "caption": "Kocięta z kolonii", "alt": "Pręgowane kocięta jedzą w wysokiej trawie" },
+    { "image": "help-shelter", "category": "koty", "caption": "Odpoczynek w kojcu", "alt": "Czarno-biały kot odpoczywa w kojcu z kuwetą i miskami" },
+    { "image": "story-hades-before", "category": "kiedys-teraz", "caption": "Hades - kiedyś", "alt": "Malutki czarny puszysty kociak skulony na kocyku" },
+    { "image": "story-hades-after", "category": "kiedys-teraz", "caption": "Hades - teraz", "alt": "Hades jako duży, zdrowy czarny kot" },
+    { "image": "story-petunia-before", "category": "kiedys-teraz", "caption": "Petunia - kiedyś", "alt": "Biała kotka z chorym, zaropiałym nosem i oczami" },
+    { "image": "story-petunia-after", "category": "kiedys-teraz", "caption": "Petunia - teraz", "alt": "Petunia śpi spokojnie na kocu, zdrowa" },
+    { "image": "story-krakers-before", "category": "kiedys-teraz", "caption": "Krakers - kiedyś", "alt": "Wychudzony pręgowany kociak z zaropiałymi oczami w czyichś dłoniach" },
+    { "image": "story-krakers-after", "category": "kiedys-teraz", "caption": "Krakers - teraz", "alt": "Krakers bawi się zabawką na miękkim kocyku" },
+    { "image": "story-mordka-after", "category": "kiedys-teraz", "caption": "Mordka - teraz", "alt": "Biały kot z bursztynowymi oczami patrzy w obiektyw" },
+    { "image": "story-coco-chanel-after", "category": "kiedys-teraz", "featured": true, "caption": "Coco i Chanel w nowym domu", "alt": "Dwie czarno-białe kotki śpią razem na czerwonym fotelu" },
+    { "image": "help-colony", "category": "codziennosc", "caption": "Pora karmienia", "alt": "Koty różnych maści jedzą przy metalowym kontenerze wśród liści" },
+    { "image": "notes", "category": "codziennosc", "caption": "Pierwsze zapiski", "alt": "Odręczna tabela w zeszycie z imionami kotów i rysunkami" },
+    { "image": "species-cats", "category": "koty", "caption": "Kocie rodzeństwo", "alt": "Dwa czarno-białe koty siedzą na jesiennych liściach" },
+    { "image": "species-dog", "category": "inne", "caption": "Sylwia z psem", "alt": "Czarny pies przytula się do uśmiechniętej Sylwii na łące" },
+    { "image": "species-rabbit", "category": "inne", "caption": "Królik pod opieką", "alt": "Biały puszysty królik patrzy w obiektyw" },
+    { "image": "species-bird", "category": "inne", "caption": "Uratowany ptak", "alt": "Szary ptak siedzi na ręczniku w kartonowym pudełku" },
+    { "image": "species-chinchilla", "category": "inne", "caption": "Szynszyla", "alt": "Szara szynszyla je siano z miski" },
+    { "image": "story-biedroneczka-after", "category": "kiedys-teraz", "caption": "Biedroneczka - teraz", "alt": "Pręgowana kotka odpoczywa w domku na drapaku" },
+    { "image": "story-brownie-after", "category": "kiedys-teraz", "caption": "Brownie - teraz", "alt": "Czarna kotka z żółtymi oczami odpoczywa w domu" }
+  ]
+}

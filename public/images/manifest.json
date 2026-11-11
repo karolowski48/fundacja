@@ -1,0 +1,417 @@
+{
+  "hero-kittens": {
+    "width": 4947,
+    "height": 3206,
+    "widths": [
+      480,
+      768,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAgAA4BaJbACdAEQM4t8leIA/pgPJ/Uk8+dlqeKPEyjcRTTBr4HYbVvJzqx0j2ntEeTo7/UTrBy4NDdpsCqu9AAAAA=="
+  },
+  "hero-adas": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      360,
+      600,
+      900
+    ],
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAAAQAgCdASoMABAAA4BaJQBOgMYTtj2DXcYAAP7xtQ5p8yeZpH5WyffLONDXizdSYujV+JP8aiTtsvgk4rBqpSHmcKIoc81gjuC9S1Jc6dKqaupZDRHl8o9Euh7LtYwsmwyLr3alQAA="
+  },
+  "feeding-winter": {
+    "width": 3240,
+    "height": 2160,
+    "widths": [
+      480,
+      768,
+      1200,
+      1600
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAgAA4BaJaQAAsQ+PzOwkAAA/m0R+fzCOSb7nt3i8hBuvPHASqB3+obyFR1D33NGCKC13ZYTKtfk9ZuifKb4AAA="
+  },
+  "notes": {
+    "width": 1080,
+    "height": 1920,
+    "widths": [
+      320,
+      640
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAwCdASoMABUAPu1iqk2ppaQiMAgBMB2JZQC7ACHhVlwWhi3vVusAAP7a1x/embZdtIm/5pTJwitosE0Dei9bCtzABaFQAAA="
+  },
+  "sylwia-dog": {
+    "width": 828,
+    "height": 668,
+    "widths": [
+      320,
+      640,
+      828
+    ],
+    "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoMAAoAA4BaJQAAS1CphzTVAADOH3zzfdkxirz/NnAGQgYB0AVjF+ifazevQwHxiF47uuhTaw5wkyO/wH6FnfuncTMT73FNAAA="
+  },
+  "help-feeding": {
+    "width": 1120,
+    "height": 840,
+    "widths": [
+      480,
+      768,
+      1120
+    ],
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAABwAQCdASoMAAkAA4BaJQBOgBsDgAD+zALDI0wQXjTyZnt+wrfNXcwXnPyc6diki0Gy9u9a173vl9SlcAAAAA=="
+  },
+  "help-treatment": {
+    "width": 1120,
+    "height": 840,
+    "widths": [
+      480,
+      768,
+      1120
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAkAA4BaJYwCdADdLBghsuAA/u7I46JwDGYNseiN8cLCrWk1ZDWsuu31mgkVkcHarOIlNmGgUpYZBkCAAA=="
+  },
+  "help-trap": {
+    "width": 3024,
+    "height": 2268,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAACQAQCdASoMAAkAA4BaJQBOgBsXIwAA/oSvTR4b9ciTOAp34qGm/wgGiwcmpECf2jMJYPisMTuw2rGjAWAAAA=="
+  },
+  "help-shelter": {
+    "width": 3024,
+    "height": 2268,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADwAQCdASoMAAkAA4BaJQBdgCIj8xtKc+QA/r4FilJ9jCZRiWg02StmG9yLwg9w9SIA0B3aL3afNv0i5kKoMgAA"
+  },
+  "help-colony": {
+    "width": 891,
+    "height": 668,
+    "widths": [
+      480,
+      768,
+      891
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAACwAQCdASoMAAkAA4BaJQBOgBt7uAiQAP7mtDKpmYmyPCgJ6wwBjTyKJOpoV6BLvTBGJK9vIu9c5JlJZjWnqKf4UzAAAA=="
+  },
+  "help-kittens-grass": {
+    "width": 822,
+    "height": 617,
+    "widths": [
+      480,
+      822
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAkAA4BaJZgCdAED5bIAAAD+SuUOokwafRVmRE7VvZXKGB9T50kPTxrL5SXWieoJgBeNuxFLjOsAAAA="
+  },
+  "species-cats": {
+    "width": 735,
+    "height": 525,
+    "widths": [
+      240,
+      480,
+      735
+    ],
+    "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAAAQAgCdASoMAAkAA4BaJQBOgMWHtf2+jBAAAP6tsA4Xw+Oroca+2reNpqyeDlmYiJr46Tdx2Wk82z4ssfHgicBcjpIdM8arE1nItiGzYECNQin/AAA="
+  },
+  "species-dog": {
+    "width": 828,
+    "height": 668,
+    "widths": [
+      240,
+      480,
+      800
+    ],
+    "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAADQAQCdASoMAAoAA4BaJQAAS1CphzTVAADOH3zzfdkxirz/NnAGQgYB0AVjF+ifazevQwHxiF47uuhTaw5wkyO/wH6FnfuncTMT73FNAAA="
+  },
+  "species-rabbit": {
+    "width": 742,
+    "height": 765,
+    "widths": [
+      240,
+      480,
+      742
+    ],
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMAAwAA4BaJQBOgCL8s57rl2AAyV2x5gSQY20MLGLobgaGjJAuuUTA8mDPv2LHQIBBSdnqqFI/CeGI7s9pqaNB8PgtAAAA"
+  },
+  "species-bird": {
+    "width": 785,
+    "height": 670,
+    "widths": [
+      240,
+      480,
+      785
+    ],
+    "blur": "data:image/webp;base64,UklGRlIAAABXRUJQVlA4IEYAAAAQAgCdASoMAAoAA4BaJQBOgCHiAzbwdcoAAP3BmuFzq7cZOJEGjCl3/r0aHu795hPuRGg5uBWPpPqb3A6FaJWjum2egAAA"
+  },
+  "species-chinchilla": {
+    "width": 800,
+    "height": 622,
+    "widths": [
+      240,
+      480,
+      800
+    ],
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAADQAQCdASoMAAkAA4BaJQBOgBttqR62gAD+8a21VZYAviFP/EjapyPoWCJFqLy4DB/d15tYvqolhMJqOAAAAA=="
+  },
+  "help-rabbit": {
+    "width": 742,
+    "height": 557,
+    "widths": [
+      480,
+      742
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoMAAkAA4BaJQBOgBc/YdTMAAD3u7YCjk0VEC7Nk6eHOQRc5tETdAnngRI0GivUac08qYH27ifI4G/WBAAAAA=="
+  },
+  "gallery-trap-cat": {
+    "width": 1542,
+    "height": 2048,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRl4AAABXRUJQVlA4IFIAAADwAQCdASoMABAAA4BaJZQC7ADO3Cx93AgA/vFOs49hjHgC+Tb6Kulv9SIziWKIdxMEyDK85x4fixbhEMFOuRuEDy3U2VP6CL3QVyBKgOMWzAAA"
+  },
+  "gallery-kittens-grass": {
+    "width": 1980,
+    "height": 3520,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoMABUAPu1iqU2ppaOiMAgBMB2JZgC2yBuLNzoIhklH0AD5u7ekVxvSkWnsYItjhhAnPCp/J05PowBP0hLXhgaHxB92hPFcQY+daS/z7GAqCkrJfBuUyTgeDlN65nUa4gA="
+  },
+  "lanyard": {
+    "width": 1536,
+    "height": 1024,
+    "widths": [
+      480,
+      768,
+      1200
+    ],
+    "blur": "data:image/webp;base64,UklGRkwAAABXRUJQVlA4IEAAAADQAQCdASoMAAgAA4BaJZQCw7Ys3Z8YAAD+65AhwGw2cSdg1euZuBhNypbMbc7mC/dzfw5lLOjnXT/dvi38pVgA"
+  },
+  "story-adas-after": {
+    "width": 606,
+    "height": 535,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADwAQCdASoMAAsAA4BaJZQCdAEComAVGgAA/niyXItvju6TKX70OoMdmHm/vo1MuP/tu+av3m46hUPqIpivF4KfT4AAAA=="
+  },
+  "story-adas-before": {
+    "width": 607,
+    "height": 535,
+    "widths": [
+      320,
+      607
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAsAA4BaJZQCdAEKoLqtLAAA/jF7xvH1NtOgL6DJiTR0o9FfZAs/H3rVUOWBuw0LfVuxDFoV43boSrVm50g91WAAAA=="
+  },
+  "story-balbinka-after": {
+    "width": 608,
+    "height": 546,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAsAA4BaJbACdAEOzW9AUAD+4zK7lxrBQI/nMOvvAfbPko5rZXAhK9rmhfomO0WWcLhfeqaeoyFAAAA="
+  },
+  "story-balbinka-before": {
+    "width": 608,
+    "height": 546,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRoIAAABXRUJQVlA4IHYAAABwAgCdASoMAAsAA4BaJagCdH8Agkyc3Tko+DMAAMsLtv9aa9SsiPSu+9S/jM8B40v3bHkYTUAS+ITyoO2DGVSk5DtdvWoAxso9XymhhuuRzZ2/htMSoGIV2EA3NxKQOr+tgNxYQo2o4bLVl5VTt0qxWOWbAAAA"
+  },
+  "story-biedroneczka-after": {
+    "width": 606,
+    "height": 537,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRmIAAABXRUJQVlA4IFYAAAAwAgCdASoMAAsAA4BaJagCdAEUSy+DmVH5AAD+6lffG0yX/pMhyq5K4zaNopPzTKszdReN4CvTslt1EKDf8yc3p5I1MWPjZ7qHbRrJfsO4tWEuhIAAAA=="
+  },
+  "story-biedroneczka-before": {
+    "width": 606,
+    "height": 537,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRmYAAABXRUJQVlA4IFoAAAAwAgCdASoMAAsAA4BaJbACdAEYF/vra0BmAAD+7hvFB82Ue2S5WtWgugHArvxB1N98Uy09OF50B2EWNDuRMwxVkPkmbdv5d6E57xBYTNT/c990LYbHBaQgRAA="
+  },
+  "story-brownie-after": {
+    "width": 605,
+    "height": 557,
+    "widths": [
+      320,
+      605
+    ],
+    "blur": "data:image/webp;base64,UklGRlgAAABXRUJQVlA4IEwAAADwAQCdASoMAAsAA4BaJZQCdADdQbmD3WAA/thMZKn/RRHmaM6H0bB5P5r29Z3NArrZRiXyZEkIodmNKYuJpGze3ydQmFyQPQaxC8AA"
+  },
+  "story-brownie-before": {
+    "width": 606,
+    "height": 557,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRjYAAABXRUJQVlA4ICoAAABwAQCdASoMAAsAA4BaJZQAAlRM0AD8qli9da/D5zITVbVvDZAD71rkIAA="
+  },
+  "story-buraski-after": {
+    "width": 608,
+    "height": 534,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRkoAAABXRUJQVlA4ID4AAAAwAgCdASoMAAoAA4BaJZwCw7DdJAaFSG+S4AD+Tzw+C5gPw+SqwkzUhiZvlzUNLUSqxK77ux73Hysj0jhAAA=="
+  },
+  "story-buraski-before": {
+    "width": 609,
+    "height": 534,
+    "widths": [
+      320,
+      609
+    ],
+    "blur": "data:image/webp;base64,UklGRkgAAABXRUJQVlA4IDwAAADwAQCdASoMAAoAA4BaJQBOgBtsYMuo5OAA+g4wyQjQUOLgIFAcKGkYkvh5rNncCdV6Fn0HGC+JjvA3gAA="
+  },
+  "story-coco-chanel-after": {
+    "width": 606,
+    "height": 557,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAABQAgCdASoMAAsAA4BaJQBOgMVftn24sv1ixwAA/vGnMjgOX6N3jZ68gnKwZe9+IMnicZJ4P2GH7164u67E03uBiWVrKnp8/cPm8bY3elVdUKrdtird8Jb3/88/JOAA"
+  },
+  "story-coco-chanel-before": {
+    "width": 607,
+    "height": 557,
+    "widths": [
+      320,
+      607
+    ],
+    "blur": "data:image/webp;base64,UklGRloAAABXRUJQVlA4IE4AAAAQAgCdASoMAAsAA4BaJYgCdADdR49dq2YAAP7lp2l2YFFj0GHRTjVPJoYlVeQMVm5ViU3iSTaWdw3RI1WearYGTSFUWkb5ofJzKz0AAAA="
+  },
+  "story-hades-after": {
+    "width": 607,
+    "height": 533,
+    "widths": [
+      320,
+      607
+    ],
+    "blur": "data:image/webp;base64,UklGRk4AAABXRUJQVlA4IEIAAADQAQCdASoMAAsAA4BaJQBOgBtkeaVLAAD5bVzp6c53kDrZLT3gJfbXwgJX5AAyuisdO7BN+P5jnNfP+lGnp+x4AAA="
+  },
+  "story-hades-before": {
+    "width": 608,
+    "height": 533,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAoAA4BaJZwAAt0Gix4FEAAA/uayvYVAQwiSnj8Erv82bUGEPfcv3P3LnUeoYUXmXSsQkhgY2Ur4EH6rZItoR0wAAA=="
+  },
+  "story-krakers-after": {
+    "width": 606,
+    "height": 534,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoMAAsAA4BaJQBOgBusffzPqAAA/oOw7fKdgTIv9/bdg03HCItoKwYboygFUqimT5NP06xSaOGZRNPGJB1ig5Oj+45frBXKj8mH+UKoAAA="
+  },
+  "story-krakers-before": {
+    "width": 607,
+    "height": 534,
+    "widths": [
+      320,
+      607
+    ],
+    "blur": "data:image/webp;base64,UklGRnoAAABXRUJQVlA4IG4AAABQAgCdASoMAAsAA4BaJagCdAYvhuKXlTjn/xgA/cZ67EaUr+VogrlOS52XKGSpjQA2oD8Td2u0yjc7mSu/BY5wtX4BGFiZzdXGGPLEoaiIOpm/LfFuHTS+ObJcBWR+NqxymDKN8/NCT5xuo78AAA=="
+  },
+  "story-miki-after": {
+    "width": 605,
+    "height": 540,
+    "widths": [
+      320,
+      605
+    ],
+    "blur": "data:image/webp;base64,UklGRmAAAABXRUJQVlA4IFQAAADwAQCdASoMAAsAA4BaJQBOgCILgVtHAjAA/lomIp27N9lFSaSgftcYcoWMBybTGbKKQBGzqmgvtXJZd+Bw7vZWwuNwvwQaaLSSdotn40eQIqiwAAA="
+  },
+  "story-miki-before": {
+    "width": 606,
+    "height": 540,
+    "widths": [
+      320,
+      606
+    ],
+    "blur": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAACQAQCdASoMAAsAA4BaJYgCdABWkBgA+FbLsvrhkEx0kxxHTbjCysWabZMZYgvB34jhXwRckAA="
+  },
+  "story-mordka-after": {
+    "width": 608,
+    "height": 525,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRlAAAABXRUJQVlA4IEQAAADQAQCdASoMAAoAA4BaJZQCdADcY0WscAD+6e1SpgkzWaPCYJHrhy4r/XcPidP2c2S6up60NTGRaN2egb3OD7QAOAAAAA=="
+  },
+  "story-mordka-before": {
+    "width": 609,
+    "height": 525,
+    "widths": [
+      320,
+      609
+    ],
+    "blur": "data:image/webp;base64,UklGRmoAAABXRUJQVlA4IF4AAADwAQCdASoMAAoAA4BaJYwCdAEPNVvhmAAA/ubn3hFw1cYQNh+mnwf3Inrp72WrBczn5aqzHwftCuja+X79AXuvPrO/+Dd4uWpRbUBGYCdiCBTX/27MS0yhmzdaIAAA"
+  },
+  "story-petunia-after": {
+    "width": 608,
+    "height": 530,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAADwAQCdASoMAAoAA4BaJYwCdAD7jjboygAA/u2F6Ru4ch0ooZZAU2pEa23Zj5dCHqOaLddDZnYFKpJxQmAAck917IefN480fAA="
+  },
+  "story-petunia-before": {
+    "width": 608,
+    "height": 530,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAAAwAgCdASoMAAoAA4BaJagCdAD7Foz3SwFSgAD5Pm3IPdYK+Lii4yigiZjLeLAIGLpFxRIMYW1MVHfSwS3QOa2ZeWa8FyOifAO/E5LMikAVKse+oFnoAAAA"
+  },
+  "story-suzi-after": {
+    "width": 608,
+    "height": 533,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRlQAAABXRUJQVlA4IEgAAAAQAgCdASoMAAoAA4BaJQBOgBuuThDjhhAAAPk2ehQO4IxGWsxoz6LYjtjLcNUXoH1qKuXhXNg+d7cAKNNsBpA5cnqdGQy3gAA="
+  },
+  "story-suzi-before": {
+    "width": 608,
+    "height": 533,
+    "widths": [
+      320,
+      608
+    ],
+    "blur": "data:image/webp;base64,UklGRkIAAABXRUJQVlA4IDYAAADQAQCdASoMAAoAA4BaJZQCw7EU6aPQAAD+9H7PwwR/fNNU2ngJRk5ogj3Vj9bSuFo9KAZTAAA="
+  }
+}

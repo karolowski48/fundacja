@@ -1,0 +1,443 @@
+@import "tailwindcss";
+
+/* Brand tokens - sampled from the logo, lanyards and roll-up (see CLAUDE.md §5.1). */
+@theme {
+  --color-plum-950: #1f0f27;
+  --color-plum-900: #2e1538;
+  --color-plum-800: #462451;
+  --color-plum-700: #5e3375;
+  --color-plum-600: #7b4f9d;
+  --color-plum-500: #b460bc;
+  --color-plum-300: #c480d6;
+  --color-plum-100: #efe3f5;
+  --color-plum-50: #f8f3fb;
+
+  --color-cream-50: #fdf9f1;
+  --color-cream-100: #f9efd9;
+  --color-cream-200: #f3e3c3;
+  --color-cream-300: #e8d1a7;
+
+  --color-sun-400: #f7cf61;
+  --color-sun-500: #e6b93c;
+
+  --color-focus: #1d4ed8;
+
+  /* every transition-* utility without an explicit duration: smooth 300 ms */
+  --default-transition-duration: 300ms;
+  --default-transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@theme inline {
+  --font-sans: var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-oswald), "Arial Narrow", ui-sans-serif, sans-serif;
+}
+
+@layer base {
+  :root {
+    --focus-ring: var(--color-focus);
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-cream-50);
+    color: var(--color-plum-900);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.6;
+  }
+
+  /* Visible focus everywhere (WCAG 2.4.7). Dark sections switch the ring to yellow. */
+  :focus-visible {
+    outline: 3px solid var(--focus-ring);
+    outline-offset: 3px;
+  }
+
+  main:focus {
+    outline: none;
+  }
+
+  [id] {
+    scroll-margin-top: 6.5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-sun-400);
+    color: var(--color-plum-950);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility on-dark {
+  --focus-ring: var(--color-sun-400);
+}
+
+@utility on-light {
+  --focus-ring: var(--color-focus);
+}
+
+/* Lanyard paw pattern */
+@utility bg-paws {
+  background-image: url("/brand/pattern-paw.svg");
+  background-size: 220px 220px;
+}
+
+/* Ribbon shape from the logo banner (notched ends) */
+@utility ribbon {
+  padding-inline: 1.75rem;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 0.7rem) 50%, 100% 100%, 0 100%, 0.7rem 50%);
+}
+
+/* Things that only make sense with JavaScript (copy buttons, "show more") */
+html:not(.js) .js-only {
+  display: none;
+}
+
+/* "Show all stories": from 640 px up, extra cards are hidden once JS is known to be running.
+   On phones the stories are a slider, so all of them stay in it. */
+@media (min-width: 640px) {
+  .js .stories-list[data-expanded="false"] > [data-extra] {
+    display: none;
+  }
+}
+
+/* Phones: card lists become swipeable sliders (native scroll-snap, see MobileSlider.tsx) */
+@media (max-width: 639.98px) {
+  .mobile-slider {
+    display: flex;
+    gap: 1rem;
+    margin-inline: -1rem;
+    padding: 0.5rem 1rem 1.5rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 1rem;
+    scrollbar-width: none;
+  }
+  .mobile-slider::-webkit-scrollbar {
+    display: none;
+  }
+  .mobile-slider > li {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+}
+
+/* ───────────── Motion ─────────────
+   Hero entrances are pure CSS so they start on the first frame (no wait for JS).
+   Everything collapses to the final state under prefers-reduced-motion (see base layer). */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.75rem);
+  }
+}
+@keyframes rise-soft {
+  from {
+    transform: translateY(1rem);
+  }
+}
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-1.5rem);
+  }
+}
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-2.5rem) rotate(-7deg) scale(0.94);
+  }
+}
+@keyframes drop-soft {
+  from {
+    transform: translateY(-2rem) rotate(-5deg) scale(0.96);
+  }
+}
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.4) rotate(-25deg);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(1.08) rotate(4deg);
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 260;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+}
+@keyframes tile-in {
+  from {
+    opacity: 0;
+    transform: translateY(1rem) scale(0.96);
+  }
+}
+@keyframes ring {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-14deg);
+  }
+  40%,
+  80% {
+    transform: rotate(14deg);
+  }
+}
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(var(--tw-rotate, 0));
+  }
+  50% {
+    transform: translateY(-0.6rem);
+  }
+}
+
+.anim-rise {
+  animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+.anim-rise-soft {
+  animation: rise-soft 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+.anim-slide-in {
+  animation: slide-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms) both;
+}
+.anim-drop {
+  animation: drop 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0ms) both;
+}
+.anim-drop-soft {
+  animation: drop-soft 1s cubic-bezier(0.2, 0.8, 0.2, 1) var(--d, 0ms) both;
+}
+.anim-pop {
+  animation: pop 0.9s cubic-bezier(0.3, 0.9, 0.3, 1.2) var(--d, 0ms) both;
+}
+.anim-draw path {
+  stroke-dasharray: 260;
+  animation: draw 0.9s cubic-bezier(0.6, 0, 0.3, 1) var(--d, 0ms) both;
+}
+
+/* Sticky header gains depth once the page scrolls */
+html[data-scrolled] .site-header {
+  box-shadow: 0 10px 30px -18px rgb(46 21 56 / 0.45);
+}
+
+/* Desktop nav: yellow underline grows from the centre */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.35rem;
+  height: 3px;
+  border-radius: 9999px;
+  background: var(--color-sun-400);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+}
+.nav-link:hover::after,
+.nav-link[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Off-canvas mobile menu: slides in from the right over a dimmed, blurred page */
+.offcanvas {
+  position: fixed;
+  inset: 0 0 0 auto;
+  margin: 0;
+  width: 85vw;
+  max-width: 28rem;
+  height: 100dvh;
+  max-height: none;
+  padding: 0;
+  border: 0;
+  border-radius: 2rem 0 0 2rem;
+  background: var(--color-cream-50);
+  color: var(--color-plum-900);
+  box-shadow: -24px 0 60px -20px rgb(31 15 39 / 0.45);
+  translate: 100% 0;
+  transition:
+    translate 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    display 0.4s allow-discrete,
+    overlay 0.4s allow-discrete;
+}
+.offcanvas[open] {
+  translate: 0 0;
+}
+@starting-style {
+  .offcanvas[open] {
+    translate: 100% 0;
+  }
+}
+.offcanvas::backdrop {
+  background-color: rgb(31 15 39 / 0);
+  backdrop-filter: blur(0);
+  transition:
+    background-color 0.4s ease,
+    backdrop-filter 0.4s ease,
+    display 0.4s allow-discrete,
+    overlay 0.4s allow-discrete;
+}
+.offcanvas[open]::backdrop {
+  background-color: rgb(31 15 39 / 0.55);
+  backdrop-filter: blur(6px);
+}
+@starting-style {
+  .offcanvas[open]::backdrop {
+    background-color: rgb(31 15 39 / 0);
+    backdrop-filter: blur(0);
+  }
+}
+/* links cascade in after the panel starts moving */
+.offcanvas[open] .offcanvas-list > li {
+  animation: slide-in-right 0.45s cubic-bezier(0.25, 0.8, 0.25, 1) both;
+}
+.offcanvas-list > li:nth-child(1) { animation-delay: 80ms; }
+.offcanvas-list > li:nth-child(2) { animation-delay: 120ms; }
+.offcanvas-list > li:nth-child(3) { animation-delay: 160ms; }
+.offcanvas-list > li:nth-child(4) { animation-delay: 200ms; }
+.offcanvas-list > li:nth-child(5) { animation-delay: 240ms; }
+.offcanvas-list > li:nth-child(6) { animation-delay: 280ms; }
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(2rem);
+  }
+}
+
+/* Back-to-top button */
+.scroll-top[data-visible="false"] {
+  opacity: 0;
+  transform: translateY(1rem) scale(0.8);
+  pointer-events: none;
+}
+
+/* Polaroids straighten up under the cursor */
+.hover-straighten {
+  transition:
+    rotate 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+    scale 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.hover-straighten:hover {
+  rotate: 0deg;
+  scale: 1.03;
+}
+
+/* Phone icon rings on hover */
+.group:hover .ring-on-hover,
+.group:focus-visible .ring-on-hover {
+  animation: ring 0.6s ease;
+}
+
+/* Decorative paws bob while the parent is hovered (never autoplay: WCAG 2.2.2) */
+.group:hover .paw-float {
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+/* FAQ: answers slide open (smooth height where the browser supports animating to "auto") */
+details.faq[open] .faq-answer {
+  animation: rise 0.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+@supports (interpolate-size: allow-keywords) {
+  :root {
+    interpolate-size: allow-keywords;
+  }
+  details.faq::details-content {
+    block-size: 0;
+    overflow: hidden;
+    transition:
+      block-size 0.35s ease,
+      content-visibility 0.35s allow-discrete;
+  }
+  details.faq[open]::details-content {
+    block-size: auto;
+  }
+}
+
+/* Gallery tiles and lightbox */
+.gallery-tile {
+  animation: tile-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.lightbox[open]::backdrop {
+  animation: fade-in 0.3s ease both;
+}
+.lightbox-figure {
+  animation: zoom-in 0.35s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+html:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* Long-form text on legal pages (rendered from Markdown) */
+.prose-content {
+  & h2 {
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-size: 1.625rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-plum-800);
+  }
+  & h3 {
+    margin-top: 1.75rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-plum-800);
+  }
+  & p,
+  & ul,
+  & ol {
+    margin-top: 1rem;
+  }
+  & ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+  }
+  & ol {
+    list-style: decimal;
+    padding-left: 1.5rem;
+  }
+  & li + li {
+    margin-top: 0.375rem;
+  }
+  & a {
+    color: var(--color-plum-600);
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  & strong {
+    font-weight: 700;
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.env*
+playwright-report/
+test-results/
+# large originals stay local; brand sources are committed
+source-images/*
+!source-images/brand/
+!source-images/cut/
+# owner's original uploads in the project root (copies live in source-images/)
+/*.jpg
+/*.jpeg
+/*.png

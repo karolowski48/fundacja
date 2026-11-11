@@ -1,0 +1,182 @@
+{
+  "hero": {
+    "eyebrow": "Fundacja Empatia na rzecz Zwierząt",
+    "titleBefore": "Dla tych, którzy mają",
+    "titleHighlight": "tylko nas",
+    "lead": "Fundacja Empatia na rzecz Zwierząt ratuje, leczy i dokarmia bezdomne koty oraz inne zwierzęta, które nie mają nikogo. Działamy codziennie, z doświadczeniem i empatią - a Ty możesz działać z nami.",
+    "primaryCta": "Wpłać darowiznę",
+    "secondaryCta": "Przekaż 1,5% podatku",
+    "pillars": [
+      "Leczymy",
+      "Sterylizujemy",
+      "Szukamy domów"
+    ],
+    "photoCaption": "Adaś"
+  },
+  "stats": {
+    "asOf": "listopad 2026",
+    "items": [
+      {
+        "value": "ok. 30",
+        "label": "wysterylizowanych kotów",
+        "verified": true
+      },
+      {
+        "value": "544",
+        "label": "osoby wsparły naszą zbiórkę",
+        "verified": true
+      },
+      {
+        "value": "7 dni",
+        "label": "w tygodniu przy kociej kolonii",
+        "verified": true
+      },
+      {
+        "value": "{stories}",
+        "label": "historii ze szczęśliwym zakończeniem",
+        "verified": true
+      }
+    ]
+  },
+  "about": {
+    "eyebrow": "Nasza historia",
+    "title": "Zaczęło się od jednej kociej mamy",
+    "paragraphs": [
+      "Fundacja Empatia na rzecz Zwierząt wyrosła z codziennej pomocy bezdomnym kotom - tym, które wielu nazywa „dzikimi”. Dla nas są po prostu bezdomne: bez głosu, bez wyboru i bez szans, jeśli nikt nie wyciągnie do nich ręki.",
+      "Wszystko zaczęło się, gdy Sylwia Łętocha zaczęła codziennie przyjeżdżać do jednej kociej mamy z młodymi. To miejsce z czasem przyciągało coraz więcej porzuconych, głodnych i chorych kotów. Od tamtej pory udało się wysterylizować około 30 z nich, a wiele znalazło domy.",
+      "Sylwia przez lata działała sama, potem z wolontariuszkami i stowarzyszeniem. Dziś działamy jako fundacja - z tą samą przejrzystością co na początku. Prowadzimy zapiski: kto został odrobaczony, kto wysterylizowany, kto poszedł do domu. To nie są anonimowe koty - każdy ma imię i swoją historię."
+    ],
+    "quote": "Ręce poranione, ale serce silne. Z każdą raną nauczyłam się pomagać mądrzej i skuteczniej.",
+    "quoteAuthor": "Sylwia Łętocha",
+    "quoteRole": "założycielka fundacji",
+    "photoCredit": "Fot. Foto Gabka",
+    "notesCaption": "Pierwsze zapiski: imiona, odrobaczanie, sterylizacje",
+    "founderCaption": "Sylwia Łętocha, założycielka fundacji"
+  },
+  "help": {
+    "eyebrow": "Co robimy",
+    "title": "Jak pomagamy",
+    "lead": "Pomagamy tam, gdzie zwierzęta są najbardziej bezbronne: na ulicy, przy drodze, pod autem na parkingu. Każdy dzień to dokarmianie, leczenie i szukanie bezpiecznego miejsca.",
+    "items": [
+      {
+        "id": "dokarmianie",
+        "icon": "utensils",
+        "image": "help-feeding",
+        "imageAlt": "Kilka kotów je z misek rozstawionych na jesiennych liściach",
+        "title": "Dokarmianie i budki",
+        "text": "Codziennie dojeżdżamy do kociej kolonii z karmą i wodą. Na zimę stawiamy budki styropianowe ze słomą i kocami."
+      },
+      {
+        "id": "leczenie",
+        "icon": "stethoscope",
+        "image": "help-treatment",
+        "imageAlt": "Pręgowany kociak z wielkimi oczami siedzi na kocyku w klatce",
+        "title": "Leczenie",
+        "text": "Leczymy koci katar, podajemy antybiotyki i leki, robimy badania. Odrobaczamy i chronimy przed pasożytami."
+      },
+      {
+        "id": "sterylizacja",
+        "icon": "syringe",
+        "image": "help-trap",
+        "imageAlt": "Zielona klatka-łapka ustawiona w zaśnieżonym ogrodzie, w tle biały kot",
+        "title": "Sterylizacja i kastracja",
+        "text": "Dzięki programowi gminy sterylizujemy koty bezpłatnie. Chcemy leczyć, a nie dopuszczać do bezmyślnego rozmnażania."
+      },
+      {
+        "id": "azyl",
+        "icon": "house",
+        "image": "help-shelter",
+        "imageAlt": "Czarno-biały kot odpoczywa w kojcu z kuwetą i miskami",
+        "title": "Azyl tymczasowy",
+        "text": "W osobnym budynku chore koty wracają do zdrowia, a kociaki oswajają się przed adopcją. To nie schron, to przystanek do lepszego życia."
+      },
+      {
+        "id": "adopcje",
+        "icon": "heart-handshake",
+        "image": "help-kittens-grass",
+        "imageAlt": "Pręgowane kocięta jedzą z miski w wysokiej trawie, obok czarny kot",
+        "title": "Adopcje",
+        "text": "Oswojone koty szukają domów. Te, których nie da się oswoić, wracają na miejsce bytowania - nadal pod naszą opieką."
+      },
+      {
+        "id": "inne-zwierzeta",
+        "icon": "rabbit",
+        "image": "help-colony",
+        "imageAlt": "Koty różnych maści jedzą przy metalowym kontenerze wśród liści",
+        "title": "Inne zwierzęta",
+        "text": "Pomagamy każdemu, kto trafi w nasze ręce: psom, królikom, ptakom i szynszylom."
+      }
+    ],
+    "speciesTitle": "Komu pomagamy",
+    "species": [
+      {
+        "image": "species-cats",
+        "label": "Kotom",
+        "alt": "Dwa czarno-białe koty siedzą na jesiennych liściach"
+      },
+      {
+        "image": "species-dog",
+        "label": "Psom",
+        "alt": "Czarny pies przytula się do uśmiechniętej wolontariuszki na łące",
+        "position": "38% 50%"
+      },
+      {
+        "image": "species-rabbit",
+        "label": "Królikom",
+        "alt": "Biały puszysty królik patrzy w obiektyw"
+      },
+      {
+        "image": "species-bird",
+        "label": "Ptakom",
+        "alt": "Szary ptak siedzi na ręczniku w kartonowym pudełku"
+      },
+      {
+        "image": "species-chinchilla",
+        "label": "Szynszylom",
+        "alt": "Szara szynszyla je siano z miski"
+      }
+    ]
+  },
+  "stories": {
+    "eyebrow": "Kiedyś i teraz",
+    "title": "Historie, które zmieniliśmy",
+    "lead": "Każde z tych zwierząt miało imię, historię i drugą szansę. Tak wyglądały, gdy do nas trafiły - i tak wyglądają dziś.",
+    "initialCount": 6
+  },
+  "donate": {
+    "eyebrow": "Wesprzyj nas",
+    "title": "Jak możesz pomóc",
+    "lead": "Sterylizacje mamy dzięki gminie za darmo. Cała reszta - leczenie, leki, badania, karma i budki - to Wasze wpłaty. Każda złotówka to konkretna pomoc.",
+    "transfer": {
+      "title": "Wpłać darowiznę",
+      "text": "Przelew tradycyjny albo BLIK na telefon. Wpisz tytuł „Darowizna”.",
+      "zrzutkaCta": "Wpłać przez zrzutka.pl"
+    },
+    "tax": {
+      "title": "Przekaż 1,5% podatku",
+      "text": "Nie kosztuje Cię to ani złotówki. W zeznaniu PIT wpisz numer KRS organizacji pożytku publicznego, a w polu „cel szczegółowy” wpisz nazwę naszej fundacji z numerem.",
+      "note": "KRS 0000270261 należy do Fundacji Studenckiej „Młodzi-Młodym”, która przekazuje 1,5% z naszego celu szczegółowego na pomoc zwierzętom w Fundacji Empatia."
+    },
+    "shop": {
+      "title": "Kup coś na naszym stoisku",
+      "text": "Breloki, bransoletki i zapachy do auta z naszym logo. Kupując na stoisku, pomagasz ratować kolejne zwierzęta. Terminy stoisk ogłaszamy na Instagramie i Facebooku.",
+      "imageAlt": "Kremowo-fioletowe smycze z logo Empatia i napisem „Dla tych, którzy mają tylko nas”"
+    },
+    "volunteer": {
+      "title": "Dom tymczasowy, adopcja, wolontariat",
+      "text": "Szukamy domów tymczasowych dla kociaków, osób do pomocy przy wyłapywaniu i transportach do weterynarza. Odezwij się - każda para rąk się liczy."
+    }
+  },
+  "faq": {
+    "eyebrow": "FAQ",
+    "title": "Najczęstsze pytania",
+    "lead": "Nie znalazłeś odpowiedzi? Zadzwoń albo napisz do nas w mediach społecznościowych."
+  },
+  "contact": {
+    "eyebrow": "Kontakt",
+    "title": "Porozmawiajmy",
+    "lead": "Masz pytanie, chcesz adoptować albo pomóc? Zadzwoń lub napisz do nas w mediach społecznościowych - odpowiadamy najszybciej, jak się da.",
+    "tiktokTitle": "Codzienność na TikToku",
+    "tiktokText": "Łapanie, leczenie, adopcje - wszystko pokazujemy na bieżąco. Zobacz, jak wygląda ta pomoc od środka."
+  }
+}

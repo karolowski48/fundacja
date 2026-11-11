@@ -1,0 +1,155 @@
+{
+  "seo": {
+    "title": "Jak pomagamy - dokarmianie, leczenie, sterylizacja",
+    "description": "Dokarmianie i budki na zimę, leczenie kociego kataru, sterylizacja kotów wolno żyjących, azyl i adopcje. Zobacz, jak Fundacja Empatia pomaga zwierzętom."
+  },
+  "hero": {
+    "eyebrow": "Co robimy",
+    "title": "Jak pomagamy",
+    "lead": "Pomagamy tam, gdzie zwierzęta są najbardziej bezbronne. Każdy dzień to dokarmianie, leczenie, wyłapywanie do sterylizacji i szukanie bezpiecznego miejsca.",
+    "image": "help-colony",
+    "imageAlt": "Koty różnych maści jedzą przy metalowym kontenerze wśród jesiennych liści",
+    "crumb": "Jak pomagamy"
+  },
+  "areas": [
+    {
+      "id": "dokarmianie",
+      "short": "Dokarmianie",
+      "icon": "utensils",
+      "image": "help-feeding",
+      "imageAlt": "Kilka kotów je z misek rozstawionych na jesiennych liściach",
+      "title": "Dokarmianie i budki na zimę",
+      "lead": "Codziennie dojeżdżamy do kociej kolonii. Sąsiedzi czasem coś zostawią, ale to my odpowiadamy za zdrowie i dalszy los tych kotów.",
+      "points": [
+        "Karma i świeża woda każdego dnia",
+        "Budki styropianowe ze słomą i kocami na mrozy",
+        "Codzienna obserwacja - szybko widzimy, który kot choruje"
+      ]
+    },
+    {
+      "id": "leczenie",
+      "short": "Leczenie",
+      "icon": "stethoscope",
+      "image": "help-treatment",
+      "imageAlt": "Pręgowany kociak z wielkimi oczami siedzi na kocyku w klatce",
+      "title": "Leczenie",
+      "lead": "Bezdomne koty najczęściej chorują na koci katar, mają pasożyty i nieleczone rany. Prowadzimy je od diagnozy aż do powrotu do zdrowia.",
+      "points": [
+        "Leczenie kociego kataru i antybiotykoterapia",
+        "Diagnostyka i badania u lekarza weterynarii",
+        "Odrobaczanie i środki przeciw pchłom i kleszczom",
+        "Opieka po zabiegach - leki, kołnierz, stała kontrola"
+      ]
+    },
+    {
+      "id": "sterylizacja",
+      "short": "Sterylizacja",
+      "icon": "syringe",
+      "image": "help-trap",
+      "imageAlt": "Zielona klatka-łapka w zaśnieżonym ogrodzie, w tle biały kot",
+      "title": "Sterylizacja i kastracja",
+      "lead": "Sterylizacja to najskuteczniejszy sposób, by za rok nie było kolejnych bezdomnych kociąt. Dzięki programowi gminy zabiegi są dla nas bezpłatne.",
+      "points": [
+        "Wyłapywanie w klatki-łapki, często z pomocą wolontariuszy",
+        "Zabieg u lekarza weterynarii",
+        "Rekonwalescencja pod opieką, zanim kot wróci na swoje miejsce",
+        "Około 30 wysterylizowanych kotów (stan na listopad 2026)"
+      ]
+    },
+    {
+      "id": "azyl",
+      "short": "Azyl",
+      "icon": "house",
+      "image": "help-shelter",
+      "imageAlt": "Czarno-biały kot odpoczywa w kojcu z kuwetą i miskami",
+      "title": "Azyl tymczasowy",
+      "lead": "Urządzamy osobny budynek - miejsce, gdzie chore koty dochodzą do zdrowia, a oswajane kociaki przygotowują się do adopcji. To nie schron, to przystanek do lepszego życia.",
+      "points": [
+        "Kojce, kuwety i ciepłe legowiska",
+        "Spokojne miejsce na rekonwalescencję",
+        "Oswajanie kociąt przed adopcją"
+      ]
+    },
+    {
+      "id": "adopcje",
+      "short": "Adopcje",
+      "icon": "heart-handshake",
+      "image": "story-coco-chanel-after",
+      "imageAlt": "Coco i Chanel - dwie czarno-białe kotki śpią razem na czerwonym fotelu w nowym domu",
+      "title": "Adopcje",
+      "lead": "Oswojone koty i kociaki szukają odpowiedzialnych domów. Koty, których nie da się oswoić, wracają na miejsce bytowania - dalej dokarmiane i bezpieczne.",
+      "points": [
+        "Opowiadamy o charakterze i zdrowiu każdego kota",
+        "Szukamy domów stałych i tymczasowych",
+        "Koty dzikie wracają pod naszą opiekę na swoje miejsce"
+      ]
+    },
+    {
+      "id": "inne-zwierzeta",
+      "short": "Inne zwierzęta",
+      "icon": "rabbit",
+      "image": "help-rabbit",
+      "imageAlt": "Biały puszysty królik patrzy w obiektyw",
+      "title": "Inne zwierzęta",
+      "lead": "Do nas trafiają nie tylko koty. Pomagaliśmy psom, królikom, szynszylom i ptakom - każdemu, kto potrzebował pomocy.",
+      "points": [
+        "Pierwsza pomoc i transport do weterynarza",
+        "Tymczasowa opieka",
+        "Szukanie domu lub właściwego ośrodka dla dzikich zwierząt"
+      ]
+    }
+  ],
+  "process": {
+    "eyebrow": "Krok po kroku",
+    "title": "Jak pomagamy kotu wolno żyjącemu",
+    "steps": [
+      {
+        "title": "Obserwacja",
+        "text": "Poznajemy kolonię: ile jest kotów, które chorują, która kotka ma młode."
+      },
+      {
+        "title": "Wyłapanie",
+        "text": "Bezpiecznie łapiemy kota do klatki-łapki. Przy trudnych przypadkach pomagają wolontariusze."
+      },
+      {
+        "title": "Weterynarz",
+        "text": "Sterylizacja lub kastracja w ramach programu gminy, a w razie potrzeby leczenie i badania."
+      },
+      {
+        "title": "Powrót lub dom",
+        "text": "Dziki kot wraca na swoje miejsce pod naszą opiekę. Oswojony zostaje w azylu i szuka domu."
+      }
+    ]
+  },
+  "costs": {
+    "eyebrow": "Twoje wpłaty",
+    "title": "Na co idą pieniądze",
+    "lead": "Sterylizacje i kastracje finansuje gmina. Wszystko inne pokrywamy z Waszych wpłat - faktury publikujemy na zrzutce.",
+    "items": [
+      {
+        "icon": "thermometer",
+        "label": "Leczenie kociego kataru"
+      },
+      {
+        "icon": "pill",
+        "label": "Antybiotyki i leki"
+      },
+      {
+        "icon": "microscope",
+        "label": "Diagnostyka i badania"
+      },
+      {
+        "icon": "bug",
+        "label": "Środki przeciw pasożytom"
+      },
+      {
+        "icon": "utensils",
+        "label": "Karma i woda"
+      },
+      {
+        "icon": "snowflake",
+        "label": "Budki, słoma i koce na zimę"
+      }
+    ]
+  }
+}

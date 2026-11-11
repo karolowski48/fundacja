@@ -1,0 +1,35 @@
+{
+  "name": "Fundacja Empatia na rzecz Zwierząt",
+  "shortName": "Fundacja Empatia",
+  "brand": "Empatia na dłoni",
+  "tagline": "Dla tych, którzy mają tylko nas",
+  "founder": "Sylwia Łętocha",
+  "siteUrl": "https://empatianadloni.pl",
+  "phone": "724 236 270",
+  "email": "",
+  "address": { "street": "", "postalCode": "", "city": "", "region": "" },
+  "krs": "",
+  "nip": "",
+  "regon": "",
+  "donation": {
+    "bankAccount": "91 1020 2892 0000 5202 1039 7216",
+    "bankAccountOwner": "Fundacja Empatia na rzecz Zwierząt",
+    "transferTitle": "Darowizna",
+    "blikPhone": "663 806 717",
+    "zrzutkaUrl": "https://zrzutka.pl/xg7gtb",
+    "taxKrs": "0000270261",
+    "taxPurpose": "FUNDACJA EMPATIA NA RZECZ ZWIERZĄT 38275",
+    "taxUmbrellaOrg": "Fundacja Studencka „Młodzi-Młodym”"
+  },
+  "social": {
+    "facebook": "https://www.facebook.com/share/18htfEvXte/",
+    "instagram": "https://www.instagram.com/empatia.na.dloni",
+    "tiktok": "https://www.tiktok.com/@empatianadloni",
+    "instagramHandle": "@empatia.na.dloni",
+    "tiktokHandle": "@empatianadloni"
+  },
+  "seo": {
+    "defaultTitle": "Fundacja Empatia na rzecz Zwierząt - pomoc bezdomnym kotom",
+    "defaultDescription": "Ratujemy, leczymy i sterylizujemy bezdomne koty oraz pomagamy innym zwierzętom. Wesprzyj nas przelewem, BLIK-iem lub przekaż 1,5% podatku."
+  }
+}
