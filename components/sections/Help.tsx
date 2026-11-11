@@ -37,7 +37,7 @@ export function Help() {
                     <Picture
                       name={item.image}
                       alt={item.imageAlt}
-                      sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 84vw"
+                      sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 92vw"
                       className="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 sm:aspect-[4/3]"
                     />
                   </div>

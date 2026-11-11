@@ -129,9 +129,11 @@ html:not(.js) .js-only {
   .mobile-slider::-webkit-scrollbar {
     display: none;
   }
+  /* one card at a time: full width, the next one starts exactly at the screen edge */
   .mobile-slider > li {
-    flex: 0 0 84%;
+    flex: 0 0 100%;
     scroll-snap-align: start;
+    scroll-snap-stop: always;
   }
 }
 

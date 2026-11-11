@@ -8,7 +8,7 @@ import { StoriesList } from "@/components/sections/StoriesList";
 import { home, settings, type Story } from "@/lib/content";
 import { nbsp } from "@/lib/typography";
 
-const photoSizes = "(min-width: 1024px) 11rem, (min-width: 640px) 22vw, 40vw";
+const photoSizes = "(min-width: 1024px) 11rem, (min-width: 640px) 22vw, 46vw";
 
 function StoryCard({ story, extra }: { story: Story; extra: boolean }) {
   const titleId = `story-${story.slug}`;

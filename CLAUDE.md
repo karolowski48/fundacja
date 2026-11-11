@@ -381,7 +381,8 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 - **Slidery na telefonach** (`components/ui/MobileSlider.tsx`, decyzja właściciela: strona główna była
   za długa): poniżej 640 px karty „Co robimy” (`#help-cards`) i „Historie, które zmieniliśmy”
   (`#stories-list`) to poziomy slider na natywnym `scroll-snap` (klasa `.mobile-slider` w `globals.css`,
-  karta = 84% szerokości, widać brzeg następnej). Pod spodem strzałki (`aria-disabled` na końcach),
+  karta = pełna szerokość, widoczna dokładnie jedna naraz, bez ucinanego brzegu następnej - decyzja
+  właściciela; `scroll-snap-stop: always`, więc jeden gest = jedna karta). Pod spodem strzałki (`aria-disabled` na końcach),
   kropki i licznik „2 / 6” (`aria-live="polite"`); wrapper dostaje `role="region"` +
   `aria-roledescription="karuzela"` tylko na telefonie. Na telefonie historie pokazują wszystkie karty,
   a przycisk „Pokaż wszystkie” jest ukryty. Od 640 px ten sam `<ul>` jest zwykłą siatką.

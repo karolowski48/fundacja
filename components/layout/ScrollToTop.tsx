@@ -48,7 +48,7 @@ export function ScrollToTop() {
       onClick={toTop}
       inert={!visible}
       data-visible={visible}
-      className="scroll-top group fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-plum-800 text-cream-50 shadow-xl shadow-plum-950/30 transition-[opacity,transform,scale,rotate,translate,background-color] duration-300 hover:bg-plum-600 sm:bottom-8 sm:right-8"
+      className="scroll-top group fixed bottom-5 right-5 z-40 grid size-14 place-items-center rounded-full bg-plum-800 text-cream-50 transition-[opacity,transform,scale,rotate,translate,background-color] duration-300 hover:bg-plum-600 sm:bottom-8 sm:right-8"
     >
       <svg viewBox="0 0 56 56" aria-hidden="true" className="absolute inset-0 size-full -rotate-90">
         <circle cx="28" cy="28" r={RADIUS} fill="none" stroke="currentColor" strokeOpacity="0.2" strokeWidth="3" />
