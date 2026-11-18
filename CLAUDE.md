@@ -56,7 +56,7 @@ Etapy:
 | Własny KRS / NIP / REGON fundacji | — | **DO USTALENIA** |
 | Adres siedziby / gmina działania | — | **DO USTALENIA** |
 | E-mail | — | **DO USTALENIA** |
-| Domena docelowa | — | **DO USTALENIA** (placeholder: `https://empatianadloni.pl`) - potrzebna PRZED kodem QR |
+| Domena docelowa | `https://empatianadloni.pl` (`siteUrl`), rejestrator LH.pl, DNS w Cloudflare | potwierdzone 18.11.2026 - QR: `https://empatianadloni.pl/linki/` |
 | Notka pod telefonem | „Nie zawsze mamy możliwość przyjęcia kolejnego zwierzęcia, ale zawsze staram się w jakiś sposób pomóc, doradzić lub pokierować dalej.” (`phoneNote`, dosłownie, bez poprawiania) | od właścicielki |
 | Statystyki (stan na listopad 2026) | 174 uratowane koty · ok. 160 wysterylizowanych kotów · ok. 120 historii ze szczęśliwym zakończeniem · 7 dni w tygodniu przy kociej kolonii | od właścicielki (17.11.2026) |
 | Cytat założycielki | „Zawsze chciałam zostać weterynarzem. Teraz już wiem, że nie muszę nim być, żeby ratować zwierzęta.” - Sylwia Łętocha, założycielka fundacji | od właścicielki |
@@ -993,6 +993,20 @@ dokumentacja zaleca URL bez wersji.
 7. Opcjonalnie Cloudflare Web Analytics (beacon bez cookies) — wymaga dodania `static.cloudflareinsights.com`
    do CSP `script-src`/`connect-src`; dopiero po decyzji właścicielki.
 
+**Stan wdrożenia (18.11.2026):**
+- Konto Cloudflare fundacji (Free). Strefa `empatianadloni.pl`, serwery `maya.ns.cloudflare.com` i
+  `phil.ns.cloudflare.com` (ustawione w LH.pl jako „Zewnętrzny serwer DNS”; domena nie miała wcześniej żadnych
+  rekordów ani poczty). „Bot Preference Sync” wyłączony - `robots.txt` pochodzi tylko z `app/robots.ts`.
+- Projekt Pages `empatianadloni` (`empatianadloni.pages.dev`), repo `karolowski48/fundacja` przez aplikację GitHub
+  „Cloudflare Workers and Pages” z dostępem tylko do tego repo. Każdy push na `main` = nowy deploy.
+- Build: preset Next.js (Static HTML Export), `npm run build`, katalog `out`, zmienne `NODE_VERSION=22` i
+  **`NEXT_PUBLIC_PREVIEW=1` = tryb szkicu** (noindex + `robots: Disallow /`). Publiczny start: usuń tę zmienną w
+  Settings → Variables, ustaw `showPlaceholders: false` (punkt 4) i zrób nowy deploy.
+- `_headers` dokłada `X-Robots-Tag: noindex` na `*.pages.dev`, żeby Google indeksował tylko domenę.
+- Custom domains: `empatianadloni.pl` i `www.empatianadloni.pl` (CNAME → `empatianadloni.pages.dev`, proxy).
+  Redirect Rule „Redirect from WWW to root” (301, z zachowaniem query stringu) i „Always Use HTTPS” włączone.
+  Sprawdzone 18.11.2026: wszystkie strony 200, 404 działa, nagłówki z `_headers`, SSL ważny, `www`/`http` → 301.
+
 Uwaga: Cloudflare promuje teraz „Workers Static Assets" zamiast Pages. Pages nadal działa i jest
 darmowy; static export działa w obu. Trzymamy się Pages (decyzja właściciela), migracja na Workers
 = ten sam `out/` + `wrangler.toml` z `[assets] directory = "./out"`.
@@ -1066,8 +1080,8 @@ Z maila 17.11.2026 (strona jest gotowa na te dane, do tego czasu pokazuje stany 
 19. **Zdjęcia z kiermaszów z dziećmi** (`fair-malowanie-piknik`, `fair-malowanie-altana` - malowanie twarzy):
     potwierdzić, że rodzice zgodzili się na publikację wizerunku dzieci (RODO). Bez zgody - usunąć te dwa wpisy z
     `team.json → fairs` i `gallery.json` albo podmienić na zdjęcia bez rozpoznawalnych twarzy.
-17. **Docelowa domena - trzeba ją ustalić PRZED wygenerowaniem kodu QR.** QR ma prowadzić do
-    `https://<domena>/linki/`, nie do adresu podglądu `*.vercel.app` (ten zniknie albo się zmieni).
+17. ~~Docelowa domena~~ - ustalona 18.11.2026: `empatianadloni.pl`. QR ma prowadzić do
+    `https://empatianadloni.pl/linki/`, nie do `*.pages.dev` ani `*.vercel.app`; generować dopiero, gdy domena działa.
 18. Karta „Inne zwierzęta” na stronie głównej ma zdjęcie kotów - propozycja: zdjęcie królika (`help-rabbit`).
 
 ---
