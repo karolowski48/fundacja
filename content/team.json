@@ -7,16 +7,32 @@
     "eyebrow": "Wolontariusze",
     "title": "Nasza Empatyczna Ekipa",
     "lead": "Za każdym uratowanym zwierzakiem stoją ludzie. Nasi wolontariusze pomagają na kiermaszach, tworzą rękodzieło, organizują zbiórki i wspierają nas w codziennych działaniach. Są dla nas ogromnie ważni - bez nich nie dalibyśmy rady.",
-    "crumb": "Nasza ekipa"
+    "crumb": "Nasza Empatyczna Ekipa"
   },
   "roles": {
     "eyebrow": "Jak pomagają",
     "title": "Każdy pomaga po swojemu",
     "items": [
-      { "icon": "store", "title": "Kiermasze", "text": "Stoją z nami przy stoisku z brelokami, bransoletkami i zapachami do auta. Każdy sprzedany drobiazg to pomoc dla zwierząt." },
-      { "icon": "scissors", "title": "Rękodzieło", "text": "Tworzą rękodzieło, które sprzedajemy na kiermaszach. Dochód wspiera leczenie i opiekę nad zwierzętami." },
-      { "icon": "piggy-bank", "title": "Zbiórki", "text": "Organizują zbiórki, dzięki którym starcza na karmę, leki i wizyty u weterynarza." },
-      { "icon": "heart-handshake", "title": "Codzienna pomoc", "text": "Pomagają przy wyłapywaniu kotów do sterylizacji, transportach do weterynarza i opiece nad zwierzętami." }
+      {
+        "icon": "store",
+        "title": "Kiermasze",
+        "text": "Stoją z nami przy stoisku z brelokami, bransoletkami i zapachami do auta. Każdy sprzedany drobiazg to pomoc dla zwierząt."
+      },
+      {
+        "icon": "scissors",
+        "title": "Rękodzieło",
+        "text": "Tworzą rękodzieło, które sprzedajemy na kiermaszach. Dochód wspiera leczenie i opiekę nad zwierzętami."
+      },
+      {
+        "icon": "piggy-bank",
+        "title": "Zbiórki",
+        "text": "Organizują zbiórki, dzięki którym starcza na karmę, leki i wizyty u weterynarza."
+      },
+      {
+        "icon": "heart-handshake",
+        "title": "Codzienna pomoc",
+        "text": "Pomagają przy wyłapywaniu kotów do sterylizacji, transportach do weterynarza i opiece nad zwierzętami."
+      }
     ]
   },
   "membersSection": {

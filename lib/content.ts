@@ -16,6 +16,7 @@ import teamJson from "@/content/team.json";
 import adoptionPageJson from "@/content/adoption-page.json";
 import linksJson from "@/content/links.json";
 import partnersJson from "@/content/partners.json";
+import placeholdersJson from "@/content/placeholders.json";
 import teamFixture from "@/tests/fixtures/team.json";
 
 /**
@@ -25,13 +26,26 @@ import teamFixture from "@/tests/fixtures/team.json";
  */
 const useFixtures = process.env.CONTENT_FIXTURES === "1";
 
+/**
+ * Sample cards (volunteers, animals, partners, statute) shown while the real list is still empty -
+ * the owner asked for them on 18.11.2026 to see the layouts filled in. Every sample carries a visible
+ * "Przykład" badge and is left out of JSON-LD and llms.txt. They disappear by themselves once real data
+ * exists; before launch set settings.json → showPlaceholders: false (CLAUDE.md §14).
+ */
+export const placeholdersOn = !useFixtures && settingsJson.showPlaceholders === true;
+export const placeholderNotes = placeholdersJson.notes;
+
 export const settings = settingsJson;
 export const home = homeJson;
 export const about = aboutJson;
 export const helpPage = helpJson;
 export const gallery = galleryJson;
 export const adoptionPage = adoptionPageJson;
-export const partners: Partners = partnersJson;
+const partnersSource: Partners = partnersJson;
+export const partners: Partners =
+  partnersSource.items.length === 0 && placeholdersOn
+    ? { ...partnersSource, items: placeholdersJson.partners.map((p) => ({ ...p, placeholder: true })) }
+    : partnersSource;
 export type Settings = typeof settingsJson;
 
 export type FaqItem = { question: string; answer: string; link?: { href: string; label: string } };
@@ -50,6 +64,8 @@ export type TeamMember = {
   /** Name from public/images/manifest.json or a CMS upload path ("/images/uploads/x.jpg"). */
   image: string;
   imageAlt: string;
+  /** Sample card from content/placeholders.json */
+  placeholder?: boolean;
 };
 export type FairPhoto = { image: string; alt: string; caption: string };
 type TextBlock = { eyebrow: string; title: string };
@@ -65,11 +81,22 @@ export type Team = {
   /** Google Form "Zostań wolontariuszem". Empty → the button leads to the contact section. */
   volunteerFormUrl: string;
 };
-export const team: Team = useFixtures ? teamFixture : teamJson;
+const teamSource: Team = useFixtures ? teamFixture : teamJson;
+export const team: Team =
+  teamSource.members.length === 0 && placeholdersOn
+    ? { ...teamSource, members: placeholdersJson.team.map((m) => ({ ...m, placeholder: true })) }
+    : teamSource;
 
 // ───────────── Partners ─────────────
 
-export type Partner = { name: string; url: string; /** file in public/partners/, e.g. "/partners/ctrlz.svg"; empty → text label */ logo: string };
+export type Partner = {
+  name: string;
+  url: string;
+  /** file in public/partners/, e.g. "/partners/ctrlz.svg"; empty → text label */
+  logo: string;
+  /** Sample tile from content/placeholders.json (not a link) */
+  placeholder?: boolean;
+};
 export type Partners = {
   seo: { title: string; description: string };
   hero: { eyebrow: string; title: string; lead: string; crumb: string };
@@ -100,7 +127,14 @@ export const links = { ...linksContent, links: linksContent.links.map(resolveLin
 
 // ───────────── Documents ─────────────
 
-export type SiteDocument = { href: string; label: string; /** "PDF, 240 KB" */ details: string };
+export type SiteDocument = {
+  href: string;
+  label: string;
+  /** "PDF, 240 KB" */
+  details: string;
+  /** The sample PDF from content/placeholders.json (kept out of llms.txt) */
+  placeholder?: boolean;
+};
 
 function fileSizeLabel(bytes: number): string {
   return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1).replace(".", ",")} MB`;
@@ -108,14 +142,18 @@ function fileSizeLabel(bytes: number): string {
 
 /** Statute PDF from settings.documents.statutePdf (a file in public/dokumenty/). Empty → null, nothing is shown. */
 export function getStatute(): SiteDocument | null {
-  const href = useFixtures ? "/dokumenty/statut-testowy.pdf" : settings.documents.statutePdf.trim();
+  const real = useFixtures ? "/dokumenty/statut-testowy.pdf" : settings.documents.statutePdf.trim();
+  const placeholder = !real && placeholdersOn;
+  const href = real || (placeholder ? placeholdersJson.statutePdf : "");
   if (!href) return null;
   const file = useFixtures ? path.join(process.cwd(), "tests", "fixtures", "statut-testowy.pdf") : path.join(process.cwd(), "public", href.replace(/^\//, ""));
   if (!href.startsWith("/") || !fs.existsSync(file)) {
     throw new Error(`content/settings.json: documents.statutePdf "${href}" - file not found in public/ (expected e.g. "/dokumenty/statut.pdf").`);
   }
   const details = `PDF, ${fileSizeLabel(fs.statSync(file).size)}`;
-  return { href, label: `Statut fundacji (${details})`, details };
+  return placeholder
+    ? { href, label: `Statut fundacji (przykład, ${details})`, details, placeholder }
+    : { href, label: `Statut fundacji (${details})`, details };
 }
 
 function requireString(data: Record<string, unknown>, key: string, file: string): string {
@@ -201,6 +239,8 @@ export type AdoptionAnimal = {
   /** The rest of the story (HTML), behind "Czytaj całą historię". */
   storyMore: string;
   order: number;
+  /** Sample card from content/placeholders.json */
+  placeholder?: boolean;
 };
 
 function oneOf<T extends string>(data: Record<string, unknown>, key: string, allowed: readonly T[], file: string, fallback?: T): T {
@@ -222,7 +262,34 @@ function nbspMarkdown(md: string): string {
     .join("\n");
 }
 
+function placeholderAnimals(): AdoptionAnimal[] {
+  const species = ["kot", "pies"] as const;
+  const sexes = ["samica", "samiec", ""] as const;
+  const statuses = ["szuka domu", "zarezerwowany"] as const;
+  const file = "content/placeholders.json";
+  return placeholdersJson.adoption.map((a) => ({
+    slug: a.slug,
+    name: a.name,
+    species: oneOf({ species: a.species }, "species", species, file),
+    sex: oneOf({ sex: a.sex }, "sex", sexes, file, ""),
+    age: a.age,
+    status: oneOf({ status: a.status }, "status", statuses, file),
+    image: a.image,
+    imageAlt: a.imageAlt,
+    facts: a.facts,
+    storyLead: marked.parse(nbsp(a.story[0] ?? ""), { async: false }),
+    storyMore: a.story.length > 1 ? marked.parse(a.story.slice(1).map(nbsp).join("\n\n"), { async: false }) : "",
+    order: a.order,
+    placeholder: true,
+  }));
+}
+
 export function getAdoptionAnimals(): AdoptionAnimal[] {
+  const real = readAdoptionAnimals();
+  return real.length === 0 && placeholdersOn ? placeholderAnimals() : real;
+}
+
+function readAdoptionAnimals(): AdoptionAnimal[] {
   const dir = useFixtures ? path.join(process.cwd(), "tests", "fixtures", "adoption") : path.join(CONTENT_DIR, "adoption");
   if (!fs.existsSync(dir)) return [];
   return fs

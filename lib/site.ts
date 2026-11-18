@@ -34,7 +34,7 @@ export const navItems: readonly NavEntry[] = [
     label: "O fundacji",
     items: [
       { href: "/o-nas/", label: "O nas" },
-      { href: "/nasza-ekipa/", label: "Nasza ekipa" },
+      { href: "/nasza-ekipa/", label: "Nasza Empatyczna Ekipa" },
       { href: "/partnerzy/", label: "Partnerzy" },
     ],
   },

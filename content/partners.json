@@ -15,11 +15,5 @@
     "lead": "Firmy, które wspierają Fundację Empatia swoją pracą i wiedzą. Dzięki nim możemy pomagać skuteczniej.",
     "join": "Twoja firma też może pomagać. Zadzwoń:"
   },
-  "items": [
-    {
-      "name": "CtrlZ Studio",
-      "url": "https://ctrlzstudio.pl/",
-      "logo": ""
-    }
-  ]
+  "items": []
 }

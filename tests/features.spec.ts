@@ -73,7 +73,8 @@ test.describe("home page content", () => {
     await expect(item.getByRole("link", { name: "Zobacz zwierzęta do adopcji" })).toHaveAttribute("href", "/do-adopcji/");
   });
 
-  test("partners: own page /partnerzy/ (and /o-nas/), no longer on the home page", async ({ page }) => {
+  test("partners: own page /partnerzy/ (and /o-nas/), sample tiles until logos arrive, not on the home page", async ({ page }) => {
+    test.skip(fixtures, "the fixture build turns sample content off");
     await page.goto("/");
     await expect(page.locator("#partnerzy")).toHaveCount(0);
     await page.goto("/partnerzy/");
@@ -81,16 +82,25 @@ test.describe("home page content", () => {
     for (const path of ["/partnerzy/", "/o-nas/"]) {
       if (path !== "/partnerzy/") await page.goto(path);
       const section = page.locator("#partnerzy");
-      const link = section.getByRole("link", { name: /CtrlZ Studio/ });
-      await expect(link).toHaveAttribute("href", "https://ctrlzstudio.pl/");
-      await expect(link).toHaveAttribute("target", "_blank");
+      await expect(section.locator("[data-sample-note]")).toBeVisible();
+      await expect(section.locator("li")).toHaveCount(4);
+      await expect(section.locator("li").first()).toContainText("Logo partnera");
+      await expect(section.locator("li").first()).toContainText("Przykład");
+      // sample tiles are not links, and the contractor's studio is credited only in the footer
+      await expect(section.locator("li a")).toHaveCount(0);
+      await expect(section).not.toContainText("CtrlZ");
     }
   });
 
-  test("statute link is hidden while settings.documents.statutePdf is empty", async ({ page }) => {
-    test.skip(fixtures, "the fixture build sets a sample statute");
+  test("footer links the statute (sample PDF until the real one arrives)", async ({ page, request }) => {
+    test.skip(fixtures, "the fixture build sets its own test statute");
     await page.goto("/");
-    await expect(page.locator("footer")).not.toContainText("Statut");
+    const link = page.locator("footer").getByRole("link", { name: /Statut fundacji \(przykład, PDF, \d+ KB\)/ });
+    await expect(link).toHaveAttribute("href", "/dokumenty/statut-przyklad.pdf");
+    await expect(link).toHaveAttribute("target", "_blank");
+    const pdf = await request.get("/dokumenty/statut-przyklad.pdf");
+    expect(pdf.status()).toBe(200);
+    expect(pdf.headers()["content-type"]).toContain("pdf");
   });
 });
 
@@ -161,11 +171,11 @@ test.describe("navigation", () => {
     const nav = page.locator("header").getByRole("navigation", { name: "Menu główne" });
     const button = nav.getByRole("button", { name: "O fundacji" });
     await expect(button).toHaveAttribute("aria-expanded", "false");
-    await expect(nav.getByRole("link", { name: "Nasza ekipa" })).toBeHidden();
+    await expect(nav.getByRole("link", { name: "Nasza Empatyczna Ekipa" })).toBeHidden();
 
     await button.click();
     await expect(button).toHaveAttribute("aria-expanded", "true");
-    for (const name of ["O nas", "Nasza ekipa", "Partnerzy"]) await expect(nav.getByRole("link", { name, exact: true })).toBeVisible();
+    for (const name of ["O nas", "Nasza Empatyczna Ekipa", "Partnerzy"]) await expect(nav.getByRole("link", { name, exact: true })).toBeVisible();
     await page.keyboard.press("Escape");
     await expect(button).toHaveAttribute("aria-expanded", "false");
     await expect(button).toBeFocused();
@@ -184,7 +194,7 @@ test.describe("navigation", () => {
     await page.locator("main").click({ position: { x: 5, y: 400 } });
     await expect(button).toHaveAttribute("aria-expanded", "false");
     await button.click();
-    await nav.getByRole("link", { name: "Nasza ekipa" }).click();
+    await nav.getByRole("link", { name: "Nasza Empatyczna Ekipa" }).click();
     await expect(page).toHaveURL(/\/nasza-ekipa\/$/);
     await expect(button).toHaveAttribute("data-current", "true");
     await expect(nav.getByRole("link", { name: "Do adopcji" })).toHaveAttribute("href", "/do-adopcji/");
@@ -195,7 +205,7 @@ test.describe("navigation", () => {
     await page.goto("/");
     await page.getByRole("button", { name: "Menu", exact: true }).click();
     const links = page.getByRole("dialog", { name: "Menu" }).getByRole("navigation").getByRole("link");
-    await expect(links).toHaveText(["O nas", "Nasza ekipa", "Partnerzy", "Jak pomagamy", "Do adopcji", "Historie", "Galeria", "Kontakt"]);
+    await expect(links).toHaveText(["O nas", "Nasza Empatyczna Ekipa", "Partnerzy", "Jak pomagamy", "Do adopcji", "Historie", "Galeria", "Kontakt"]);
     await page.getByRole("dialog", { name: "Menu" }).getByRole("link", { name: "Do adopcji" }).click();
     await expect(page).toHaveURL(/\/do-adopcji\/$/);
   });
@@ -205,7 +215,7 @@ test.describe("navigation", () => {
     const footerNav = page.locator("footer nav");
     await expect(footerNav.getByRole("link", { name: "Wszystkie linki" })).toHaveAttribute("href", "/linki/");
     await expect(footerNav.getByRole("link", { name: "Do adopcji" })).toHaveAttribute("href", "/do-adopcji/");
-    await expect(footerNav.getByRole("link", { name: "Nasza ekipa" })).toHaveAttribute("href", "/nasza-ekipa/");
+    await expect(footerNav.getByRole("link", { name: "Nasza Empatyczna Ekipa" })).toHaveAttribute("href", "/nasza-ekipa/");
     await expect(page.locator("header a[href='/linki/']")).toHaveCount(0);
   });
 
@@ -295,28 +305,43 @@ test("no horizontal scroll on any page at 320 and 375 px (reflow, WCAG 1.4.10)",
   }
 });
 
-test.describe("empty states (until the owner sends photos and texts)", () => {
-  test.skip(fixtures, "the fixture build fills these pages with sample data");
+test.describe("sample cards (until the owner sends photos and texts)", () => {
+  test.skip(fixtures, "the fixture build fills these pages with its own test data");
 
-  test("/do-adopcji/: friendly empty state with social links, no filter", async ({ page }) => {
+  test("/do-adopcji/: 4 sample animals marked 'Przykład', filter works, no structured data for them", async ({ page }) => {
     await page.goto("/do-adopcji/");
     await expect(page.locator("h1")).toHaveText("Zwierzęta do adopcji");
-    const empty = page.locator("[data-empty-state]");
-    await expect(empty).toContainText("Wkrótce pokażemy tu zwierzaki szukające domu");
-    await expect(empty.getByRole("link", { name: /Facebook/ })).toHaveAttribute("target", "_blank");
-    await expect(empty.getByRole("link", { name: /Instagram/ })).toHaveAttribute("target", "_blank");
-    await expect(page.getByRole("group", { name: "Pokaż zwierzęta" })).toHaveCount(0);
+    await expect(page.locator("[data-sample-note]")).toContainText("Przykładowe karty");
+    const cards = page.locator("li[data-species]");
+    await expect(cards).toHaveCount(4);
+    for (const card of await cards.all()) await expect(card).toContainText("Przykład");
+    await expect(page.locator("#przyklad-luna")).toContainText("Luna");
+    await expect(page.locator("#przyklad-burek")).toContainText("Zarezerwowany");
+    await page.getByRole("group", { name: "Pokaż zwierzęta" }).getByRole("button", { name: "Psy" }).click();
+    await expect(page.locator("li[data-species='kot']").first()).toBeHidden();
+    await expect(page.locator("li[data-species='pies']").first()).toBeVisible();
+    const ld = await page.locator("script[type='application/ld+json']").allTextContents();
+    expect(ld.join(" ")).not.toContain("ItemList");
     await expect(page.locator("#jak-adoptowac")).toContainText("opowiemy o zwierzaku i ustalimy szczegóły");
-    await expect(page.locator("#jak-adoptowac a[href^='tel:']")).toBeVisible();
   });
 
-  test("/nasza-ekipa/: 'Wkrótce przedstawimy tu naszą ekipę', join button goes to contact", async ({ page }) => {
+  test("/nasza-ekipa/: 4 sample volunteers marked 'Przykład', join button goes to contact", async ({ page }) => {
     await page.goto("/nasza-ekipa/");
     await expect(page.locator("h1")).toHaveText("Nasza Empatyczna Ekipa");
-    await expect(page.locator("[data-empty-state]")).toContainText("Wkrótce przedstawimy tu naszą ekipę");
+    await expect(page.locator("[data-sample-note]")).toContainText("Przykładowe karty");
+    const people = page.locator("#ekipa article");
+    await expect(people).toHaveCount(4);
+    for (const person of await people.all()) await expect(person).toContainText("Przykład");
+    await expect(people.first().getByRole("img", { name: /Miejsce na zdjęcie/ })).toBeVisible();
     await expect(page.locator("#kiermasze")).toHaveCount(0);
     const join = page.locator("#dolacz").getByRole("link", { name: "Zostań wolontariuszem" });
     await expect(join).toHaveAttribute("href", "/#kontakt");
     await expect(join).not.toHaveAttribute("target", "_blank");
+  });
+
+  test("llms.txt never lists sample animals or the sample statute", async ({ request }) => {
+    const text = await (await request.get("/llms.txt")).text();
+    expect(text).not.toContain("przyklad-");
+    expect(text).not.toContain("statut-przyklad");
   });
 });

@@ -1,0 +1,129 @@
+{
+  "_info": "Przykładowe karty pokazywane, dopóki prawdziwa lista jest pusta (decyzja z 18.11.2026). Każda ma znacznik „Przykład”. Znikają same, gdy dodasz prawdziwe dane; przed startem strony ustaw settings.json → showPlaceholders: false.",
+  "notes": {
+    "team": "Przykładowe karty - tu pojawią się wolontariusze, którzy zgodzili się na publikację.",
+    "adoption": "Przykładowe karty - tu pojawią się zwierzaki, które naprawdę szukają domu.",
+    "partners": "Przykładowe miejsca na logotypy firm, które nas wspierają."
+  },
+  "team": [
+    {
+      "name": "Ania",
+      "role": "Kiermasze",
+      "description": "Tu pojawi się kilka słów o tym, jak ta osoba pomaga fundacji - na przykład prowadzi stoisko na kiermaszach i opowiada o naszych zwierzakach.",
+      "image": "placeholder:person",
+      "imageAlt": "Miejsce na zdjęcie wolontariuszki"
+    },
+    {
+      "name": "Kasia",
+      "role": "Rękodzieło",
+      "description": "Tu pojawi się kilka słów o tym, jak ta osoba pomaga fundacji - na przykład tworzy breloki i bransoletki, z których dochód idzie na leczenie kotów.",
+      "image": "placeholder:person",
+      "imageAlt": "Miejsce na zdjęcie wolontariuszki"
+    },
+    {
+      "name": "Marta",
+      "role": "Zbiórki",
+      "description": "Tu pojawi się kilka słów o tym, jak ta osoba pomaga fundacji - na przykład organizuje zbiórki karmy i koców w szkołach i sklepach.",
+      "image": "placeholder:person",
+      "imageAlt": "Miejsce na zdjęcie wolontariuszki"
+    },
+    {
+      "name": "Tomek",
+      "role": "Codzienna pomoc",
+      "description": "Tu pojawi się kilka słów o tym, jak ta osoba pomaga fundacji - na przykład wozi koty do weterynarza i pomaga przy wyłapywaniu.",
+      "image": "placeholder:person",
+      "imageAlt": "Miejsce na zdjęcie wolontariusza"
+    }
+  ],
+  "adoption": [
+    {
+      "slug": "przyklad-luna",
+      "name": "Luna",
+      "species": "kot",
+      "sex": "samica",
+      "age": "ok. 2 lata",
+      "status": "szuka domu",
+      "image": "placeholder:cat",
+      "imageAlt": "Miejsce na zdjęcie kotki",
+      "facts": [
+        "Zdrowie: tu informacja o szczepieniach, sterylizacji i odrobaczeniu",
+        "Charakter: tu kilka słów o usposobieniu",
+        "Dogaduje się z: innymi kotami, dziećmi",
+        "Szuka domu: tu wymagania wobec nowego domu"
+      ],
+      "story": [
+        "Przykładowa karta. Tu pojawi się krótka historia zwierzaka - skąd do nas trafił i jak się u nas zmienił.",
+        "Tu dalsza część historii, widoczna po rozwinięciu."
+      ],
+      "order": 1
+    },
+    {
+      "slug": "przyklad-mruczek",
+      "name": "Mruczek",
+      "species": "kot",
+      "sex": "samiec",
+      "age": "ok. 6 miesięcy",
+      "status": "szuka domu",
+      "image": "placeholder:cat",
+      "imageAlt": "Miejsce na zdjęcie kocura",
+      "facts": [
+        "Zdrowie: tu informacja o szczepieniach i odrobaczeniu",
+        "Charakter: tu kilka słów o usposobieniu",
+        "Szuka domu: tu wymagania wobec nowego domu"
+      ],
+      "story": [
+        "Przykładowa karta. Tu pojawi się krótka historia zwierzaka - skąd do nas trafił i jak się u nas zmienił.",
+        "Tu dalsza część historii, widoczna po rozwinięciu."
+      ],
+      "order": 2
+    },
+    {
+      "slug": "przyklad-burek",
+      "name": "Burek",
+      "species": "pies",
+      "sex": "samiec",
+      "age": "ok. 4 lata",
+      "status": "zarezerwowany",
+      "image": "placeholder:dog",
+      "imageAlt": "Miejsce na zdjęcie psa",
+      "facts": [
+        "Zdrowie: tu informacja o szczepieniach, kastracji i chipie",
+        "Charakter: tu kilka słów o usposobieniu",
+        "Dogaduje się z: innymi psami",
+        "Szuka domu: tu wymagania wobec nowego domu"
+      ],
+      "story": [
+        "Przykładowa karta ze statusem „zarezerwowany”. Tu pojawi się krótka historia zwierzaka.",
+        "Tu dalsza część historii, widoczna po rozwinięciu."
+      ],
+      "order": 3
+    },
+    {
+      "slug": "przyklad-fiona",
+      "name": "Fiona",
+      "species": "pies",
+      "sex": "samica",
+      "age": "ok. 1 rok",
+      "status": "szuka domu",
+      "image": "placeholder:dog",
+      "imageAlt": "Miejsce na zdjęcie suczki",
+      "facts": [
+        "Zdrowie: tu informacja o szczepieniach, sterylizacji i chipie",
+        "Charakter: tu kilka słów o usposobieniu",
+        "Szuka domu: tu wymagania wobec nowego domu"
+      ],
+      "story": [
+        "Przykładowa karta. Tu pojawi się krótka historia zwierzaka - skąd do nas trafił i jak się u nas zmienił.",
+        "Tu dalsza część historii, widoczna po rozwinięciu."
+      ],
+      "order": 4
+    }
+  ],
+  "partners": [
+    { "name": "Logo partnera", "url": "", "logo": "" },
+    { "name": "Logo partnera", "url": "", "logo": "" },
+    { "name": "Logo partnera", "url": "", "logo": "" },
+    { "name": "Logo partnera", "url": "", "logo": "" }
+  ],
+  "statutePdf": "/dokumenty/statut-przyklad.pdf"
+}

@@ -6,8 +6,10 @@ export const dynamic = "force-static";
 // Plain-text summary for AI assistants, generated from the same content as the page.
 export function GET() {
   const { donation, social } = settings;
-  const animals = getAdoptionAnimals();
-  const statute = getStatute();
+  // sample cards (content/placeholders.json) are never described to AI assistants
+  const animals = getAdoptionAnimals().filter((a) => !a.placeholder);
+  const found = getStatute();
+  const statute = found && !found.placeholder ? found : null;
   const lines = [
     `# ${settings.name}`,
     "",

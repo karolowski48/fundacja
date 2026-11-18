@@ -400,7 +400,8 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 ### 0. SkipLink + Header
 - `<a href="#main" class="sr-only focus:not-sr-only …">Przejdź do treści</a>` jako PIERWSZY element w `<body>`.
 - `<header>` z `<nav aria-label="Menu główne">`: Logo, linki (`lib/site.ts → navItems`):
-  **O fundacji ▾** (rozwijane: O nas, Nasza ekipa, Partnerzy), Jak pomagamy, Do adopcji, Historie (/#historie),
+  **O fundacji ▾** (rozwijane: O nas, Nasza Empatyczna Ekipa, Partnerzy - pełna nazwa zakładki, decyzja
+  użytkownika 18.11.2026), Jak pomagamy, Do adopcji, Historie (/#historie),
   Galeria, Kontakt (bez „Jak pomóc” - tę rolę pełni przycisk „Wpłać"). **FAQ nie ma w menu** (decyzja
   właściciela 17.11.2026; sekcja `#faq` zostaje na stronie głównej). Grupa powstała, bo 8 pozycji nie mieściło
   się w jednym wierszu przy 1280 px (test: `features.spec.ts`, 1280 i 1440 px).
@@ -532,8 +533,10 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 - `components/sections/Partners.tsx`, dane w `content/partners.json`. Logotypy w szarości, w kolorze na
   hover/fokus, `alt` = nazwa firmy, link w nowej karcie. Bez pliku logo: elegancka etykieta z nazwą
   (Oswald). Na telefonie 2 w rzędzie, wyśrodkowane - działa już z jednym partnerem. Pod spodem
-  „Twoja firma też może pomagać. Zadzwoń: …”. Pierwszy partner: CtrlZ Studio (logo: plik od wykonawcy,
-  NIE pobierać ze strony). Sekcja znika, gdy lista jest pusta.
+  „Twoja firma też może pomagać. Zadzwoń: …”. CtrlZ Studio NIE jest na liście partnerów (decyzja
+  użytkownika 18.11.2026 - wykonawca jest tylko w stopce „Projekt i realizacja”). Do czasu logotypów od
+  właścicielki: 4 przykładowe kafelki „Logo partnera” (placeholdery, sekcja 8). Bez placeholderów i bez
+  partnerów sekcja znika.
 
 ### 9. `#kontakt` — Kontakt (cream-100)
 - H2: „Kontakt". Telefon jako `<a href="tel:+48724236270">724 236 270</a>`, tuż pod nim notka właścicielki
@@ -545,7 +548,8 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 - Kolumny: logo + hasło; Nawigacja (wszystkie pozycje menu + „Wszystkie linki” → `/linki/`); Wesprzyj nas
   (konto, tytuł przelewu, BLIK, 1,5%); Kontakt i social. Dolna linia:
   „© {rok} Fundacja Empatia na rzecz Zwierząt” (+ KRS/NIP gdy znane), link „Polityka prywatności”,
-  „Statut fundacji (PDF, rozmiar)” w nowej karcie (tylko gdy `settings.documents.statutePdf` jest ustawiony),
+  „Statut fundacji (PDF, rozmiar)” w nowej karcie (gdy `settings.documents.statutePdf` jest ustawiony; do tego
+  czasu „Statut fundacji (przykład, PDF, …)” z przykładowym plikiem - placeholdery, sekcja 8),
   „Projekt i realizacja: CtrlZ Studio” (https://ctrlzstudio.pl/, nowa karta). Bez daty aktualizacji
   i bez deklaracji dostępności (decyzja właściciela).
 
@@ -618,9 +622,17 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   jako Fundacja Empatia na rzecz Zwierząt — nadal z tą samą przejrzystością: prowadzimy zapiski,
   kto został odrobaczony, wysterylizowany, kto poszedł do domu."
 - **Wolontariusze:** publikujemy TYLKO osoby, które wyraziły zgodę na publikację zdjęcia i opisu
-  (właścicielka przysyła wyłącznie takie). Nigdy nie wymyślamy osób, imion, ról ani zdjęć - pusta lista
-  pokazuje stan „Wkrótce…”. Gdy ktoś wycofa zgodę, usuwamy wpis z `team.json` (i plik zdjęcia).
-- **Adopcje:** nie wymyślamy zwierząt ani procedury adopcyjnej; tylko dane od właścicielki.
+  (właścicielka przysyła wyłącznie takie). W `team.json` nigdy nie wpisujemy wymyślonych osób, imion, ról
+  ani zdjęć. Gdy ktoś wycofa zgodę, usuwamy wpis z `team.json` (i plik zdjęcia).
+- **Adopcje:** nie wymyślamy zwierząt ani procedury adopcyjnej w `content/adoption/`; tylko dane od właścicielki.
+- **Placeholdery (decyzja użytkownika 18.11.2026):** dopóki prawdziwa lista jest pusta, strona pokazuje
+  PRZYKŁADOWE karty z `content/placeholders.json`: 4 wolontariuszy, 4 zwierzęta (2 koty, 2 psy), 4 kafelki
+  „Logo partnera” i przykładowy statut (`public/dokumenty/statut-przyklad.pdf`, generuje
+  `scripts/placeholder-statute.mjs`). Zasady: każda karta ma widoczny znacznik „Przykład” i notkę nad listą,
+  zdjęcia to rysowane zastępniki (`Picture name="placeholder:person|cat|dog"`), nigdy prawdziwe zdjęcia
+  zwierząt fundacji ani ludzi; kafelki partnerów nie są linkami; przykłady nie trafiają do JSON-LD ani
+  `llms.txt`. Znikają same, gdy w danej liście pojawi się prawdziwy wpis. Wyłącznik: `settings.json →
+  showPlaceholders` (przed startem strony: `false`, sekcja 14). W buildzie z `CONTENT_FIXTURES=1` są wyłączone.
 - **Notka pod telefonem** (`phoneNote`) jest cytatem właścicielki - zostaje dosłownie, bez redakcji.
 - Fakty ze zrzutki, które można użyć: ok. 30 sterylizacji (stan ze zrzutki - aktualnie ok. 160, sekcja 2);
   gmina finansuje sterylizację/kastrację;
@@ -972,10 +984,13 @@ dokumentacja zaleca URL bez wersji.
 2. Cloudflare Dashboard → Workers & Pages → Create → Pages → Import Git repository.
 3. Preset: **Next.js (Static HTML Export)**. Build command: `npm run build`. Output: `out`.
    Env: `NODE_VERSION=22`.
-4. Po deployu: domena własna (CNAME), wymuszenie HTTPS, redirect `www` → bez `www` (lub odwrotnie,
+4. **Przed startem strony:** `settings.json → showPlaceholders: false` (albo uzupełnij wszystkie listy prawdziwymi
+   danymi) i usuń `public/dokumenty/statut-przyklad.pdf`, jeśli prawdziwy statut już jest. Inaczej odwiedzający
+   zobaczą karty „Przykład”.
+5. Po deployu: domena własna (CNAME), wymuszenie HTTPS, redirect `www` → bez `www` (lub odwrotnie,
    spójnie z `siteUrl`), włączyć „Always Use HTTPS".
-5. Sprawdzić `_headers` (curl -I), `robots.txt`, `sitemap.xml`, OG w debuggerze FB/LinkedIn.
-6. Opcjonalnie Cloudflare Web Analytics (beacon bez cookies) — wymaga dodania `static.cloudflareinsights.com`
+6. Sprawdzić `_headers` (curl -I), `robots.txt`, `sitemap.xml`, OG w debuggerze FB/LinkedIn.
+7. Opcjonalnie Cloudflare Web Analytics (beacon bez cookies) — wymaga dodania `static.cloudflareinsights.com`
    do CSP `script-src`/`connect-src`; dopiero po decyzji właścicielki.
 
 Uwaga: Cloudflare promuje teraz „Workers Static Assets" zamiast Pages. Pages nadal działa i jest
@@ -1046,15 +1061,21 @@ Z maila 17.11.2026 (strona jest gotowa na te dane, do tego czasu pokazuje stany 
 14. Zwierzęta do adopcji: zdjęcie, imię, gatunek, płeć, wiek, status, najważniejsze informacje (zdrowie,
     charakter, z kim się dogaduje, wymagania), krótka historia. Oraz czy i jak opisać procedurę adopcji (pyt. 8).
 15. Statut fundacji w PDF (`public/dokumenty/`, `settings.json → documents.statutePdf`).
-16. Logotypy partnerów (SVG albo PNG z przezroczystym tłem) z nazwą i adresem strony; plik logo CtrlZ Studio
-    od wykonawcy (nie pobierać ze strony).
+16. Logotypy partnerów (SVG albo PNG z przezroczystym tłem) z nazwą i adresem strony. (CtrlZ Studio nie jest
+    partnerem na liście - decyzja 18.11.2026.)
 17. **Docelowa domena - trzeba ją ustalić PRZED wygenerowaniem kodu QR.** QR ma prowadzić do
     `https://<domena>/linki/`, nie do adresu podglądu `*.vercel.app` (ten zniknie albo się zmieni).
 18. Karta „Inne zwierzęta” na stronie głównej ma zdjęcie kotów - propozycja: zdjęcie królika (`help-rabbit`).
 
 ---
 
-## 17. Stan projektu (17.11.2026)
+## 17. Stan projektu (18.11.2026)
+
+**18.11.2026 (niezacommitowane):** zakładka nazywa się „Nasza Empatyczna Ekipa” (menu, okruszki, stopka);
+placeholdery z `content/placeholders.json` na `/nasza-ekipa/`, `/do-adopcji/`, `/partnerzy/` (+ `/o-nas/`)
+i przykładowy statut w stopce (sekcja 8); CtrlZ Studio usunięte z partnerów. Testy: `test:a11y` 87 ✓ (1 flake
+przy starcie Chrome przeszedł po powtórce), `test:fixtures` 91 ✓ (3 flaki pod obciążeniem przeszły po powtórce),
+konsola 1280/390 px bez błędów.
 
 **Etap 1b - poprawki z maila właścicielki (17.11.2026), niezacommitowane:**
 - Zrzuty: „Inne zwierzęta” → „psom, ptakom, gryzoniom i królikom” (też Jak pomagamy, FAQ, llms.txt),

@@ -110,3 +110,10 @@ albo zmienną `NEXT_PUBLIC_SITE_URL`. Szczegóły: CLAUDE.md, sekcja 14.
 - Ikony marek (Facebook, Instagram, TikTok): Simple Icons, CC0.
 - Ikony interfejsu: Lucide, ISC.
 - Zdjęcie dokarmiania zimą: Foto Gabka - wymaga potwierdzenia zgody na publikację.
+
+## Przykładowe karty (placeholdery)
+
+Dopóki nie ma prawdziwych danych, strony Nasza Empatyczna Ekipa, Zwierzęta do adopcji i Partnerzy
+pokazują przykładowe karty z `content/placeholders.json` (oznaczone „Przykład”), a stopka linkuje
+przykładowy statut (`public/dokumenty/statut-przyklad.pdf`). Każda lista przełącza się sama na prawdziwe
+dane, gdy dodasz pierwszy wpis. Przed startem strony ustaw w `content/settings.json` `"showPlaceholders": false`.
