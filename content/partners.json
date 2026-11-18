@@ -1,0 +1,25 @@
+{
+  "seo": {
+    "title": "Nasi partnerzy - firmy, które pomagają zwierzętom",
+    "description": "Firmy, które wspierają Fundację Empatia na rzecz Zwierząt swoją pracą i wiedzą. Zobacz naszych partnerów i dowiedz się, jak Twoja firma może pomagać."
+  },
+  "hero": {
+    "eyebrow": "Dziękujemy",
+    "title": "Nasi partnerzy",
+    "lead": "Firmy, które wspierają Fundację Empatia swoją pracą i wiedzą. Dzięki nim możemy pomagać skuteczniej.",
+    "crumb": "Partnerzy"
+  },
+  "section": {
+    "eyebrow": "Dziękujemy",
+    "title": "Nasi partnerzy",
+    "lead": "Firmy, które wspierają Fundację Empatia swoją pracą i wiedzą. Dzięki nim możemy pomagać skuteczniej.",
+    "join": "Twoja firma też może pomagać. Zadzwoń:"
+  },
+  "items": [
+    {
+      "name": "CtrlZ Studio",
+      "url": "https://ctrlzstudio.pl/",
+      "logo": ""
+    }
+  ]
+}

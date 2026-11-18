@@ -1,0 +1,27 @@
+{
+  "seo": {
+    "title": "Zwierzęta do adopcji - koty i psy szukające domu",
+    "description": "Koty i psy pod opieką Fundacji Empatia na rzecz Zwierząt, które szukają domu. Poznaj ich historie i zadzwoń lub napisz, jeśli chcesz adoptować."
+  },
+  "hero": {
+    "eyebrow": "Adopcje",
+    "title": "Zwierzęta do adopcji",
+    "lead": "Koty i psiaki pod opieką Fundacji Empatia czekają na swój dom. Poznaj ich historie - może któryś z nich czeka właśnie na Ciebie.",
+    "crumb": "Do adopcji"
+  },
+  "list": {
+    "eyebrow": "Szukają domu",
+    "title": "Poznaj naszych podopiecznych",
+    "storyMore": "Czytaj całą historię",
+    "adoptCta": "Chcę adoptować"
+  },
+  "empty": {
+    "title": "Wkrótce pokażemy tu zwierzaki szukające domu",
+    "text": "Przygotowujemy ogłoszenia. Do tego czasu koty i psiaki szukające domu pokazujemy na Facebooku i Instagramie - zajrzyj tam albo zadzwoń."
+  },
+  "contact": {
+    "eyebrow": "Adopcja",
+    "title": "Chcesz adoptować?",
+    "text": "Zadzwoń lub napisz - opowiemy o zwierzaku i ustalimy szczegóły."
+  }
+}

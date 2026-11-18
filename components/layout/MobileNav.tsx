@@ -36,7 +36,7 @@ export function MobileNav({ items, cta, phone, socials }: Props) {
       const r = dialog.getBoundingClientRect();
       if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) dialog.close();
     };
-    // the panel never makes sense on desktop – close it if the window grows past the breakpoint
+    // the panel never makes sense on desktop - close it if the window grows past the breakpoint
     const wide = window.matchMedia("(min-width: 80rem)");
     const onWide = () => wide.matches && dialog.open && dialog.close();
     dialog.addEventListener("close", onClose);
@@ -84,7 +84,7 @@ export function MobileNav({ items, cta, phone, socials }: Props) {
             </button>
           </div>
 
-          <nav aria-label="Menu główne" className="mt-8">
+          <nav aria-label="Menu główne" className="mt-6">
             <ul className="offcanvas-list">
               {items.map((item) => (
                 <li key={item.href} className="border-b border-plum-100">
@@ -92,7 +92,7 @@ export function MobileNav({ items, cta, phone, socials }: Props) {
                     href={item.href}
                     onClick={close}
                     aria-current={isCurrent(item.href) ? "page" : undefined}
-                    className="group flex min-h-14 items-center justify-between gap-3 py-2 font-display text-2xl font-semibold uppercase tracking-wide text-plum-800 transition-colors hover:text-plum-600 aria-[current=page]:text-plum-600"
+                    className="group flex min-h-12 items-center justify-between gap-3 py-1.5 font-display text-[1.375rem] font-semibold uppercase tracking-wide text-plum-800 transition-colors hover:text-plum-600 aria-[current=page]:text-plum-600"
                   >
                     {item.label}
                     <ArrowRight

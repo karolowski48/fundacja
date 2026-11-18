@@ -1,0 +1,67 @@
+{
+  "seo": {
+    "title": "Wszystkie linki",
+    "description": "Najważniejsze linki Fundacji Empatia na rzecz Zwierząt w jednym miejscu: Facebook, Instagram, zrzutka, wolontariat, dane do wpłat i telefon."
+  },
+  "intro": {
+    "lead": "Wszystkie najważniejsze linki w jednym miejscu. Wybierz, jak chcesz nas wesprzeć albo obserwować."
+  },
+  "links": [
+    {
+      "id": "facebook",
+      "label": "Facebook",
+      "description": "Aktualności, akcje i zwierzaki szukające domu",
+      "icon": "facebook",
+      "url": "https://www.facebook.com/share/18htfEvXte/"
+    },
+    {
+      "id": "instagram",
+      "label": "Instagram",
+      "description": "Zdjęcia i relacje z codziennej pomocy",
+      "icon": "instagram",
+      "url": "https://www.instagram.com/empatia.na.dloni"
+    },
+    {
+      "id": "zrzutka",
+      "label": "Zrzutka fundacji",
+      "description": "Wpłać online na leczenie, karmę i budki",
+      "icon": "hand-heart",
+      "url": "https://zrzutka.pl/xg7gtb"
+    },
+    {
+      "id": "wirtualna-adopcja",
+      "label": "Wirtualna adopcja",
+      "description": "Nasz profil na RatujemyZwierzaki.pl",
+      "icon": "heart",
+      "url": ""
+    },
+    {
+      "id": "wolontariat",
+      "label": "Zostań wolontariuszem",
+      "description": "Krótka ankieta dla chętnych do pomocy",
+      "icon": "heart-handshake",
+      "url": ""
+    }
+  ],
+  "more": [
+    {
+      "id": "tiktok",
+      "label": "TikTok",
+      "description": "Codzienność fundacji na filmach",
+      "icon": "tiktok",
+      "url": "https://www.tiktok.com/@empatianadloni"
+    },
+    {
+      "id": "strona",
+      "label": "Strona fundacji",
+      "description": "Kim jesteśmy, jak pomagamy, historie zwierząt",
+      "icon": "house",
+      "url": "/"
+    }
+  ],
+  "donate": {
+    "title": "Wpłać darowiznę",
+    "text": "Przelew tradycyjny albo BLIK na telefon."
+  },
+  "soon": "Wkrótce"
+}

@@ -50,7 +50,7 @@ export default function HelpPage() {
             const flip = i % 2 === 1;
             return (
               <section key={area.id} id={area.id} aria-labelledby={`${area.id}-title`} className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-                <div data-reveal className={cn("relative", flip && "lg:order-2")}>
+                <div data-reveal className={cn("relative max-lg:mx-3", flip && "lg:order-2")}>
                   <div aria-hidden="true" className={cn("absolute -inset-3 rounded-[2.25rem] bg-plum-100", flip ? "rotate-2" : "-rotate-2")} />
                   <figure className="group relative overflow-hidden rounded-[2rem] shadow-xl shadow-plum-900/15">
                     <Picture

@@ -1,12 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { nunito, oswald } from "@/app/fonts";
-import { Footer } from "@/components/layout/Footer";
-import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/JsonLd";
 import { Motion } from "@/components/Motion";
 import { RouteScroll } from "@/components/layout/RouteScroll";
-import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { settings } from "@/lib/content";
 import { organizationJsonLd } from "@/lib/seo";
 import { isPreview, siteUrl } from "@/lib/site";
@@ -50,12 +47,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         >
           Przejdź do treści
         </a>
-        <Header />
-        <main id="main" tabIndex={-1}>
-          {children}
-        </main>
-        <Footer />
-        <ScrollToTop />
+        {/* <main id="main"> comes from the route group layout: app/(site) (header + footer) or app/(links) (minimal) */}
+        {children}
         <RouteScroll />
         <Motion />
         <JsonLd data={organizationJsonLd()} />

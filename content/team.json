@@ -1,0 +1,42 @@
+{
+  "seo": {
+    "title": "Nasza Empatyczna Ekipa - wolontariusze fundacji",
+    "description": "Poznaj wolontariuszy Fundacji Empatia na rzecz Zwierząt: ludzi, którzy pomagają na kiermaszach, tworzą rękodzieło, organizują zbiórki i wspierają nas na co dzień."
+  },
+  "intro": {
+    "eyebrow": "Wolontariusze",
+    "title": "Nasza Empatyczna Ekipa",
+    "lead": "Za każdym uratowanym zwierzakiem stoją ludzie. Nasi wolontariusze pomagają na kiermaszach, tworzą rękodzieło, organizują zbiórki i wspierają nas w codziennych działaniach. Są dla nas ogromnie ważni - bez nich nie dalibyśmy rady.",
+    "crumb": "Nasza ekipa"
+  },
+  "roles": {
+    "eyebrow": "Jak pomagają",
+    "title": "Każdy pomaga po swojemu",
+    "items": [
+      { "icon": "store", "title": "Kiermasze", "text": "Stoją z nami przy stoisku z brelokami, bransoletkami i zapachami do auta. Każdy sprzedany drobiazg to pomoc dla zwierząt." },
+      { "icon": "scissors", "title": "Rękodzieło", "text": "Tworzą rękodzieło, które sprzedajemy na kiermaszach. Dochód wspiera leczenie i opiekę nad zwierzętami." },
+      { "icon": "piggy-bank", "title": "Zbiórki", "text": "Organizują zbiórki, dzięki którym starcza na karmę, leki i wizyty u weterynarza." },
+      { "icon": "heart-handshake", "title": "Codzienna pomoc", "text": "Pomagają przy wyłapywaniu kotów do sterylizacji, transportach do weterynarza i opiece nad zwierzętami." }
+    ]
+  },
+  "membersSection": {
+    "eyebrow": "Poznajcie nas",
+    "title": "Ludzie, dzięki którym możemy pomagać",
+    "emptyTitle": "Wkrótce przedstawimy tu naszą ekipę",
+    "emptyText": "Zbieramy zdjęcia i kilka słów od naszych wolontariuszy. Już niedługo poznasz ludzi, dzięki którym Fundacja Empatia może pomagać każdego dnia."
+  },
+  "members": [],
+  "fairsSection": {
+    "eyebrow": "Kiermasze",
+    "title": "Z naszych kiermaszów",
+    "lead": "Tak wygląda pomaganie przy stoisku fundacji. Terminy kolejnych kiermaszów ogłaszamy na Facebooku i Instagramie."
+  },
+  "fairs": [],
+  "join": {
+    "title": "Dołącz do naszej ekipy",
+    "text": "Możesz pomagać przy kiermaszach, tworzyć rękodzieło, organizować zbiórki albo wspierać nas przy transportach i wyłapywaniu kotów. Każda para rąk się liczy.",
+    "cta": "Zostań wolontariuszem",
+    "fallbackNote": "Ankieta dla wolontariuszy jest w przygotowaniu. Do tego czasu zadzwoń albo napisz do nas - chętnie opowiemy, jak możesz pomóc."
+  },
+  "volunteerFormUrl": ""
+}

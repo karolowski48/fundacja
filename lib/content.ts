@@ -5,23 +5,118 @@ import fs from "node:fs";
 import path from "node:path";
 import matter from "gray-matter";
 import { marked } from "marked";
+import { nbsp } from "@/lib/typography";
 import settingsJson from "@/content/settings.json";
 import homeJson from "@/content/home.json";
 import faqJson from "@/content/faq.json";
 import aboutJson from "@/content/about.json";
 import helpJson from "@/content/help.json";
 import galleryJson from "@/content/gallery.json";
+import teamJson from "@/content/team.json";
+import adoptionPageJson from "@/content/adoption-page.json";
+import linksJson from "@/content/links.json";
+import partnersJson from "@/content/partners.json";
+import teamFixture from "@/tests/fixtures/team.json";
+
+/**
+ * `CONTENT_FIXTURES=1` builds the site with sample data from tests/fixtures (volunteers, animals for
+ * adoption) so the filled-in layouts can be tested before the real content arrives. Never set it for
+ * a deploy - see scripts/test-fixtures.mjs.
+ */
+const useFixtures = process.env.CONTENT_FIXTURES === "1";
 
 export const settings = settingsJson;
 export const home = homeJson;
-export const faq = faqJson.items;
 export const about = aboutJson;
 export const helpPage = helpJson;
 export const gallery = galleryJson;
+export const adoptionPage = adoptionPageJson;
+export const partners: Partners = partnersJson;
 export type Settings = typeof settingsJson;
-export type FaqItem = (typeof faqJson.items)[number];
+
+export type FaqItem = { question: string; answer: string; link?: { href: string; label: string } };
+export const faq: FaqItem[] = faqJson.items;
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
+
+// ───────────── Team (/nasza-ekipa/) ─────────────
+// Publish only volunteers who agreed to it (CLAUDE.md §8).
+
+export type TeamMember = {
+  name: string;
+  /** Short role shown as a badge, e.g. "Kiermasze", "Rękodzieło", "Zbiórki", "Codzienna pomoc". */
+  role: string;
+  description: string;
+  /** Name from public/images/manifest.json or a CMS upload path ("/images/uploads/x.jpg"). */
+  image: string;
+  imageAlt: string;
+};
+export type FairPhoto = { image: string; alt: string; caption: string };
+type TextBlock = { eyebrow: string; title: string };
+export type Team = {
+  seo: { title: string; description: string };
+  intro: TextBlock & { lead: string; crumb: string };
+  roles: TextBlock & { items: Array<{ icon: string; title: string; text: string }> };
+  membersSection: TextBlock & { emptyTitle: string; emptyText: string };
+  members: TeamMember[];
+  fairsSection: TextBlock & { lead: string };
+  fairs: FairPhoto[];
+  join: { title: string; text: string; cta: string; fallbackNote: string };
+  /** Google Form "Zostań wolontariuszem". Empty → the button leads to the contact section. */
+  volunteerFormUrl: string;
+};
+export const team: Team = useFixtures ? teamFixture : teamJson;
+
+// ───────────── Partners ─────────────
+
+export type Partner = { name: string; url: string; /** file in public/partners/, e.g. "/partners/ctrlz.svg"; empty → text label */ logo: string };
+export type Partners = {
+  seo: { title: string; description: string };
+  hero: { eyebrow: string; title: string; lead: string; crumb: string };
+  section: { eyebrow: string; title: string; lead: string; join: string };
+  items: Partner[];
+};
+
+// ───────────── Links page (/linki/ - printed as a QR code, the path never changes) ─────────────
+
+export type LinkItem = { id: string; label: string; description: string; icon: string; url: string };
+type LinksContent = Omit<typeof linksJson, "links" | "more"> & { links: LinkItem[]; more: LinkItem[] };
+const linksContent: LinksContent = linksJson;
+
+/** An empty `url` falls back to the same address used elsewhere on the site, so it is set in one place. */
+function resolveLink(item: LinkItem): LinkItem {
+  if (item.url) return item;
+  const fallback: Record<string, string> = {
+    facebook: settings.social.facebook,
+    instagram: settings.social.instagram,
+    tiktok: settings.social.tiktok,
+    zrzutka: settings.donation.zrzutkaUrl,
+    wolontariat: team.volunteerFormUrl,
+  };
+  return { ...item, url: fallback[item.id] ?? "" };
+}
+
+export const links = { ...linksContent, links: linksContent.links.map(resolveLink), more: linksContent.more.map(resolveLink) };
+
+// ───────────── Documents ─────────────
+
+export type SiteDocument = { href: string; label: string; /** "PDF, 240 KB" */ details: string };
+
+function fileSizeLabel(bytes: number): string {
+  return bytes < 1024 * 1024 ? `${Math.max(1, Math.round(bytes / 1024))} KB` : `${(bytes / 1024 / 1024).toFixed(1).replace(".", ",")} MB`;
+}
+
+/** Statute PDF from settings.documents.statutePdf (a file in public/dokumenty/). Empty → null, nothing is shown. */
+export function getStatute(): SiteDocument | null {
+  const href = useFixtures ? "/dokumenty/statut-testowy.pdf" : settings.documents.statutePdf.trim();
+  if (!href) return null;
+  const file = useFixtures ? path.join(process.cwd(), "tests", "fixtures", "statut-testowy.pdf") : path.join(process.cwd(), "public", href.replace(/^\//, ""));
+  if (!href.startsWith("/") || !fs.existsSync(file)) {
+    throw new Error(`content/settings.json: documents.statutePdf "${href}" - file not found in public/ (expected e.g. "/dokumenty/statut.pdf").`);
+  }
+  const details = `PDF, ${fileSizeLabel(fs.statSync(file).size)}`;
+  return { href, label: `Statut fundacji (${details})`, details };
+}
 
 function requireString(data: Record<string, unknown>, key: string, file: string): string {
   const value = data[key];
@@ -85,4 +180,78 @@ export function getPage(slug: string): Page {
     // Markdown comes only from our own repository (CMS commits), never from visitors
     html: marked.parse(content, { async: false }),
   };
+}
+
+// ───────────── Animals for adoption (content/adoption/*.md, files starting with "_" are ignored) ─────────────
+
+export type AdoptionSpecies = "kot" | "pies";
+export type AdoptionStatus = "szuka domu" | "zarezerwowany";
+export type AdoptionAnimal = {
+  slug: string;
+  name: string;
+  species: AdoptionSpecies;
+  sex: "samica" | "samiec" | "";
+  age: string;
+  status: AdoptionStatus;
+  image: string;
+  imageAlt: string;
+  facts: string[];
+  /** First paragraph of the story (HTML), always visible. */
+  storyLead: string;
+  /** The rest of the story (HTML), behind "Czytaj całą historię". */
+  storyMore: string;
+  order: number;
+};
+
+function oneOf<T extends string>(data: Record<string, unknown>, key: string, allowed: readonly T[], file: string, fallback?: T): T {
+  const value = data[key] ?? fallback;
+  if (typeof value !== "string" || !(allowed as readonly string[]).includes(value)) {
+    throw new Error(`${file}: field "${key}" must be one of ${allowed.map((a) => `"${a}"`).join(", ")}`);
+  }
+  return value as T;
+}
+
+/** Polish typesetting inside Markdown prose (list markers stay untouched). */
+function nbspMarkdown(md: string): string {
+  return md
+    .split("\n")
+    .map((line) => {
+      const marker = line.match(/^(\s*(?:[-*+]|\d+\.)\s+)(.*)$/);
+      return marker ? marker[1] + nbsp(marker[2] ?? "") : nbsp(line);
+    })
+    .join("\n");
+}
+
+export function getAdoptionAnimals(): AdoptionAnimal[] {
+  const dir = useFixtures ? path.join(process.cwd(), "tests", "fixtures", "adoption") : path.join(CONTENT_DIR, "adoption");
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".md") && !f.startsWith("_"))
+    .map((f) => {
+      const file = `content/adoption/${f}`;
+      const slug = f.replace(/\.md$/, "");
+      if (!/^[a-z0-9-]+$/.test(slug)) throw new Error(`${file}: file name must use only a-z, 0-9 and "-" (it becomes the card's address)`);
+      const { data, content } = matter(fs.readFileSync(path.join(dir, f), "utf8"));
+      if (data.draft === true) return null;
+      const facts = Array.isArray(data.facts) ? data.facts.filter((x): x is string => typeof x === "string" && x.trim() !== "") : [];
+      const blocks = content.trim().split(/\n\s*\n/).filter(Boolean);
+      const md = (part: string[]) => (part.length ? marked.parse(nbspMarkdown(part.join("\n\n")), { async: false }) : "");
+      return {
+        slug,
+        name: requireString(data, "name", file),
+        species: oneOf(data, "species", ["kot", "pies"] as const, file),
+        sex: oneOf(data, "sex", ["samica", "samiec", ""] as const, file, ""),
+        age: optionalString(data, "age"),
+        status: oneOf(data, "status", ["szuka domu", "zarezerwowany"] as const, file, "szuka domu"),
+        image: requireString(data, "image", file),
+        imageAlt: requireString(data, "imageAlt", file),
+        facts,
+        storyLead: md(blocks.slice(0, 1)),
+        storyMore: md(blocks.slice(1)),
+        order: typeof data.order === "number" ? data.order : 999,
+      };
+    })
+    .filter((a): a is AdoptionAnimal => a !== null)
+    .sort((a, b) => a.order - b.order || a.name.localeCompare(b.name, "pl"));
 }

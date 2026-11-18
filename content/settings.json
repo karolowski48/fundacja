@@ -6,15 +6,19 @@
   "founder": "Sylwia Łętocha",
   "siteUrl": "https://empatianadloni.pl",
   "phone": "724 236 270",
+  "phoneNote": "Nie zawsze mamy możliwość przyjęcia kolejnego zwierzęcia, ale zawsze staram się w jakiś sposób pomóc, doradzić lub pokierować dalej.",
   "email": "",
   "address": { "street": "", "postalCode": "", "city": "", "region": "" },
   "krs": "",
   "nip": "",
   "regon": "",
+  "documents": {
+    "statutePdf": ""
+  },
   "donation": {
     "bankAccount": "91 1020 2892 0000 5202 1039 7216",
     "bankAccountOwner": "Fundacja Empatia na rzecz Zwierząt",
-    "transferTitle": "Darowizna",
+    "transferTitle": "Darowizna na cele statutowe",
     "blikPhone": "663 806 717",
     "zrzutkaUrl": "https://zrzutka.pl/xg7gtb",
     "taxKrs": "0000270261",

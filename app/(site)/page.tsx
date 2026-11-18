@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Stats storyCount={stories.length} />
+      <Stats />
       <About />
       <Help />
       <Stories stories={stories} />

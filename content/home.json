@@ -17,23 +17,23 @@
     "asOf": "listopad 2026",
     "items": [
       {
-        "value": "ok. 30",
+        "value": "174",
+        "label": "uratowane koty",
+        "verified": true
+      },
+      {
+        "value": "ok. 160",
         "label": "wysterylizowanych kotów",
         "verified": true
       },
       {
-        "value": "544",
-        "label": "osoby wsparły naszą zbiórkę",
+        "value": "ok. 120",
+        "label": "historii ze szczęśliwym zakończeniem",
         "verified": true
       },
       {
         "value": "7 dni",
         "label": "w tygodniu przy kociej kolonii",
-        "verified": true
-      },
-      {
-        "value": "{stories}",
-        "label": "historii ze szczęśliwym zakończeniem",
         "verified": true
       }
     ]
@@ -43,10 +43,10 @@
     "title": "Zaczęło się od jednej kociej mamy",
     "paragraphs": [
       "Fundacja Empatia na rzecz Zwierząt wyrosła z codziennej pomocy bezdomnym kotom - tym, które wielu nazywa „dzikimi”. Dla nas są po prostu bezdomne: bez głosu, bez wyboru i bez szans, jeśli nikt nie wyciągnie do nich ręki.",
-      "Wszystko zaczęło się, gdy Sylwia Łętocha zaczęła codziennie przyjeżdżać do jednej kociej mamy z młodymi. To miejsce z czasem przyciągało coraz więcej porzuconych, głodnych i chorych kotów. Od tamtej pory udało się wysterylizować około 30 z nich, a wiele znalazło domy.",
+      "Wszystko zaczęło się, gdy Sylwia Łętocha zaczęła codziennie przyjeżdżać do jednej kociej mamy z młodymi. To miejsce z czasem przyciągało coraz więcej porzuconych, głodnych i chorych kotów. Od tamtej pory udało się uratować 174 koty i wysterylizować około 160, a wiele z nich znalazło domy.",
       "Sylwia przez lata działała sama, potem z wolontariuszkami i stowarzyszeniem. Dziś działamy jako fundacja - z tą samą przejrzystością co na początku. Prowadzimy zapiski: kto został odrobaczony, kto wysterylizowany, kto poszedł do domu. To nie są anonimowe koty - każdy ma imię i swoją historię."
     ],
-    "quote": "Ręce poranione, ale serce silne. Z każdą raną nauczyłam się pomagać mądrzej i skuteczniej.",
+    "quote": "Zawsze chciałam zostać weterynarzem. Teraz już wiem, że nie muszę nim być, żeby ratować zwierzęta.",
     "quoteAuthor": "Sylwia Łętocha",
     "quoteRole": "założycielka fundacji",
     "photoCredit": "Fot. Foto Gabka",
@@ -104,7 +104,7 @@
         "image": "help-colony",
         "imageAlt": "Koty różnych maści jedzą przy metalowym kontenerze wśród liści",
         "title": "Inne zwierzęta",
-        "text": "Pomagamy każdemu, kto trafi w nasze ręce: psom, królikom, ptakom i szynszylom."
+        "text": "Pomagamy każdemu, kto trafi w nasze ręce: psom, ptakom, gryzoniom i królikom."
       }
     ],
     "speciesTitle": "Komu pomagamy",
@@ -132,7 +132,7 @@
       },
       {
         "image": "species-chinchilla",
-        "label": "Szynszylom",
+        "label": "Gryzoniom",
         "alt": "Szara szynszyla je siano z miski"
       }
     ]
@@ -149,7 +149,7 @@
     "lead": "Sterylizacje mamy dzięki gminie za darmo. Cała reszta - leczenie, leki, badania, karma i budki - to Wasze wpłaty. Każda złotówka to konkretna pomoc.",
     "transfer": {
       "title": "Wpłać darowiznę",
-      "text": "Przelew tradycyjny albo BLIK na telefon. Wpisz tytuł „Darowizna”.",
+      "text": "Przelew tradycyjny albo BLIK na telefon. Wpisz tytuł „Darowizna na cele statutowe”.",
       "zrzutkaCta": "Wpłać przez zrzutka.pl"
     },
     "tax": {
@@ -164,7 +164,11 @@
     },
     "volunteer": {
       "title": "Dom tymczasowy, adopcja, wolontariat",
-      "text": "Szukamy domów tymczasowych dla kociaków, osób do pomocy przy wyłapywaniu i transportach do weterynarza. Odezwij się - każda para rąk się liczy."
+      "text": "Szukamy domów tymczasowych dla psiaków i kociaków, osób do pomocy przy wyłapywaniu i transportach do weterynarza. Odezwij się - każda para rąk się liczy.",
+      "links": [
+        { "href": "/do-adopcji/", "label": "Zwierzęta do adopcji" },
+        { "href": "/nasza-ekipa/", "label": "Poznaj naszą ekipę" }
+      ]
     }
   },
   "faq": {

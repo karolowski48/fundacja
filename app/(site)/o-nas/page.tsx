@@ -1,13 +1,14 @@
-import { Quote } from "lucide-react";
+import { FileText, Quote } from "lucide-react";
 import { JsonLd } from "@/components/JsonLd";
 import { PageHero } from "@/components/layout/PageHero";
 import { CtaBand } from "@/components/sections/CtaBand";
+import { Partners } from "@/components/sections/Partners";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { Paw } from "@/components/ui/Paw";
 import { Picture } from "@/components/ui/Picture";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { about, settings } from "@/lib/content";
+import { about, getStatute, settings } from "@/lib/content";
 import { contentIcon } from "@/lib/icons";
 import { breadcrumbJsonLd, buildMetadata, webPageJsonLd } from "@/lib/seo";
 import { buildDate } from "@/lib/site";
@@ -18,6 +19,7 @@ export const metadata = buildMetadata({ title: about.seo.title, description: abo
 
 export default function AboutPage() {
   const { hero, story, timeline, values, transparency, plans } = about;
+  const statute = getStatute();
   return (
     <>
       <PageHero {...hero} />
@@ -25,7 +27,7 @@ export default function AboutPage() {
       {/* Founder story */}
       <section aria-labelledby="story-title" className="py-20 sm:py-28">
         <Container className="grid items-start gap-14 lg:grid-cols-[1fr_1.25fr] lg:gap-20">
-          <div className="relative mx-auto w-full max-w-md lg:sticky lg:top-28" data-reveal>
+          <div className="relative mx-auto w-full max-w-md max-sm:w-[calc(100%-1.5rem)] lg:sticky lg:top-28" data-reveal>
             <div aria-hidden="true" className="absolute -inset-3 -rotate-3 rounded-[2.25rem] bg-plum-100" />
             <figure className="hover-straighten relative rotate-2 rounded-[2rem] bg-white p-3 shadow-xl shadow-plum-900/15">
               <Picture name={story.image} alt={story.imageAlt} sizes="(min-width: 1024px) 28rem, 90vw" position="45% 35%" className="aspect-[4/5] w-full rounded-[1.5rem] object-cover" />
@@ -46,7 +48,9 @@ export default function AboutPage() {
               <blockquote className="mt-2 font-display text-2xl font-medium leading-snug text-plum-800">
                 <p>„{nbsp(story.quote)}”</p>
               </blockquote>
-              <figcaption className="mt-3 font-bold text-plum-700">{story.quoteAuthor}</figcaption>
+              <figcaption className="mt-3 text-plum-700">
+                <span className="font-bold">{story.quoteAuthor}</span>, {story.quoteRole}
+              </figcaption>
             </figure>
           </div>
         </Container>
@@ -109,9 +113,17 @@ export default function AboutPage() {
                 <p key={p.slice(0, 24)}>{nbsp(p)}</p>
               ))}
             </div>
-            <ButtonLink href={settings.donation.zrzutkaUrl} variant="sun" external className="mt-8">
-              {transparency.cta}
-            </ButtonLink>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <ButtonLink href={settings.donation.zrzutkaUrl} variant="sun" external>
+                {transparency.cta}
+              </ButtonLink>
+              {statute && (
+                <ButtonLink href={statute.href} variant="outlineLight" external>
+                  <FileText aria-hidden="true" className="size-5" />
+                  {statute.label}
+                </ButtonLink>
+              )}
+            </div>
           </div>
           <figure data-reveal className="hover-straighten mx-auto w-full max-w-sm -rotate-3 rounded-[1.75rem] bg-cream-50 p-3 pb-4 shadow-2xl shadow-plum-950/40">
             <Picture name={transparency.image} alt={transparency.imageAlt} sizes="(min-width: 1024px) 24rem, 85vw" className="aspect-[3/4] w-full rounded-[1.25rem] object-cover object-top" />
@@ -139,6 +151,8 @@ export default function AboutPage() {
           </ul>
         </Container>
       </section>
+
+      <Partners id="partnerzy" className="mt-20 bg-plum-50 sm:mt-28" />
 
       <CtaBand />
 

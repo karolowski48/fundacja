@@ -2,11 +2,11 @@
   "items": [
     {
       "question": "Czym zajmuje się Fundacja Empatia na rzecz Zwierząt?",
-      "answer": "Fundacja Empatia na rzecz Zwierząt ratuje, leczy, dokarmia i sterylizuje bezdomne koty, a także pomaga innym zwierzętom w potrzebie: psom, królikom, ptakom i szynszylom. Prowadzimy tymczasowy azyl, w którym chore zwierzęta wracają do zdrowia, a oswojone kociaki przygotowują się do adopcji."
+      "answer": "Fundacja Empatia na rzecz Zwierząt ratuje, leczy, dokarmia i sterylizuje bezdomne koty, a także pomaga innym zwierzętom w potrzebie: psom, ptakom, gryzoniom i królikom. Prowadzimy tymczasowy azyl, w którym chore zwierzęta wracają do zdrowia, a oswojone kociaki przygotowują się do adopcji."
     },
     {
       "question": "Jak przekazać darowiznę na Fundację Empatia?",
-      "answer": "Najprościej przelewem na konto 91 1020 2892 0000 5202 1039 7216 z tytułem „Darowizna” albo BLIK-iem na numer telefonu 663 806 717. Możesz też wpłacić przez naszą zbiórkę na zrzutka.pl."
+      "answer": "Najprościej przelewem na konto 91 1020 2892 0000 5202 1039 7216 z tytułem „Darowizna na cele statutowe” albo BLIK-iem na numer telefonu 663 806 717. Możesz też wpłacić przez naszą zbiórkę na zrzutka.pl."
     },
     {
       "question": "Jak przekazać 1,5% podatku na Fundację Empatia?",
@@ -17,8 +17,9 @@
       "answer": "Na leczenie kociego kataru, antybiotyki, diagnostykę i badania, leki, środki przeciw pasożytom, karmę oraz ocieplane budki na zimę. Sterylizacje i kastracje wykonujemy dzięki programowi gminy, więc wpłaty finansują wszystko inne. Faktury i paragony publikujemy na naszej zrzutce."
     },
     {
-      "question": "Czy mogę adoptować kota?",
-      "answer": "Tak. Oswojone koty i kociaki z naszego azylu szukają domów. Zadzwoń pod numer 724 236 270 albo napisz do nas na Instagramie lub Facebooku - opowiemy o zwierzakach, które czekają na dom."
+      "question": "Czy mogę adoptować kota lub psa?",
+      "answer": "Tak. Koty i psiaki pod naszą opieką, które szukają domu, pokazujemy na stronie „Zwierzęta do adopcji”. Zadzwoń pod numer 724 236 270 albo napisz do nas na Instagramie lub Facebooku - opowiemy o zwierzaku i ustalimy szczegóły.",
+      "link": { "href": "/do-adopcji/", "label": "Zobacz zwierzęta do adopcji" }
     },
     {
       "question": "Znalazłem bezdomnego lub rannego kota - co robić?",

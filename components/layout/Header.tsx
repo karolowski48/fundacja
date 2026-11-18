@@ -4,7 +4,7 @@ import { LogoImage } from "@/components/layout/Logo";
 import { MobileNav } from "@/components/layout/MobileNav";
 import { NavLinks } from "@/components/layout/NavLinks";
 import { settings } from "@/lib/content";
-import { navItems, telHref } from "@/lib/site";
+import { flatNavItems, navItems, telHref } from "@/lib/site";
 
 const cta = { href: "/#pomoc-wplata", label: "Wpłać darowiznę" };
 
@@ -33,7 +33,7 @@ export function Header() {
             Wpłać
           </a>
           <MobileNav
-            items={navItems}
+            items={flatNavItems}
             cta={cta}
             phone={{ label: settings.phone, href: telHref(settings.phone) }}
             socials={[

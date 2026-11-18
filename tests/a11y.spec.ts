@@ -1,7 +1,7 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "@playwright/test";
 
-const pages = ["/", "/o-nas/", "/jak-pomagamy/", "/galeria/", "/polityka-prywatnosci/"];
+const pages = ["/", "/o-nas/", "/jak-pomagamy/", "/galeria/", "/do-adopcji/", "/nasza-ekipa/", "/partnerzy/", "/linki/", "/polityka-prywatnosci/", "/nie-ma-takiej-strony/"];
 
 test.use({ reducedMotion: "reduce" });
 

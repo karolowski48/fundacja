@@ -1,4 +1,5 @@
-import { HandHeart, HeartHandshake, Percent, Phone, Store } from "lucide-react";
+import { ArrowRight, HandHeart, HeartHandshake, Percent, Phone, Store } from "lucide-react";
+import { AppLink } from "@/components/ui/AppLink";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { ButtonLink } from "@/components/ui/ButtonLink";
@@ -36,23 +37,14 @@ export function Donate() {
               </h3>
             </div>
             <p className="mt-4">{nbsp(donate.transfer.text)}</p>
-            <dl className="mt-6 grid gap-4 sm:grid-cols-2">
-              <CopyField label="Numer konta" value={donation.bankAccount} copyValue={digits(donation.bankAccount)} spokenName="numer konta" large className="sm:col-span-2" />
+            <dl className="mt-6 space-y-4">
+              <CopyField label="Numer konta" value={donation.bankAccount} copyValue={digits(donation.bankAccount)} spokenName="numer konta" large />
               <div>
                 <dt className="text-sm font-bold text-plum-700">Odbiorca</dt>
                 <dd className="mt-1.5 font-semibold">{donation.bankAccountOwner}</dd>
               </div>
-              <div>
-                <dt className="text-sm font-bold text-plum-700">Tytuł przelewu</dt>
-                <dd className="mt-1.5 font-semibold">„{donation.transferTitle}”</dd>
-              </div>
-              <CopyField
-                label="BLIK - przelew na numer telefonu"
-                value={donation.blikPhone}
-                copyValue={digits(donation.blikPhone)}
-                spokenName="numer telefonu do BLIK"
-                className="sm:col-span-2"
-              />
+              <CopyField label="Tytuł przelewu" value={donation.transferTitle} spokenName="tytuł przelewu" />
+              <CopyField label="BLIK - przelew na numer telefonu" value={donation.blikPhone} copyValue={digits(donation.blikPhone)} spokenName="numer telefonu do BLIK" />
             </dl>
             <ButtonLink href={donation.zrzutkaUrl} variant="plum" external className="mt-8 w-full sm:w-auto">
               {donate.transfer.zrzutkaCta}
@@ -124,6 +116,16 @@ export function Donate() {
                 Napisz do nas
               </ButtonLink>
             </div>
+            <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 border-t border-cream-100/20 pt-5">
+              {donate.volunteer.links.map((link) => (
+                <li key={link.href}>
+                  <AppLink href={link.href} className="group/link inline-flex min-h-11 items-center gap-1.5 font-bold text-sun-400 underline-offset-4 hover:underline">
+                    {link.label}
+                    <ArrowRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                  </AppLink>
+                </li>
+              ))}
+            </ul>
           </article>
         </div>
       </Container>

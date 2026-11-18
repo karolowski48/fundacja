@@ -4,6 +4,7 @@ import { ExternalLink } from "@/components/ui/ExternalLink";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { LogoImage } from "@/components/layout/Logo";
+import { PhoneNote } from "@/components/ui/PhoneNote";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import type { BrandIconName } from "@/lib/brand-icons";
 import { home, settings } from "@/lib/content";
@@ -34,6 +35,7 @@ export function Contact() {
                 <span className="font-display text-2xl font-bold tracking-wide text-plum-800 sm:text-3xl">{settings.phone}</span>
               </span>
             </a>
+            {settings.phoneNote && <PhoneNote text={settings.phoneNote} />}
             {settings.email && (
               <a href={`mailto:${settings.email}`} className="flex items-center gap-4 rounded-[1.5rem] bg-white p-4 ring-1 ring-plum-100 hover:ring-plum-300 sm:p-5">
                 <span className="grid size-14 shrink-0 place-items-center rounded-2xl bg-plum-600 text-white">

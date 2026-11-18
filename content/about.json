@@ -20,8 +20,9 @@
       "Bywało trudno. Wyłapywanie przestraszonych kotów zostawiało ślady na rękach, ale z każdą raną przychodziło doświadczenie. Dziś Sylwia wie, jak ratować kocie życie mądrze, skutecznie i z empatią.",
       "Najpierw działała sama, potem z pomocą wolontariuszek i stowarzyszenia. Dziś - razem z ludźmi, którym los zwierząt leży na sercu - tworzy Fundację Empatia na rzecz Zwierząt."
     ],
-    "quote": "Ręce poranione, ale serce silne. Bo każda rana to dowód, że warto.",
+    "quote": "Zawsze chciałam zostać weterynarzem. Teraz już wiem, że nie muszę nim być, żeby ratować zwierzęta.",
     "quoteAuthor": "Sylwia Łętocha",
+    "quoteRole": "założycielka fundacji",
     "image": "sylwia-dog",
     "imageAlt": "Sylwia Łętocha w czapce z łapką przytula czarnego psa na łące"
   },
@@ -31,7 +32,7 @@
     "steps": [
       { "title": "Jedna kocia mama", "text": "Codzienne przyjazdy do kotki z młodymi: karma, woda, obserwacja i pierwsze leczenie." },
       { "title": "Kolonia rośnie", "text": "W tym samym miejscu pojawiało się coraz więcej porzuconych, głodnych i chorych kotów. Każdy dostawał imię i swoje miejsce w zeszycie." },
-      { "title": "Sterylizacje i pierwsze adopcje", "text": "Dzięki programowi gminy udało się wysterylizować około 30 kotów. Wiele z nich znalazło domy, a pozostałe są bezpieczne na miejscu bytowania." },
+      { "title": "Sterylizacje i pierwsze adopcje", "text": "Dzięki programowi gminy udało się wysterylizować już około 160 kotów. Wiele z nich znalazło domy, a pozostałe są bezpieczne na miejscu bytowania." },
       { "title": "Wolontariusze", "text": "Przy większych akcjach wyłapywania pomagają znajomi wolontariusze. Dzięki nim udało się złapać wiele trudnych przypadków." },
       { "title": "Fundacja i azyl", "text": "Dziś działamy jako Fundacja Empatia na rzecz Zwierząt i tworzymy azyl w osobnym budynku - przystanek do lepszego życia." }
     ]

@@ -27,6 +27,9 @@ Etapy:
 - **Etap 0 (ten plik)** — instrukcja budowy. ✅
 - **Etap 1** — strona główna + podstrony O nas, Jak pomagamy, Galeria na `localhost`, pełny branding,
   animacje (GSAP), treści ze zrzutki, SEO/GEO, WCAG 2.1 AA. ✅ (stan: sekcja 17)
+- **Etap 1b** — poprawki z maila właścicielki (17.11.2026): nowe liczby i cytat, „gryzonie” zamiast
+  „szynszyli”, tytuł przelewu, notka pod telefonem, podstrony Nasza Empatyczna Ekipa, Zwierzęta do adopcji,
+  strona linków pod kod QR (`/linki/`), partnerzy, statut PDF, menu z rozwijanym „O fundacji”. ✅ (sekcja 17)
 - **Etap 2** — deploy na **Cloudflare Pages** (darmowy hosting, static export).
 - **Etap 3** — **Sveltia CMS** (`/admin`) do edycji aktualności, historii zwierząt i ustawień.
 
@@ -42,7 +45,8 @@ Etapy:
 | Założycielka | Sylwia Łętocha | potwierdzone (zrzutka) |
 | Telefon kontaktowy | 724 236 270 | od właścicielki |
 | Konto bankowe | 91 1020 2892 0000 5202 1039 7216 | od właścicielki |
-| BLIK (przelew na telefon) | 663 806 717, tytuł: „Darowizna" | od właścicielki |
+| Tytuł przelewu (konto i BLIK) | „Darowizna na cele statutowe” (`donation.transferTitle`) | od właścicielki (17.11.2026) |
+| BLIK (przelew na telefon) | 663 806 717, tytuł: „Darowizna na cele statutowe” | od właścicielki |
 | 1,5% podatku — KRS | 0000270261 | od właścicielki |
 | 1,5% — cel szczegółowy | FUNDACJA EMPATIA NA RZECZ ZWIERZĄT 38275 | od właścicielki |
 | Zrzutka | https://zrzutka.pl/xg7gtb | od właścicielki |
@@ -52,7 +56,13 @@ Etapy:
 | Własny KRS / NIP / REGON fundacji | — | **DO USTALENIA** |
 | Adres siedziby / gmina działania | — | **DO USTALENIA** |
 | E-mail | — | **DO USTALENIA** |
-| Domena docelowa | — | **DO USTALENIA** (placeholder: `https://empatianadloni.pl`) |
+| Domena docelowa | — | **DO USTALENIA** (placeholder: `https://empatianadloni.pl`) - potrzebna PRZED kodem QR |
+| Notka pod telefonem | „Nie zawsze mamy możliwość przyjęcia kolejnego zwierzęcia, ale zawsze staram się w jakiś sposób pomóc, doradzić lub pokierować dalej.” (`phoneNote`, dosłownie, bez poprawiania) | od właścicielki |
+| Statystyki (stan na listopad 2026) | 174 uratowane koty · ok. 160 wysterylizowanych kotów · ok. 120 historii ze szczęśliwym zakończeniem · 7 dni w tygodniu przy kociej kolonii | od właścicielki (17.11.2026) |
+| Cytat założycielki | „Zawsze chciałam zostać weterynarzem. Teraz już wiem, że nie muszę nim być, żeby ratować zwierzęta.” - Sylwia Łętocha, założycielka fundacji | od właścicielki |
+| Statut fundacji (PDF) | — (`documents.statutePdf`, plik w `public/dokumenty/`) | **DO USTALENIA** |
+| Formularz „Zostań wolontariuszem” (Google) | — (`content/team.json → volunteerFormUrl`) | **DO USTALENIA** |
+| Profil na RatujemyZwierzaki.pl („Wirtualna adopcja”) | — (`content/links.json`) | **DO USTALENIA** (strona w budowie) |
 
 **Ważne o 1,5%:** KRS 0000270261 należy do **Fundacji Studenckiej „Młodzi‑Młodym"** (organizacja
 parasolowa OPP). Empatia zbiera 1,5% jako *cel szczegółowy* tej organizacji. Na stronie napisz to
@@ -129,29 +139,40 @@ Używaj Node 22 LTS (lokalnie działa też 24). W Cloudflare Pages ustaw zmienn�
 ├── package.json
 ├── app/
 │   ├── fonts.ts + fonts/          # next/font/local, podzbiory *-pl.woff2 + licencje OFL
-│   ├── o-nas/ jak-pomagamy/ galeria/   # podstrony (page.tsx czytają content/*.json)
+│   ├── layout.tsx                 # ROOT: <html lang="pl">, fonty, flaga js, skip-link, RouteScroll, Motion, JSON-LD organizacji
+│   ├── (site)/                    # grupa tras ze zwykłą ramą strony
+│   │   ├── layout.tsx             # SiteShell: Header, <main id="main">, Footer, ScrollToTop
+│   │   ├── page.tsx               # strona główna - składa sekcje z components/sections
+│   │   ├── o-nas/ jak-pomagamy/ galeria/ do-adopcji/ nasza-ekipa/ partnerzy/   # podstrony (page.tsx czytają content/)
+│   │   └── polityka-prywatnosci/page.tsx
+│   ├── (links)/                   # grupa tras BEZ nagłówka i stopki strony
+│   │   ├── layout.tsx             # minimalny layout „link in bio” (tło plum, <main>, mała stopka)
+│   │   └── linki/page.tsx         # /linki/ - strona pod kod QR, ŚCIEŻKI NIGDY NIE ZMIENIAĆ
 │   ├── llms.txt/route.ts          # generowany z content/ (force-static)
-│   ├── layout.tsx                 # <html lang="pl">, fonty, flaga js, skip-link, Header, Footer, ScrollToTop, Motion, JSON-LD
-│   ├── page.tsx                   # strona główna — składa sekcje z components/sections
 │   ├── globals.css                # @import "tailwindcss"; @theme { tokeny }; focus, reduced-motion
 │   ├── sitemap.ts                 # export const dynamic = "force-static"
 │   ├── robots.ts                  # export const dynamic = "force-static"; blokuje /admin/
 │   ├── manifest.ts                # PWA manifest (ikona, theme_color)
 │   ├── icon.png / apple-icon.png / opengraph-image.png   # z logo
-│   ├── not-found.tsx
-│   ├── polityka-prywatnosci/page.tsx
-│   └── (etap 3) aktualnosci/page.tsx, aktualnosci/[slug]/page.tsx (generateStaticParams)
+│   ├── not-found.tsx              # globalne 404 - renderuje się tylko w root layout, więc samo dokłada SiteShell
+│   └── (etap 3) (site)/aktualnosci/page.tsx, aktualnosci/[slug]/page.tsx (generateStaticParams)
 ├── components/
-│   ├── ui/                        # ButtonLink, ExternalLink, AppLink, Container, SectionHeading, Picture, CopyField, Paw, Wave, Breadcrumbs, BrandIcon
-│   ├── layout/                    # Header, NavLinks, MobileNav, Footer, PageHero, LegalPage, Logo, ScrollToTop
-│   ├── sections/                  # Hero, Stats, About, Help, Stories(+List), Donate, Faq, Contact, CtaBand
-│   ├── gallery/Gallery.tsx        # filtry + lightbox na <dialog>
+│   ├── ui/                        # ButtonLink, ExternalLink, AppLink, Container, SectionHeading, Picture, CopyField, PhoneNote, Paw, Wave, Breadcrumbs, BrandIcon, MobileSlider
+│   ├── layout/                    # SiteShell, Header, NavLinks (+ rozwijane „O fundacji”), MobileNav, Footer, PageHero, LegalPage, Logo, ScrollToTop, RouteScroll
+│   ├── sections/                  # Hero, Stats, About, Help, Stories(+List), Donate, Faq, Partners, Contact, CtaBand
+│   ├── adoption/AdoptionBoard.tsx # filtr Wszystkie / Koty / Psy na /do-adopcji/
+│   ├── gallery/Gallery.tsx        # filtry (opcjonalne) + lightbox na <dialog>; też zdjęcia z kiermaszów
 │   ├── Motion.tsx                 # GSAP (leniwie), patrz 6.1
 │   └── JsonLd.tsx
 ├── content/                       # ŹRÓDŁO TREŚCI (edytowalne później w CMS)
 │   ├── settings.json              # dane fundacji, social, dane do wpłat, SEO defaults
 │   ├── home.json                  # teksty sekcji strony głównej
 │   ├── about.json / help.json / gallery.json   # podstrony
+│   ├── team.json                  # /nasza-ekipa/: wolontariusze, zdjęcia z kiermaszów, link do ankiety
+│   ├── adoption-page.json         # teksty /do-adopcji/
+│   ├── adoption/*.md              # zwierzęta do adopcji (pliki z „_” na początku są ignorowane; _wzor.md = opis pól)
+│   ├── links.json                 # /linki/ (QR): lista linków w kolejności
+│   ├── partners.json              # /partnerzy/ (+ sekcja na /o-nas/)
 │   ├── pages/*.md                 # polityka prywatności
 │   ├── faq.json
 │   ├── stories/*.md               # historie zwierząt „kiedyś / teraz"
@@ -159,13 +180,16 @@ Używaj Node 22 LTS (lokalnie działa też 24). W Cloudflare Pages ustaw zmienn�
 ├── lib/
 │   ├── content.ts                 # loadery treści (JSON + fs/gray-matter/marked), typy
 │   ├── images.ts                  # manifest obrazów, getImage() wywala build przy złej nazwie
+│   ├── gallery.ts                 # toGalleryItem(): wpis z content → kafelek lightboxa (manifest albo upload)
 │   ├── icons.ts                   # dozwolone nazwy ikon w content/*.json
 │   ├── seo.ts                     # buildMetadata(), JSON-LD helpers
-│   ├── site.ts                    # siteUrl, navItems, pages (sitemap), telHref
+│   ├── site.ts                    # siteUrl, navItems (z grupą „O fundacji”), flatNavItems, linksPagePath, pages (sitemap), telHref
 │   └── typography.ts              # nbsp() - sierotki, cn()
 ├── public/
 │   ├── images/                    # zoptymalizowane WebP (generowane skryptem, commitowane)
 │   ├── brand/                     # logo.png, logo-transparent.png, pattern-paw.svg, lanyard.png
+│   ├── partners/                  # logotypy partnerów (SVG/PNG), wskazywane w content/partners.json
+│   ├── dokumenty/                 # statut fundacji (PDF), wskazywany w settings.json → documents.statutePdf
 │   ├── admin/                     # (etap 3) index.html + config.yml Sveltia
 │   ├── _headers                   # nagłówki bezpieczeństwa/cache dla Cloudflare Pages
 │   ├── llms.txt
@@ -175,10 +199,14 @@ Używaj Node 22 LTS (lokalnie działa też 24). W Cloudflare Pages ustaw zmienn�
 │   ├── brand-assets.mjs           # favicony, ikony PWA, OG/Twitter image, logo WebP
 │   ├── subset-fonts.mjs           # podzbiory fontów PL
 │   ├── extract-logo.mjs           # jednorazowo: logo bez tła
-│   └── cut-sources.mjs            # jednorazowo: pary „kiedyś/teraz” z rollupu, kafelki z kolażu
+│   ├── cut-sources.mjs            # jednorazowo: pary „kiedyś/teraz” z rollupu, kafelki z kolażu
+│   └── test-fixtures.mjs          # npm run test:fixtures: build z danymi przykładowymi → testy → build prawdziwej strony
 ├── source-images/                 # ORYGINAŁY (duże pliki właścicielki + ze zrzutki); w .gitignore poza brand/
 ├── tests/
-│   └── a11y.spec.ts               # Playwright + axe na "/"
+│   ├── a11y.spec.ts               # Playwright + axe na wszystkich stronach, klawiatura, menu, slidery, galeria
+│   ├── features.spec.ts           # liczby, teksty z maila, notka telefonu, menu „O fundacji”, /linki/, stany puste
+│   ├── fixtures.spec.ts           # wypełnione układy (tylko z CONTENT_FIXTURES=1)
+│   └── fixtures/                  # FIKCYJNE dane testowe (ekipa, zwierzęta, statut) - nigdy nie trafiają na stronę
 └── out/                           # build (gitignore)
 ```
 
@@ -326,9 +354,10 @@ obok siebie, stopkę w kolumnach.
   „markerem", pod spodem 2 przyciski (primary żółty „Wpłać teraz", outline biały „Przekaż 1,5%"),
   po prawej **kolaż 3 zdjęć w kremowych ramkach, lekko obrócone**, zamiast jednego zdjęcia w blobie.
 - Bez wyszukiwarki/filtrów adopcyjnych (nie mamy bazy adopcyjnej). Zamiast tego pasek
-  **liczb** („~30 wysterylizowanych kotów", „544 wspierających zrzutkę", „kilkanaście adopcji") —
-  liczby z `content/home.json`, do potwierdzenia z właścicielką.
-- Sekcja „Komu pomagamy" jako rząd okrągłych fotek (kot, pies, królik, ptak, szynszyla) z
+  **liczb** („174 uratowane koty”, „ok. 160 wysterylizowanych kotów”, „ok. 120 historii ze szczęśliwym
+  zakończeniem”, „7 dni w tygodniu przy kociej kolonii”) - liczby z `content/home.json`, potwierdzone przez
+  właścicielkę 17.11.2026. Zwierzęta do adopcji mają osobną podstronę `/do-adopcji/` (sekcja 7).
+- Sekcja „Komu pomagamy" jako rząd okrągłych fotek (kot, pies, królik, ptak, gryzonie - zdjęcie szynszyli) z
   kolażu — zamiast rysunkowych kafelków kategorii.
 - Historie „kiedyś → teraz" jako karty z **dwoma zdjęciami i strzałką** (dokładnie jak na
   rollupie) — to jest nasz unikalny element, referencja tego nie ma.
@@ -370,14 +399,24 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 
 ### 0. SkipLink + Header
 - `<a href="#main" class="sr-only focus:not-sr-only …">Przejdź do treści</a>` jako PIERWSZY element w `<body>`.
-- `<header>` z `<nav aria-label="Menu główne">`: Logo, linki (`lib/site.ts → navItems`): O nas (/o-nas/),
-  Jak pomagamy (/jak-pomagamy/), Historie (/#historie), Galeria (/galeria/), FAQ, Kontakt (bez „Jak pomóc” —
-  tę rolę pełni przycisk „Wpłać"). Pełne menu od `xl` (1280 px), poniżej przycisk „Menu”. Bieżąca strona ma
-  `aria-current="page"` i żółte podkreślenie. Cień nagłówka po przewinięciu (`html[data-scrolled]`).
+- `<header>` z `<nav aria-label="Menu główne">`: Logo, linki (`lib/site.ts → navItems`):
+  **O fundacji ▾** (rozwijane: O nas, Nasza ekipa, Partnerzy), Jak pomagamy, Do adopcji, Historie (/#historie),
+  Galeria, Kontakt (bez „Jak pomóc” - tę rolę pełni przycisk „Wpłać"). **FAQ nie ma w menu** (decyzja
+  właściciela 17.11.2026; sekcja `#faq` zostaje na stronie głównej). Grupa powstała, bo 8 pozycji nie mieściło
+  się w jednym wierszu przy 1280 px (test: `features.spec.ts`, 1280 i 1440 px).
+  Rozwijane menu (`NavLinks.tsx`) **otwiera się po najechaniu myszą** (decyzja właściciela): zamyka się ~0,2 s
+  po zjechaniu, klik myszą go nie zamyka, lista wisi w `pt-2` (bez przerwy między przyciskiem a listą, WCAG
+  1.4.13). Dotyk (bez hovera): tap przełącza. Klawiatura - wzorzec disclosure: przycisk z
+  `aria-expanded`/`aria-controls`, Enter/Spacja, ↓ otwiera i wchodzi w listę, ↑/↓/Home/End, Esc zamyka i wraca
+  na przycisk, zamyka się po wyjściu fokusu lub kliknięciu obok. Zamknięta lista = `display: none` (NIE `visibility` z tranzycją - potomkowie chwilę
+  dziedziczyli „hidden” i nie przyjmowali fokusu). Przycisk grupy ma `data-current`, gdy jesteś na jej stronie.
+  Pełne menu od `xl` (1280 px), poniżej przycisk „Menu”. Bieżąca strona ma `aria-current="page"` i żółte
+  podkreślenie. Cień nagłówka po przewinięciu (`html[data-scrolled]`). `/linki/` NIE jest w menu (tylko stopka).
 - **Menu mobilne = off-canvas** (`MobileNav`): natywny modalny `<dialog>` wysuwany z prawej, 85% szerokości
   ekranu (max 28rem), tło przyciemnione i rozmyte (`.offcanvas::backdrop`), animacja przez `@starting-style`.
   Dialog daje pułapkę fokusu, Esc, zablokowane tło i powrót fokusu na przycisk. Zamyka się klikiem w tło,
-  kliknięciem linku i po poszerzeniu okna ponad `xl`. Na dole: „Wpłać darowiznę”, telefon, social.
+  kliknięciem linku i po poszerzeniu okna ponad `xl`. Lista płaska (`flatNavItems`) - wszystkie 8 pozycji.
+  Na dole: „Wpłać darowiznę”, telefon, social.
 - **Slidery na telefonach** (`components/ui/MobileSlider.tsx`, decyzja właściciela: strona główna była
   za długa): poniżej 640 px karty „Co robimy” (`#help-cards`) i „Historie, które zmieniliśmy”
   (`#stories-list`) to poziomy slider na natywnym `scroll-snap` (klasa `.mobile-slider` w `globals.css`,
@@ -403,15 +442,18 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   (LCP), `sizes` poprawne, `alt` opisowy.
 
 ### 2. `#liczby` — Pasek liczb (cream-100)
-- 3-4 kafelki: liczba (Oswald, plum-600) + opis. Źródło: `content/home.json → stats[]`.
-  Start: „ok. 30 — wysterylizowanych kotów", „544 — osób wspiera naszą zrzutkę", „12 — historii
-  ze szczęśliwym zakończeniem na stronie" (liczba historii liczona z `content/stories`).
-  Oznacz w JSON `"verified": false` tam, gdzie właścicielka musi potwierdzić.
+- 4 kafelki: liczba (Oswald, plum-600) + opis. Źródło: `content/home.json → stats.items[]` (wartości stałe,
+  wpisane ręcznie - nie liczone z plików). Stan na listopad 2026 (mail właścicielki 17.11.2026):
+  „174 - uratowane koty”, „ok. 160 - wysterylizowanych kotów”, „ok. 120 - historii ze szczęśliwym
+  zakończeniem”, „7 dni - w tygodniu przy kociej kolonii”. Kafelek „544 osoby wsparły zbiórkę” usunięty
+  (siatka ma 4 miejsca). Licznik `data-count` animuje pierwszą liczbę w wartości („ok. 160” liczy 0 → 160,
+  przedrostek zostaje). Oznacz w JSON `"verified": false` tam, gdzie właścicielka musi potwierdzić.
 
 ### 3. `#o-nas` — Nasza historia (cream-50, zdjęcie Sylwii z psem z kolażu po lewej)
 - H2: „Zaczęło się od jednej kociej mamy"
 - Tekst: adaptacja opisu ze zrzutki (patrz sekcja 8). 3-4 akapity, pierwsze zdanie każdego
-  akapitu niesie sedno (GEO). Cytat‑wyróżnik: „Ręce poranione, ale serce silne."
+  akapitu niesie sedno (GEO). Cytat‑wyróżnik (od właścicielki, ten sam na `/o-nas/`): „Zawsze chciałam zostać
+  weterynarzem. Teraz już wiem, że nie muszę nim być, żeby ratować zwierzęta.” - Sylwia Łętocha, założycielka fundacji.
 - Pod tekstem link „Zobacz naszą codzienność na TikToku" (zewnętrzny, z ikoną i `rel="noopener"`).
 
 ### 4. `#jak-pomagamy` — Co robimy (plum-100 tło, karty)
@@ -422,8 +464,10 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   3. Sterylizacja i kastracja — we współpracy z gminą; „leczyć, nie rozmnażać".
   4. Azyl tymczasowy — osobny budynek, gdzie chore koty zdrowieją, a kociaki oswajają się przed adopcją. „To nie schron, to przystanek do lepszego życia."
   5. Adopcje — oswojone kociaki trafiają do domów; dzikie wracają na miejsce bytowania pod opiekę.
-  6. Inne zwierzęta — królik, szynszyla, ptaki, pies — pomagamy każdemu, kto trafi w nasze ręce.
-- Pod kartami rząd okrągłych fotek „Komu pomagamy" (z kolażu).
+  6. Inne zwierzęta — „Pomagamy każdemu, kto trafi w nasze ręce: psom, ptakom, gryzoniom i królikom.”
+     (decyzja właścicielki: „gryzonie”, nie „szynszyle”, wszędzie, gdzie mowa o grupach zwierząt).
+- Pod kartami rząd okrągłych fotek „Komu pomagamy" (z kolażu): Kotom, Psom, Królikom, Ptakom, **Gryzoniom**
+  (zdjęcie szynszyli zostaje, zmienił się tylko podpis).
 
 ### 5. `#historie` — Kiedyś / Teraz (cream-50)
 - H2: „Historie, które zmieniliśmy" ; lead: „Każde z tych zwierząt miało imię, historię i
@@ -454,15 +498,16 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   leczenie, leki, karma, budki — to Wasze wpłaty."
 - Karta **Darowizna** (`id="pomoc-wplata"`): numer konta w `CopyField` (przycisk „Kopiuj" z
   `aria-live` potwierdzeniem; bez JS pokazuje po prostu numer), odbiorca: Fundacja Empatia na
-  rzecz Zwierząt, tytuł: „Darowizna". BLIK: 663 806 717 (przelew na telefon), tytuł „Darowizna".
-  Link „Wpłać przez zrzutka.pl" (zewnętrzny).
+  rzecz Zwierząt, tytuł przelewu „Darowizna na cele statutowe” - też w `CopyField` z „Kopiuj”.
+  BLIK: 663 806 717 (przelew na telefon), ten sam tytuł. Link „Wpłać przez zrzutka.pl" (zewnętrzny).
 - Karta **1,5% podatku** (`id="pomoc-15"`): KRS 0000270261 + cel szczegółowy
   „FUNDACJA EMPATIA NA RZECZ ZWIERZĄT 38275" (oba w `CopyField`) + jedno zdanie wyjaśnienia
   (sekcja 2). Przycisk żółty.
 - Karta **Kup na stoisku**: zdjęcie breloków; „Kupując breloki, bransoletki i zapachy do auta na
   naszym stoisku, pomagasz ratować kolejne zwierzęta." (z rollupu + komentarze zrzutki). Link do
   IG/FB po terminy stoisk.
-- Karta **Dom tymczasowy / wolontariat / adopcja**: „Napisz do nas" → `#kontakt`.
+- Karta **Dom tymczasowy / wolontariat / adopcja**: „Szukamy domów tymczasowych dla psiaków i kociaków…”,
+  „Zadzwoń”, „Napisz do nas" → `#kontakt`, pod spodem linki „Zwierzęta do adopcji” i „Poznaj naszą ekipę”.
 - Zasada: **żadnych formularzy płatności** na stronie; tylko dane i linki.
 
 ### 7. `#aktualnosci` — Aktualności (etap 3; w etapie 1 ukryta, komponent gotowy, czyta `content/news`)
@@ -477,32 +522,76 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   2. Jak przekazać darowiznę?
   3. Jak przekazać 1,5% podatku na Fundację Empatia?
   4. Na co idą pieniądze?
-  5. Czy mogę adoptować kota?
+  5. Czy mogę adoptować kota lub psa? (z linkiem do `/do-adopcji/` - pole `link` w `faq.json`)
   6. Znalazłem/am bezdomnego lub rannego kota — co robić?
   7. Czy mogę zostać domem tymczasowym lub wolontariuszem?
   8. Gdzie można kupić breloki i inne gadżety fundacji?
 
+### 8a. Nasi partnerzy - osobna podstrona `/partnerzy/` (NIE na stronie głównej - decyzja właściciela 17.11.2026)
+- `/partnerzy/`: PageHero + siatka (`Partners variant="page"`) + CtaBand; ta sama sekcja (z nagłówkiem) na `/o-nas/`.
+- `components/sections/Partners.tsx`, dane w `content/partners.json`. Logotypy w szarości, w kolorze na
+  hover/fokus, `alt` = nazwa firmy, link w nowej karcie. Bez pliku logo: elegancka etykieta z nazwą
+  (Oswald). Na telefonie 2 w rzędzie, wyśrodkowane - działa już z jednym partnerem. Pod spodem
+  „Twoja firma też może pomagać. Zadzwoń: …”. Pierwszy partner: CtrlZ Studio (logo: plik od wykonawcy,
+  NIE pobierać ze strony). Sekcja znika, gdy lista jest pusta.
+
 ### 9. `#kontakt` — Kontakt (cream-100)
-- H2: „Kontakt". Telefon jako `<a href="tel:+48724236270">724 236 270</a>`, e-mail (gdy znany),
+- H2: „Kontakt". Telefon jako `<a href="tel:+48724236270">724 236 270</a>`, tuż pod nim notka właścicielki
+  (`settings.phoneNote`, komponent `PhoneNote`, dosłownie - bez poprawiania stylu), e-mail (gdy znany),
   social: 3 linki z ikonami + widoczną nazwą (nie same ikony). Bez formularza (static, brak backendu)
   — ewentualnie `mailto:`.
 
 ### 10. Footer (plum-950)
-- Kolumny: logo + hasło; Nawigacja; Wesprzyj nas (konto, BLIK, 1,5%); Kontakt i social. Dolna linia:
+- Kolumny: logo + hasło; Nawigacja (wszystkie pozycje menu + „Wszystkie linki” → `/linki/`); Wesprzyj nas
+  (konto, tytuł przelewu, BLIK, 1,5%); Kontakt i social. Dolna linia:
   „© {rok} Fundacja Empatia na rzecz Zwierząt” (+ KRS/NIP gdy znane), link „Polityka prywatności”,
+  „Statut fundacji (PDF, rozmiar)” w nowej karcie (tylko gdy `settings.documents.statutePdf` jest ustawiony),
   „Projekt i realizacja: CtrlZ Studio” (https://ctrlzstudio.pl/, nowa karta). Bez daty aktualizacji
   i bez deklaracji dostępności (decyzja właściciela).
 
 ### Podstrony z treścią (etap 1)
+**Lista dozwolonych stron** (nowe tylko po pytaniu): `/`, `/o-nas/`, `/jak-pomagamy/`, `/do-adopcji/`,
+`/nasza-ekipa/`, `/partnerzy/`, `/galeria/`, `/linki/`, `/polityka-prywatnosci/`, 404 (etap 3: `/aktualnosci/`).
+
 - `/o-nas/` (`content/about.json`): PageHero, historia Sylwii + cytat, oś czasu 5 kroków (linia rysuje się
-  przy przewijaniu), wartości, przejrzystość (zapiski + link do faktur na zrzutce), plany, CtaBand. JSON-LD `AboutPage`.
+  przy przewijaniu), wartości, przejrzystość (zapiski + link do faktur na zrzutce + statut PDF, gdy jest),
+  plany, Nasi partnerzy, CtaBand. JSON-LD `AboutPage`.
 - `/jak-pomagamy/` (`content/help.json`): PageHero, pasek skrótów do sekcji, 6 obszarów naprzemiennie
   (zdjęcie + lista), proces „krok po kroku” (JSON-LD `HowTo`), „Na co idą pieniądze”, CtaBand.
 - `/galeria/` (`content/gallery.json`): filtry kategorii (`aria-pressed`, licznik w `role="status"`),
   siatka z wyróżnionymi kafelkami, lightbox na natywnym `<dialog>` (strzałki, Esc, swipe, powrót fokusu).
   Bez JS kafelek to link do dużego zdjęcia. JSON-LD `ImageGallery`.
+- `/nasza-ekipa/` - **Nasza Empatyczna Ekipa** (`content/team.json`): PageHero, „Każdy pomaga po swojemu”
+  (4 role z maila: kiermasze, rękodzieło, zbiórki, codzienna pomoc), karty wolontariuszy (zdjęcie, imię,
+  rola jako badge, opis), „Z naszych kiermaszów” (siatka + lightbox z `Gallery` bez filtrów, sekcja znika
+  bez zdjęć), na dole `#dolacz` z przyciskiem „Zostań wolontariuszem”: z `volunteerFormUrl` → formularz
+  Google w nowej karcie, bez niego → `/#kontakt` + telefon i zdanie, że ankieta jest w przygotowaniu.
+  Pusta lista osób = stan „Wkrótce przedstawimy tu naszą ekipę” (bez wymyślonych osób). JSON-LD WebPage + okruszki.
+- `/do-adopcji/` - **Zwierzęta do adopcji** (`content/adoption-page.json` + `content/adoption/*.md`):
+  filtr Wszystkie / Koty / Psy (`AdoptionBoard`, `aria-pressed`, licznik „2 koty szukają domu” w
+  `role="status"`, bez JS widać wszystkie karty), karta: zdjęcie, badge statusu („Szuka domu” /
+  „Zarezerwowany(-a)”), imię (H3), płeć + wiek, lista najważniejszych informacji, pierwszy akapit historii +
+  `<details>` „Czytaj całą historię”, `<details>` „Chcę adoptować” → telefon, Facebook, Instagram. Każda
+  karta ma `id` = nazwa pliku (`/do-adopcji/#luna`). Pusta kolekcja = stan pusty z linkami do FB/IG.
+  Sekcja `#jak-adoptowac` z neutralnym „Zadzwoń lub napisz - opowiemy o zwierzaku i ustalimy szczegóły”
+  - **procedury adopcyjnej (umowa, wizyta, opłaty) nie opisujemy, dopóki właścicielka jej nie poda** (sekcja 16).
+  JSON-LD `CollectionPage` + okruszki + `ItemList` (tylko gdy są zwierzęta).
+- `/linki/` - **strona pod kod QR** (`content/links.json`, grupa tras `app/(links)/` bez nagłówka i stopki):
+  **ŚCIEŻKI `/linki/` NIGDY NIE ZMIENIAMY** - będzie wydrukowana w QR na puszkach kwestarskich, wizytówkach
+  i materiałach. Linki zmienia się w `links.json` bez nowego QR. Kolejność: Facebook, Instagram, Zrzutka,
+  Wirtualna adopcja (profil RatujemyZwierzaki.pl), Zostań wolontariuszem (ankieta Google); potem dane do
+  wpłaty (BLIK, konto, tytuł - `CopyField`), telefon z notką, niżej TikTok, strona fundacji i statut (gdy jest).
+  Pozycja bez adresu = wyszarzona przerywana karta „Wkrótce”, która NIE jest linkiem (decyzja: widać, co
+  się pojawi, i nie ma martwych linków). Pusty `url` dla `facebook`/`instagram`/`tiktok`/`zrzutka`/`wolontariat`
+  bierze adres z `settings.json` / `team.json → volunteerFormUrl` (jedno miejsce wpisania). Strona jest w
+  sitemap i w stopce („Wszystkie linki”), nie w menu. QR ma prowadzić do `https://<domena>/linki/`, nigdy
+  do adresu podglądu (*.vercel.app) - generujemy go dopiero po ustaleniu domeny.
+- Zdjęcia z obróconą „podkładką” (`absolute -inset-3 ±rotate`, np. `/o-nas/`, `/jak-pomagamy/`) mają na wąskich
+  ekranach boczny margines (`max-sm:w-[calc(100%-1.5rem)]` / `max-lg:mx-3`), żeby dekoracja nie wystawała poza
+  ekran (reflow WCAG 1.4.10). Nie ucinać jej `overflow: hidden`. Test: brak poziomego przewijania na wszystkich
+  stronach przy 320 i 375 px.
 - Strona główna linkuje do podstron: „Poznaj naszą historię”, karty „Jak pomagamy” → `/jak-pomagamy/#id`,
-  „Galeria” przy historiach.
+  „Galeria” przy historiach, karta wolontariatu → `/do-adopcji/` i `/nasza-ekipa/`, FAQ → `/do-adopcji/`.
 - **Przycisk „na górę”** (`ScrollToTop`): pojawia się po 600 px, pierścień postępu przewijania,
   `inert` gdy ukryty, po kliknięciu fokus wraca do nagłówka.
 - **FAQ**: `<details name="faq">` — przeglądarka sama trzyma otwarte tylko jedno pytanie;
@@ -511,7 +600,8 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
 ### Podstrony prawne (etap 1, minimalne)
 - `/polityka-prywatnosci/` — RODO: administrator, cel (kontakt, darowizny), Cloudflare (hosting,
   ewentualnie Web Analytics bez cookies), prawa osób. Treść szkicowa, oznaczona do weryfikacji.
-- `404` — w brandzie, z linkiem do strony głównej.
+- `404` — w brandzie, z linkiem do strony głównej. Globalne `app/not-found.tsx` renderuje się tylko w root
+  layout, więc samo opakowuje treść w `SiteShell` (nagłówek + stopka).
 
 ---
 
@@ -527,7 +617,13 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   Zastąp: „Przez lata działałam sama, potem z wolontariuszkami i stowarzyszeniem. Dziś działamy
   jako Fundacja Empatia na rzecz Zwierząt — nadal z tą samą przejrzystością: prowadzimy zapiski,
   kto został odrobaczony, wysterylizowany, kto poszedł do domu."
-- Fakty ze zrzutki, które można użyć: ok. 30 sterylizacji; gmina finansuje sterylizację/kastrację;
+- **Wolontariusze:** publikujemy TYLKO osoby, które wyraziły zgodę na publikację zdjęcia i opisu
+  (właścicielka przysyła wyłącznie takie). Nigdy nie wymyślamy osób, imion, ról ani zdjęć - pusta lista
+  pokazuje stan „Wkrótce…”. Gdy ktoś wycofa zgodę, usuwamy wpis z `team.json` (i plik zdjęcia).
+- **Adopcje:** nie wymyślamy zwierząt ani procedury adopcyjnej; tylko dane od właścicielki.
+- **Notka pod telefonem** (`phoneNote`) jest cytatem właścicielki - zostaje dosłownie, bez redakcji.
+- Fakty ze zrzutki, które można użyć: ok. 30 sterylizacji (stan ze zrzutki - aktualnie ok. 160, sekcja 2);
+  gmina finansuje sterylizację/kastrację;
   koszty własne: koci katar, antybiotyki, diagnostyka, leki, środki na pasożyty; azyl w osobnym
   budynku; budki styropianowe; plan zakupu lepszej klatki‑łapki; wolontariusze pomagają przy
   wyłapywaniu; TikTok jako dziennik.
@@ -549,13 +645,15 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   "tagline": "Dla tych, którzy mają tylko nas",
   "siteUrl": "https://empatianadloni.pl",
   "phone": "724 236 270",
+  "phoneNote": "Nie zawsze mamy możliwość przyjęcia kolejnego zwierzęcia, ale zawsze staram się…",
   "email": "",
   "address": { "street": "", "postalCode": "", "city": "", "region": "" },
   "krs": "", "nip": "", "regon": "",
+  "documents": { "statutePdf": "" },   // np. "/dokumenty/statut.pdf" (plik w public/dokumenty/); pusty = nic się nie wyświetla
   "donation": {
     "bankAccount": "91 1020 2892 0000 5202 1039 7216",
     "bankAccountOwner": "Fundacja Empatia na rzecz Zwierząt",
-    "transferTitle": "Darowizna",
+    "transferTitle": "Darowizna na cele statutowe",
     "blikPhone": "663 806 717",
     "zrzutkaUrl": "https://zrzutka.pl/xg7gtb",
     "taxKrs": "0000270261",
@@ -606,8 +704,57 @@ draft: false
 treść
 ```
 
+`content/team.json` (`/nasza-ekipa/`) - tylko osoby, które zgodziły się na publikację:
+```json
+{
+  "seo": { "title": "…", "description": "…" },
+  "intro": { "eyebrow": "Wolontariusze", "title": "Nasza Empatyczna Ekipa", "lead": "…", "crumb": "Nasza ekipa" },
+  "roles": { "eyebrow": "…", "title": "…", "items": [{ "icon": "store", "title": "Kiermasze", "text": "…" }] },
+  "membersSection": { "eyebrow": "…", "title": "…", "emptyTitle": "Wkrótce przedstawimy tu naszą ekipę", "emptyText": "…" },
+  "members": [{ "name": "Ania", "role": "Kiermasze", "description": "Kilka zdań…", "image": "team-ania", "imageAlt": "…" }],
+  "fairsSection": { "eyebrow": "Kiermasze", "title": "Z naszych kiermaszów", "lead": "…" },
+  "fairs": [{ "image": "fair-2026-05", "alt": "…", "caption": "Kiermasz w …" }],
+  "join": { "title": "…", "text": "…", "cta": "Zostań wolontariuszem", "fallbackNote": "…" },
+  "volunteerFormUrl": ""
+}
+```
+`role`: krótko - kiermasze / rękodzieło / zbiórki / codzienna pomoc. Typy w `lib/content.ts` (`Team`) -
+zły kształt wywala `tsc`.
+
+`content/adoption/<slug>.md` (`/do-adopcji/`; pliki z `_` na początku są ignorowane, `_wzor.md` opisuje pola;
+nazwa pliku: `a-z0-9-`, bo jest kotwicą karty):
+```md
+---
+name: "Luna"
+species: "kot"              # "kot" | "pies"
+sex: "samica"               # "samica" | "samiec" | "" → Kotka/Kocur/Suczka/Pies
+age: "ok. 2 lata"
+status: "szuka domu"        # "szuka domu" | "zarezerwowany"
+image: "adopt-luna"         # nazwa z manifestu albo /images/uploads/… z CMS
+imageAlt: "…"
+facts: ["Zdrowie: …", "Charakter: …", "Dogaduje się z …", "Szuka domu …"]
+order: 1
+draft: false
+---
+Pierwszy akapit = skrót na karcie. Kolejne akapity = „Czytaj całą historię”.
+```
+Teksty strony: `content/adoption-page.json` (seo, hero, list, empty, contact).
+
+`content/links.json` (`/linki/`): `seo`, `intro.lead`, `links[]` i `more[]` z polami
+`{ id, label, description, icon, url }` (ikony: `facebook`/`instagram`/`tiktok` albo nazwa z `lib/icons.ts`;
+`url` pusty = karta „Wkrótce” albo adres z ustawień - patrz sekcja 7), `donate`, `soon`.
+
+`content/partners.json`: `seo`, `hero` (strona `/partnerzy/`), `section { eyebrow, title, lead, join }`, `items[] { name, url, logo }` - `logo` to
+plik w `public/partners/` (np. `/partners/ctrlz.svg`) albo `""` (etykieta z nazwą).
+
+`content/faq.json`: `items[] { question, answer, link? { href, label } }`.
+
+Dane testowe (`tests/fixtures/`: `team.json`, `adoption/*.md`, `statut-testowy.pdf`) są FIKCYJNE i czytane
+tylko przy `CONTENT_FIXTURES=1` (`npm run test:fixtures`). Nigdy nie ustawiaj tej zmiennej przy deployu.
+
 Loadery w `lib/content.ts` z typami i walidacją (ręczną, bez zod — mniej zależności; jeśli
-walidacja urośnie, dodaj `zod`). Build ma **failować** przy brakującym wymaganym polu.
+walidacja urośnie, dodaj `zod`). Build ma **failować** przy brakującym wymaganym polu (też: nieznany
+`species`/`status`, statut ustawiony, a pliku brak).
 
 ---
 
@@ -630,6 +777,8 @@ walidacja urośnie, dodaj `zod`). Build ma **failować** przy brakującym wymaga
 - `FAQPage` z `content/faq.json`.
 - `BreadcrumbList` na podstronach. `Article`/`NewsArticle` dla aktualności (etap 3).
 - Historie: `ItemList` z `name` — opcjonalnie; nie przesadzać.
+- `/do-adopcji/`: `CollectionPage` + `ItemList` zwierząt (url karty `#slug`, imię, zdjęcie) - tylko gdy są dane.
+  `/nasza-ekipa/`: `WebPage` + okruszki (bez `Person` - prywatność wolontariuszy). `/linki/`: `WebPage`.
 
 **Techniczne:**
 - `app/sitemap.ts` i `app/robots.ts` z `export const dynamic = "force-static"`; robots
@@ -766,6 +915,27 @@ walidacja urośnie, dodaj `zod`). Build ma **failować** przy brakującym wymaga
          - { name: about, label: O nas, file: content/about.json, fields: [...] }
          - { name: help, label: Jak pomagamy, file: content/help.json, fields: [...] }
          - { name: gallery, label: Galeria, file: content/gallery.json, fields: [...] }   # obrazy: nazwy z manifestu albo uploady
+         - { name: team, label: Nasza Empatyczna Ekipa, file: content/team.json, fields: [...] }   # members (lista: name, role, description, image, imageAlt), fairs (image, alt, caption), volunteerFormUrl
+         - { name: links, label: Linki (QR), file: content/links.json, fields: [...] }   # links/more: lista { id, label, description, icon (select), url }
+         - { name: partners, label: Partnerzy, file: content/partners.json, fields: [...] }   # items: { name, url, logo (image → public/partners) }
+         - { name: adoption-page, label: Adopcje - teksty strony, file: content/adoption-page.json, fields: [...] }
+     - name: adoption
+       label: Zwierzęta do adopcji
+       folder: content/adoption
+       create: true
+       slug: "{{slug}}"          # = id karty (/do-adopcji/#slug); pliki "_*.md" ignorowane przez stronę
+       fields:
+         - { name: name, label: Imię, widget: string }
+         - { name: species, label: Gatunek, widget: select, options: [kot, pies] }
+         - { name: sex, label: Płeć, widget: select, options: [samica, samiec], required: false }
+         - { name: age, label: Wiek, widget: string, required: false }
+         - { name: status, label: Status, widget: select, options: ["szuka domu", "zarezerwowany"], default: "szuka domu" }
+         - { name: image, label: Zdjęcie, widget: image }
+         - { name: imageAlt, label: Opis zdjęcia (alt), widget: string }
+         - { name: facts, label: Najważniejsze informacje, widget: list, field: { name: fact, widget: string } }
+         - { name: order, label: Kolejność, widget: number, value_type: int, default: 10 }
+         - { name: draft, label: Szkic, widget: boolean, default: false }
+         - { name: body, label: Historia (1. akapit = skrót), widget: markdown }
      - name: stories
        label: Historie zwierząt
        folder: content/stories
@@ -827,7 +997,12 @@ npm run typecheck      # tsc --noEmit
 npm run build          # next build → out/
 npm run preview        # serve out na :4173 (test static exportu — ZAWSZE przed oddaniem)
 npm run test:a11y      # Playwright (lokalny Chrome) + axe na wszystkich stronach; sam startuje serwer na out/
+npm run test:fixtures  # build z FIKCYJNYMI danymi (tests/fixtures) → testy wypełnionych układów → build prawdziwej strony
 ```
+
+Znany flake: „browser.newContext: Test ended” przy starcie Chrome pod obciążeniem - powtórz test.
+Route groups: po przeniesieniu stron między `app/(site)` / `app/(links)` uruchomiony `next dev` trzyma stare
+trasy (404 i błędy typów w `.next/dev/types`) - zrestartuj `npm run dev`.
 
 **Workflow każdej zmiany:**
 1. Przeczytaj CLAUDE.md. Sprawdź `content/` zanim dopiszesz tekst w komponencie.
@@ -856,15 +1031,55 @@ npm run test:a11y      # Playwright (lokalny Chrome) + axe na wszystkich stronac
 3. Adres e-mail kontaktowy i docelowa domena strony.
 4. Czy numer 724 236 270 ma być publiczny na stronie (jest w `tel:` linku, więc widoczny dla wszystkich)?
 5. Zgoda fotografa na użycie zdjęcia ze znakiem „Foto Gabka" (lub czysta wersja bez znaku).
-6. Potwierdzenie liczb: ok. 30 sterylizacji, liczba adopcji, od kiedy działacie (rok).
+6. ~~Potwierdzenie liczb~~ - potwierdzone 17.11.2026 (174 / ok. 160 / ok. 120). Otwarte: od kiedy działacie (rok).
 7. Dopowiedzenia „TERAZ" dla historii z rollupu (co się stało z każdym zwierzakiem).
 8. Czy prowadzicie adopcje i dom tymczasowy formalnie (umowa adopcyjna)? To zmienia treść FAQ.
 9. Gdzie i kiedy są stoiska z gadżetami (żeby sekcja „Kup na stoisku" miała konkret).
 10. Konto GitHub właścicielki (do logowania w Sveltia w etapie 3).
 
+Z maila 17.11.2026 (strona jest gotowa na te dane, do tego czasu pokazuje stany puste / „Wkrótce”):
+
+11. Wolontariusze: zdjęcia, imiona, krótkie opisy (czym się zajmują) - **tylko osoby, które zgodziły się na
+    publikację**; potwierdzenie zgody przy każdej osobie. Plus zdjęcia z kiermaszów (z podpisem: gdzie, kiedy).
+12. Link do formularza Google „Zostań wolontariuszem” (`team.json → volunteerFormUrl`).
+13. Adres profilu fundacji na RatujemyZwierzaki.pl („Wirtualna adopcja”) - `links.json`.
+14. Zwierzęta do adopcji: zdjęcie, imię, gatunek, płeć, wiek, status, najważniejsze informacje (zdrowie,
+    charakter, z kim się dogaduje, wymagania), krótka historia. Oraz czy i jak opisać procedurę adopcji (pyt. 8).
+15. Statut fundacji w PDF (`public/dokumenty/`, `settings.json → documents.statutePdf`).
+16. Logotypy partnerów (SVG albo PNG z przezroczystym tłem) z nazwą i adresem strony; plik logo CtrlZ Studio
+    od wykonawcy (nie pobierać ze strony).
+17. **Docelowa domena - trzeba ją ustalić PRZED wygenerowaniem kodu QR.** QR ma prowadzić do
+    `https://<domena>/linki/`, nie do adresu podglądu `*.vercel.app` (ten zniknie albo się zmieni).
+18. Karta „Inne zwierzęta” na stronie głównej ma zdjęcie kotów - propozycja: zdjęcie królika (`help-rabbit`).
+
 ---
 
-## 17. Stan projektu (11.11.2026)
+## 17. Stan projektu (17.11.2026)
+
+**Etap 1b - poprawki z maila właścicielki (17.11.2026), niezacommitowane:**
+- Zrzuty: „Inne zwierzęta” → „psom, ptakom, gryzoniom i królikom” (też Jak pomagamy, FAQ, llms.txt),
+  „Szynszylom” → „Gryzoniom”, tytuł przelewu „Darowizna na cele statutowe” (+ `CopyField`, FAQ, stopka, BLIK),
+  „domów tymczasowych dla psiaków i kociaków”.
+- Liczby 174 / ok. 160 / ok. 120 / 7 dni (usunięte „544”), nowy cytat (strona główna i `/o-nas/`),
+  notka pod telefonem (Kontakt i `/linki/`), wzmianki o „około 30” sterylizacjach → ok. 160.
+- Nowe strony: `/nasza-ekipa/`, `/do-adopcji/` (stany puste do czasu materiałów), `/linki/` (grupa tras
+  `app/(links)` bez nagłówka/stopki), `/partnerzy/` (CtrlZ Studio jako etykieta; też na `/o-nas/`, nie na
+  stronie głównej), statut PDF (ukryty, dopóki pusty), menu z „O fundacji” rozwijanym po najechaniu, bez FAQ,
+  z Galerią na górnym poziomie, sitemap/llms.txt/JSON-LD.
+- Naprawione przepełnienie (~10 px) na `/o-nas/` i `/jak-pomagamy/` przy 375 px (obrócone podkładki zdjęć).
+
+Wyniki weryfikacji etapu 1b (build statyczny, `serve out`, 17.11.2026):
+
+| Test | Wynik |
+|---|---|
+| `npm run lint`, `npm run typecheck`, `npm run build` | ✓ (20 tras) |
+| `npm run test:a11y` (prawdziwe treści; 10 stron × axe desktop/mobile + zachowania, reflow 320/375 px na wszystkich stronach) | 86 ✓, 32 pominięte (testy fixtures / innej szerokości), 0 naruszeń WCAG 2.1 A/AA; 2 flaki „newContext: Test ended” przeszły po powtórce |
+| `npm run test:fixtures` (fikcyjne dane: filtr adopcji, karty, lightbox kiermaszów, statut, aktywny link do ankiety) | 96 ✓, 22 pominięte |
+| Konsola przy 375 i 1280 px (5 stron + menu) | 0 błędów, 0 ostrzeżeń hydracji |
+| `grep "–" out/` / dane testowe w `out/` | brak / brak |
+| Lighthouse | nie powtarzany w etapie 1b |
+
+### Stan etapu 1 (11.11.2026)
 
 Zrobione (etap 1): strona główna, `/o-nas/`, `/jak-pomagamy/`, `/galeria/`, polityka prywatności
 (wersja robocza), 404, sitemap, robots, manifest, `llms.txt`, OG/Twitter image, animacje GSAP + płynne

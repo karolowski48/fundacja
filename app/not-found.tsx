@@ -1,4 +1,5 @@
 import { House } from "lucide-react";
+import { SiteShell } from "@/components/layout/SiteShell";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { Paw } from "@/components/ui/Paw";
@@ -6,7 +7,9 @@ import { Paw } from "@/components/ui/Paw";
 export const metadata = { title: "Nie znaleziono strony", robots: { index: false } };
 
 export default function NotFound() {
+  // the global 404 renders inside the root layout only, so it brings the site chrome itself
   return (
+    <SiteShell>
     <section aria-labelledby="nf-title" className="py-24 sm:py-32">
       <Container className="max-w-2xl text-center">
         <div className="flex justify-center gap-3 text-plum-300">
@@ -24,5 +27,6 @@ export default function NotFound() {
         </ButtonLink>
       </Container>
     </section>
+    </SiteShell>
   );
 }

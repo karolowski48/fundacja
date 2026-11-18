@@ -2,14 +2,15 @@ import { AppLink as Link } from "@/components/ui/AppLink";
 import { LogoImage } from "@/components/layout/Logo";
 import { BrandIcon } from "@/components/ui/BrandIcon";
 import { ExternalLink } from "@/components/ui/ExternalLink";
-import { settings } from "@/lib/content";
-import { buildDate, navItems, telHref } from "@/lib/site";
+import { getStatute, settings } from "@/lib/content";
+import { buildDate, flatNavItems, linksPagePath, telHref } from "@/lib/site";
 
 const headingClass = "font-display text-sm font-semibold uppercase tracking-[0.16em] text-sun-400";
 const linkClass = "inline-block underline-offset-4 transition-[color,translate] duration-300 hover:translate-x-1 hover:text-sun-400 hover:underline";
 
 export function Footer() {
   const { donation, social } = settings;
+  const statute = getStatute();
 
   return (
     <footer className="on-dark bg-plum-950 text-cream-100">
@@ -25,13 +26,18 @@ export function Footer() {
             Na stronie
           </h2>
           <ul className="mt-4 space-y-2">
-            {navItems.map((item) => (
+            {flatNavItems.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} className={linkClass}>
                   {item.label}
                 </Link>
               </li>
             ))}
+            <li>
+              <Link href={linksPagePath} className={linkClass}>
+                Wszystkie linki
+              </Link>
+            </li>
           </ul>
         </nav>
 
@@ -41,6 +47,10 @@ export function Footer() {
             <div>
               <dt className="font-bold text-cream-50">Numer konta</dt>
               <dd className="tabular-nums">{donation.bankAccount}</dd>
+            </div>
+            <div>
+              <dt className="font-bold text-cream-50">Tytuł przelewu</dt>
+              <dd>„{donation.transferTitle}”</dd>
             </div>
             <div>
               <dt className="font-bold text-cream-50">BLIK na telefon</dt>
@@ -96,9 +106,20 @@ export function Footer() {
             {settings.krs && <> · KRS {settings.krs}</>}
             {settings.nip && <> · NIP {settings.nip}</>}
           </p>
-          <Link href="/polityka-prywatnosci/" className={linkClass}>
-            Polityka prywatności
-          </Link>
+          <ul className="flex flex-wrap gap-x-6 gap-y-2">
+            <li>
+              <Link href="/polityka-prywatnosci/" className={linkClass}>
+                Polityka prywatności
+              </Link>
+            </li>
+            {statute && (
+              <li>
+                <ExternalLink href={statute.href} className={linkClass}>
+                  {statute.label}
+                </ExternalLink>
+              </li>
+            )}
+          </ul>
           <p>
             Projekt i realizacja:{" "}
             <ExternalLink href="https://ctrlzstudio.pl/" className={`${linkClass} font-bold text-cream-50`}>

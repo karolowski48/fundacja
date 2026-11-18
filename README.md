@@ -31,7 +31,15 @@ npm run test:a11y
 ```
 
 `test:a11y` używa zainstalowanego Google Chrome i sprawdza wszystkie strony narzędziem axe
-(WCAG 2.1 A/AA) oraz klawiaturę, menu, galerię, FAQ i linki zewnętrzne.
+(WCAG 2.1 A/AA) oraz klawiaturę, menu, galerię, FAQ, linki zewnętrzne, liczby, `/linki/` i stany puste.
+
+```bash
+npm run test:fixtures
+```
+
+Buduje stronę z **fikcyjnymi** danymi z `tests/fixtures/` (wolontariusze, zwierzęta do adopcji, statut),
+sprawdza wypełnione układy (filtr adopcji, karty, lightbox kiermaszów), a na koniec zawsze buduje
+prawdziwą stronę ponownie. Dane testowe nigdy nie trafiają na stronę.
 
 ## Gdzie są treści
 
@@ -44,9 +52,44 @@ Wszystkie teksty i dane fundacji są w katalogu `content/`:
 | `about.json`, `help.json`, `gallery.json` | podstrony O nas, Jak pomagamy, Galeria |
 | `faq.json` | pytania i odpowiedzi |
 | `stories/*.md` | historie zwierząt „kiedyś / teraz” |
+| `team.json` | Nasza Empatyczna Ekipa: wolontariusze, zdjęcia z kiermaszów, link do ankiety |
+| `adoption/*.md`, `adoption-page.json` | zwierzęta do adopcji i teksty tej strony |
+| `links.json` | strona `/linki/` pod kod QR |
+| `partners.json` | strona `/partnerzy/` (i sekcja na `/o-nas/`) |
 | `pages/*.md` | polityka prywatności |
 
 Później te pliki będzie można edytować w panelu Sveltia CMS (plan w CLAUDE.md, sekcja 13).
+
+## Jak dodać…
+
+**Wolontariusza** (tylko osoba, która zgodziła się na publikację): zdjęcie przygotuj jak w sekcji „Zdjęcia”
+(np. nazwa `team-ania`), potem w `content/team.json` dopisz do `members`:
+
+```json
+{ "name": "Ania", "role": "Kiermasze", "description": "Kilka zdań o tym, jak pomaga.", "image": "team-ania", "imageAlt": "Ania z kotem na rękach przy stoisku fundacji" }
+```
+
+`role` to krótka etykieta: Kiermasze, Rękodzieło, Zbiórki albo Codzienna pomoc. Zdjęcia z kiermaszów
+dopisuj do `fairs` (`image`, `alt`, `caption`). Gdy przyjdzie link do ankiety Google, wklej go w
+`volunteerFormUrl` - przycisk „Zostań wolontariuszem” i pozycja na `/linki/` zaczną prowadzić do formularza.
+
+**Zwierzę do adopcji:** skopiuj `content/adoption/_wzor.md` jako np. `content/adoption/luna.md` (małe litery,
+bez polskich znaków - to adres karty `/do-adopcji/#luna`), uzupełnij pola i usuń `draft: true`.
+Pierwszy akapit historii widać od razu, kolejne po kliknięciu „Czytaj całą historię”. Gdy zwierzak
+znajdzie dom, usuń plik (albo ustaw `draft: true`).
+
+**Partnera:** logo (SVG albo PNG z przezroczystym tłem) wrzuć do `public/partners/`, potem w
+`content/partners.json` dopisz `{ "name": "Firma", "url": "https://…", "logo": "/partners/firma.svg" }`.
+Bez logo zostaw `"logo": ""` - pokaże się etykieta z nazwą.
+
+**Link na `/linki/`:** edytuj `content/links.json` (kolejność w pliku = kolejność na stronie). Pusty `url`
+pokazuje kartę „Wkrótce” (albo bierze adres z `settings.json` dla Facebooka, Instagrama, TikToka i zrzutki
+oraz z `team.json → volunteerFormUrl` dla ankiety). **Adresu `/linki/` nigdy nie zmieniamy** - jest w kodzie QR.
+Kod QR generujemy dopiero po ustaleniu docelowej domeny: `https://<domena>/linki/`.
+
+**Statut:** plik PDF wrzuć do `public/dokumenty/` (np. `statut.pdf`) i w `content/settings.json` ustaw
+`"documents": { "statutePdf": "/dokumenty/statut.pdf" }`. Link „Statut fundacji (PDF, rozmiar)” pojawi się
+w stopce, na `/o-nas/` i na `/linki/`. Pusta wartość = link się nie wyświetla.
 
 ## Zdjęcia
 

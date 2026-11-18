@@ -1,4 +1,5 @@
-import { Phone, Plus } from "lucide-react";
+import { ArrowRight, Phone, Plus } from "lucide-react";
+import { AppLink } from "@/components/ui/AppLink";
 import { ButtonLink } from "@/components/ui/ButtonLink";
 import { Container } from "@/components/ui/Container";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -30,6 +31,14 @@ export function Faq() {
               </summary>
               <div className="faq-answer px-5 pb-5 text-plum-900">
                 <p>{nbsp(item.answer)}</p>
+                {item.link && (
+                  <p className="mt-3">
+                    <AppLink href={item.link.href} className="group/link inline-flex min-h-11 items-center gap-1.5 font-bold text-plum-600 underline underline-offset-4 hover:text-plum-800">
+                      {item.link.label}
+                      <ArrowRight aria-hidden="true" className="size-4 transition-transform duration-300 group-hover/link:translate-x-1" />
+                    </AppLink>
+                  </p>
+                )}
               </div>
             </details>
           ))}

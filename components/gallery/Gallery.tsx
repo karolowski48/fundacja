@@ -10,7 +10,8 @@ import { cn } from "@/lib/typography";
 export type GalleryItem = {
   key: string;
   src: string;
-  srcSet: string;
+  /** Missing for raw CMS uploads (no generated widths). */
+  srcSet?: string;
   full: string;
   width: number;
   height: number;
@@ -21,6 +22,7 @@ export type GalleryItem = {
   featured: boolean;
 };
 
+/** No categories → no filter bar (e.g. the fair photos on /nasza-ekipa/). */
 type Props = { items: GalleryItem[]; categories: Array<{ id: string; label: string }> };
 
 function photosLabel(n: number) {
@@ -87,6 +89,7 @@ export function Gallery({ items, categories }: Props) {
 
   return (
     <>
+      {categories.length > 0 && (
       <div className="js-only flex flex-col items-center gap-3">
         <div role="group" aria-label="Filtruj zdjęcia" className="flex flex-wrap justify-center gap-2">
           {[{ id: "all", label: "Wszystkie" }, ...categories].map((c) => (
@@ -106,8 +109,9 @@ export function Gallery({ items, categories }: Props) {
           {filter !== "all" && ` w kategorii „${label(filter)}”`}
         </p>
       </div>
+      )}
 
-      <ul className="mt-8 grid grid-flow-dense grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+      <ul className={cn("grid grid-flow-dense grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4", categories.length > 0 && "mt-8")}>
         {visible.map((item, i) => (
           <li key={item.key} className={cn("gallery-tile", item.featured && "col-span-2 row-span-2")}>
             <a
@@ -128,7 +132,7 @@ export function Gallery({ items, categories }: Props) {
                 loading="lazy"
                 decoding="async"
                 className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
-                style={{ backgroundImage: `url(${item.blur})`, backgroundSize: "cover" }}
+                style={item.blur ? { backgroundImage: `url(${item.blur})`, backgroundSize: "cover" } : undefined}
               />
               <span
                 aria-hidden="true"
