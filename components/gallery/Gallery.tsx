@@ -20,6 +20,8 @@ export type GalleryItem = {
   caption: string;
   category: string;
   featured: boolean;
+  /** CSS object-position for the square tile crop */
+  position?: string;
 };
 
 /** No categories → no filter bar (e.g. the fair photos on /nasza-ekipa/). */
@@ -132,7 +134,10 @@ export function Gallery({ items, categories }: Props) {
                 loading="lazy"
                 decoding="async"
                 className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-110 group-focus-visible:scale-110"
-                style={item.blur ? { backgroundImage: `url(${item.blur})`, backgroundSize: "cover" } : undefined}
+                style={{
+                  ...(item.blur && { backgroundImage: `url(${item.blur})`, backgroundSize: "cover" }),
+                  ...(item.position && { objectPosition: item.position, backgroundPosition: item.position }),
+                }}
               />
               <span
                 aria-hidden="true"

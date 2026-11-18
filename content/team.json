@@ -43,11 +43,36 @@
   },
   "members": [],
   "fairsSection": {
-    "eyebrow": "Kiermasze",
+    "eyebrow": "Kiermasze i pikniki",
     "title": "Z naszych kiermaszów",
-    "lead": "Tak wygląda pomaganie przy stoisku fundacji. Terminy kolejnych kiermaszów ogłaszamy na Facebooku i Instagramie."
+    "lead": "Tak wygląda pomaganie przy stoisku fundacji: rękodzieło, breloki i malowanie twarzy dla dzieci. Terminy kolejnych kiermaszów ogłaszamy na Facebooku i Instagramie."
   },
-  "fairs": [],
+  "fairs": [
+    {
+      "image": "fair-ekipa-stoisko",
+      "alt": "Cztery wolontariuszki fundacji uśmiechają się przed stoiskiem z banerem „Cały dochód przeznaczamy na ratowanie bezdomnych zwierząt”",
+      "caption": "Nasza ekipa przy stoisku fundacji",
+      "position": "50% 72%"
+    },
+    {
+      "image": "fair-stoisko-rekodzielo",
+      "alt": "Pięć wolontariuszek siedzi za stołem pełnym bransoletek, breloków i rękodzieła, nad nimi baner fundacji",
+      "caption": "Rękodzieło na naszym stoisku",
+      "position": "50% 78%"
+    },
+    {
+      "image": "fair-malowanie-piknik",
+      "alt": "Wolontariuszki malują twarze dzieciom przy stoisku fundacji na pikniku",
+      "caption": "Malowanie twarzy na pikniku",
+      "position": "50% 62%"
+    },
+    {
+      "image": "fair-malowanie-altana",
+      "alt": "Wolontariuszka maluje buzię dziewczynce w drewnianej altanie, obok stoi dziewczynka z kocim makijażem",
+      "caption": "Kocie buźki dla najmłodszych",
+      "position": "50% 45%"
+    }
+  ],
   "join": {
     "title": "Dołącz do naszej ekipy",
     "text": "Możesz pomagać przy kiermaszach, tworzyć rękodzieło, organizować zbiórki albo wspierać nas przy transportach i wyłapywaniu kotów. Każda para rąk się liczy.",

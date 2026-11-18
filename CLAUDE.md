@@ -725,7 +725,7 @@ treść
   "membersSection": { "eyebrow": "…", "title": "…", "emptyTitle": "Wkrótce przedstawimy tu naszą ekipę", "emptyText": "…" },
   "members": [{ "name": "Ania", "role": "Kiermasze", "description": "Kilka zdań…", "image": "team-ania", "imageAlt": "…" }],
   "fairsSection": { "eyebrow": "Kiermasze", "title": "Z naszych kiermaszów", "lead": "…" },
-  "fairs": [{ "image": "fair-2026-05", "alt": "…", "caption": "Kiermasz w …" }],
+  "fairs": [{ "image": "fair-ekipa-stoisko", "alt": "…", "caption": "Nasza ekipa przy stoisku fundacji", "position": "50% 72%" }],
   "join": { "title": "…", "text": "…", "cta": "Zostań wolontariuszem", "fallbackNote": "…" },
   "volunteerFormUrl": ""
 }
@@ -1063,6 +1063,9 @@ Z maila 17.11.2026 (strona jest gotowa na te dane, do tego czasu pokazuje stany 
 15. Statut fundacji w PDF (`public/dokumenty/`, `settings.json → documents.statutePdf`).
 16. Logotypy partnerów (SVG albo PNG z przezroczystym tłem) z nazwą i adresem strony. (CtrlZ Studio nie jest
     partnerem na liście - decyzja 18.11.2026.)
+19. **Zdjęcia z kiermaszów z dziećmi** (`fair-malowanie-piknik`, `fair-malowanie-altana` - malowanie twarzy):
+    potwierdzić, że rodzice zgodzili się na publikację wizerunku dzieci (RODO). Bez zgody - usunąć te dwa wpisy z
+    `team.json → fairs` i `gallery.json` albo podmienić na zdjęcia bez rozpoznawalnych twarzy.
 17. **Docelowa domena - trzeba ją ustalić PRZED wygenerowaniem kodu QR.** QR ma prowadzić do
     `https://<domena>/linki/`, nie do adresu podglądu `*.vercel.app` (ten zniknie albo się zmieni).
 18. Karta „Inne zwierzęta” na stronie głównej ma zdjęcie kotów - propozycja: zdjęcie królika (`help-rabbit`).
@@ -1071,7 +1074,13 @@ Z maila 17.11.2026 (strona jest gotowa na te dane, do tego czasu pokazuje stany 
 
 ## 17. Stan projektu (18.11.2026)
 
-**18.11.2026 (niezacommitowane):** zakładka nazywa się „Nasza Empatyczna Ekipa” (menu, okruszki, stopka);
+**18.11.2026, zdjęcia z kiermaszów (niezacommitowane):** 4 zdjęcia od właścicielki (`source-images/fairs/` →
+`fair-*` w manifeście, WebP q62; mocniejsze odszumianie odrzucone - rozmywało detale) w sekcji „Z naszych
+kiermaszów” na `/nasza-ekipa/` (`team.json → fairs`) i w galerii (nowa kategoria „Kiermasze i pikniki”).
+Wpisy galerii/kiermaszów mają opcjonalne `position` (CSS `object-position` kwadratowego kafelka, np. `"50% 75%"`),
+żeby kadr pokazywał ludzi, a nie baner. Otwarte: zgoda rodziców na wizerunek dzieci (sekcja 16, pkt 19).
+
+**18.11.2026 (b955bc9):** zakładka nazywa się „Nasza Empatyczna Ekipa” (menu, okruszki, stopka);
 placeholdery z `content/placeholders.json` na `/nasza-ekipa/`, `/do-adopcji/`, `/partnerzy/` (+ `/o-nas/`)
 i przykładowy statut w stopce (sekcja 8); CtrlZ Studio usunięte z partnerów. Testy: `test:a11y` 87 ✓ (1 flake
 przy starcie Chrome przeszedł po powtórce), `test:fixtures` 91 ✓ (3 flaki pod obciążeniem przeszły po powtórce),

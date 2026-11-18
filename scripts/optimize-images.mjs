@@ -34,6 +34,11 @@ const IMAGES = [
   // gallery
   { name: "gallery-trap-cat", src: "source-images/zrzutka/U0qWBBMbtMiVPlup.jpg", widths: [480, 768, 1200] },
   { name: "gallery-kittens-grass", src: "source-images/zrzutka/kQi6PsYWtAQeV2A0.jpg", widths: [480, 768, 1200] },
+  // fairs and picnics (/nasza-ekipa/ "Z naszych kiermaszów" + /galeria/), photos from the owner 18.11.2026
+  { name: "fair-ekipa-stoisko", quality: 62, src: "source-images/fairs/ekipa-przy-stoisku.jpg", widths: [480, 768, 1125] },
+  { name: "fair-malowanie-piknik", quality: 62, src: "source-images/fairs/malowanie-twarzy-piknik.jpg", widths: [480, 768, 1125] },
+  { name: "fair-stoisko-rekodzielo", quality: 62, src: "source-images/fairs/stoisko-rekodzielo.jpg", widths: [480, 768, 1200, 1500] },
+  { name: "fair-malowanie-altana", quality: 62, src: "source-images/fairs/malowanie-twarzy-altana.jpg", widths: [480, 844] },
   // donate
   { name: "lanyard", src: "source-images/brand/lanyard.png", widths: [480, 768, 1200] },
 ];

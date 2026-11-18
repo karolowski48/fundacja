@@ -333,10 +333,20 @@ test.describe("sample cards (until the owner sends photos and texts)", () => {
     await expect(people).toHaveCount(4);
     for (const person of await people.all()) await expect(person).toContainText("Przykład");
     await expect(people.first().getByRole("img", { name: /Miejsce na zdjęcie/ })).toBeVisible();
-    await expect(page.locator("#kiermasze")).toHaveCount(0);
+    // real photos from fairs and picnics (owner, 18.11.2026)
+    const fairs = page.locator("#kiermasze");
+    await expect(fairs.locator("li")).toHaveCount(4);
+    await expect(fairs.getByRole("img", { name: /przed stoiskiem z banerem/ })).toBeVisible();
     const join = page.locator("#dolacz").getByRole("link", { name: "Zostań wolontariuszem" });
     await expect(join).toHaveAttribute("href", "/#kontakt");
     await expect(join).not.toHaveAttribute("target", "_blank");
+  });
+
+  test("/galeria/: 'Kiermasze i pikniki' filter shows the four fair photos", async ({ page }) => {
+    await page.goto("/galeria/");
+    await page.getByRole("button", { name: "Kiermasze i pikniki" }).click();
+    await expect(page.getByRole("status").filter({ hasText: "Kiermasze i pikniki" })).toContainText("4 zdjęcia");
+    await expect(page.locator("main ul li a[href*='/images/fair-']")).toHaveCount(4);
   });
 
   test("llms.txt never lists sample animals or the sample statute", async ({ request }) => {

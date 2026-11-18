@@ -188,6 +188,46 @@
     ],
     "blur": "data:image/webp;base64,UklGRnIAAABXRUJQVlA4IGYAAACwAwCdASoMABUAPu1iqU2ppaOiMAgBMB2JZgC2yBuLNzoIhklH0AD5u7ekVxvSkWnsYItjhhAnPCp/J05PowBP0hLXhgaHxB92hPFcQY+daS/z7GAqCkrJfBuUyTgeDlN65nUa4gA="
   },
+  "fair-ekipa-stoisko": {
+    "width": 1125,
+    "height": 1500,
+    "widths": [
+      480,
+      768,
+      1125
+    ],
+    "blur": "data:image/webp;base64,UklGRm4AAABXRUJQVlA4IGIAAAAwAgCdASoMABAAA4BaJQBOgCHeuFfhaSWZAAD4W+XnoIMpVfpWetKfbx2pfByp1owphg7MCWvMoY9vucnfNS3SOvh/UBLO/LQ6leiAX4wT0clBpZP0Cb2u34ip5lUHa1gAAA=="
+  },
+  "fair-malowanie-piknik": {
+    "width": 1125,
+    "height": 1500,
+    "widths": [
+      480,
+      768,
+      1125
+    ],
+    "blur": "data:image/webp;base64,UklGRnYAAABXRUJQVlA4IGoAAACQAgCdASoMABAAA4BaJZACdAYuR2grPgoROHuZAADODObk9eFm0dGgTyGtN1eCVH03nGa2oavrxTPNYS95sloVbPVetVU1ZkSWydTQfgM5zVmveeAq3MyZC4iyDfPN+f2SQLBB/imOAAAA"
+  },
+  "fair-stoisko-rekodzielo": {
+    "width": 1500,
+    "height": 1125,
+    "widths": [
+      480,
+      768,
+      1200,
+      1500
+    ],
+    "blur": "data:image/webp;base64,UklGRlYAAABXRUJQVlA4IEoAAADwAQCdASoMAAkAA4BaJYwCdAYs3aUEMAAA/pFL946KW7e4ONfWUTEZ8C3cPkh8cP4ZHJESdfq8aMbRjr8bKCAAQBZLQ2GicVGAAA=="
+  },
+  "fair-malowanie-altana": {
+    "width": 844,
+    "height": 1500,
+    "widths": [
+      480,
+      844
+    ],
+    "blur": "data:image/webp;base64,UklGRqgAAABXRUJQVlA4IJwAAABQBACdASoMABUAPu1iqU2ppaOiMAgBMB2JZgCdMoACtHyXiNNMESsmqTxAAP7lCLECo/wBJtmlF2B+J/6Xf5eqtxtjPkWwpO85Ua8CnuVp4erZRsQ3Gnburws0ijN9h7xDvHvg4lw2ogUU23/11jOe83nbWU/h73gxko9PYgN78ld7coMccz5zudX7FB5T1E1kg2qh9JM0z9rFAAA="
+  },
   "lanyard": {
     "width": 1536,
     "height": 1024,
