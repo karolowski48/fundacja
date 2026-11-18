@@ -16,7 +16,8 @@
     "brand": "node scripts/brand-assets.mjs",
     "check": "npm run lint && npm run typecheck && npm run build",
     "fonts": "node scripts/subset-fonts.mjs",
-    "build:preview": "NEXT_PUBLIC_PREVIEW=1 next build"
+    "build:preview": "NEXT_PUBLIC_PREVIEW=1 next build",
+    "qr": "node scripts/qr-links.mjs"
   },
   "engines": {
     "node": ">=22"

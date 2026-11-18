@@ -589,7 +589,8 @@ Kolejność i `id` (nawigacja kotwicowa, `scroll-margin-top` pod sticky header):
   się pojawi, i nie ma martwych linków). Pusty `url` dla `facebook`/`instagram`/`tiktok`/`zrzutka`/`wolontariat`
   bierze adres z `settings.json` / `team.json → volunteerFormUrl` (jedno miejsce wpisania). Strona jest w
   sitemap i w stopce („Wszystkie linki”), nie w menu. QR ma prowadzić do `https://<domena>/linki/`, nigdy
-  do adresu podglądu (*.vercel.app) - generujemy go dopiero po ustaleniu domeny.
+  do adresu podglądu (*.vercel.app). Wygenerowany 18.11.2026 (`npm run qr` → `print/qr/`: `qr-linki.svg` do druku,
+  `qr-linki.png`, `qr-linki-logo.png` z logo w środku, poziom korekcji H); każdy plik sprawdzony dekoderem.
 - Zdjęcia z obróconą „podkładką” (`absolute -inset-3 ±rotate`, np. `/o-nas/`, `/jak-pomagamy/`) mają na wąskich
   ekranach boczny margines (`max-sm:w-[calc(100%-1.5rem)]` / `max-lg:mx-3`), żeby dekoracja nie wystawała poza
   ekran (reflow WCAG 1.4.10). Nie ucinać jej `overflow: hidden`. Test: brak poziomego przewijania na wszystkich
@@ -1021,6 +1022,7 @@ npm run dev            # http://localhost:3000
 npm run images         # scripts/optimize-images.mjs (po dodaniu zdjęć do source-images/ i wpisu w IMAGES)
 npm run brand          # favicony, ikony, obraz OG z logo
 npm run fonts          # podzbiory fontów (po zmianie zestawu znaków)
+npm run qr             # kody QR do /linki/ → print/qr/ (SVG + PNG, wersja z logo); wymaga `brew install qrencode`
 npm run lint
 npm run typecheck      # tsc --noEmit
 npm run build          # next build → out/
